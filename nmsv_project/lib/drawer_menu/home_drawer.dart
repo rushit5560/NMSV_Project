@@ -54,7 +54,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
                     size: 25,
                   ),
                   title: Text(
-                    AppMessage.completedJob,
+                    AppMessage.home,
                     style: TextStyleConfig.textStyle(
                       fontSize: 16.sp,
                       textColor: Colors.white60,
@@ -75,7 +75,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
                   size: 25,
                 ),
                 title: Text(
-                  AppMessage.appVersion,
+                  AppMessage.home,
                   style: TextStyleConfig.textStyle(
                     fontSize: 16.sp,
                     textColor: Colors.white60,

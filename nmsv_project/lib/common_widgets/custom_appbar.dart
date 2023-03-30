@@ -12,7 +12,7 @@ PreferredSizeWidget customAppBar({
 }) {
   return AppBar(
     centerTitle: true,
-    backgroundColor: AppColors.backGroundColor,
+    backgroundColor: AppColors.orangeColor,
     leading: leadingShow
         ? IconButton(
             onPressed: leadingOnTap,

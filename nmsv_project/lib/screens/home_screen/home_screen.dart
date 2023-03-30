@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:nmsv_project/common_widgets/custom_appbar.dart';
+import 'package:nmsv_project/constants/message.dart';
+import 'package:nmsv_project/controller/home_screen_controller.dart';
+import 'package:nmsv_project/screens/home_screen/home_screen_widgets.dart';
+
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
+  final homoScreenController = Get.put(HomoScreenController());
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: customAppBar(
+        actionShow: false,
+        actionIcon: const Icon(Icons.menu),
+        actionOnTap: () {},
+        leadingIcon: const Icon(Icons.menu),
+        leadingOnTap: () {},
+        titleText: AppMessage.home,
+      ),
+      body: Column(
+        children: [
+          CarouselBannerModule(),
+        ],
+      ),
+    );
+  }
+}
