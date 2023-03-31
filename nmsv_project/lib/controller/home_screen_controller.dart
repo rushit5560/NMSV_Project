@@ -1,9 +1,11 @@
 
 import 'package:carousel_slider/carousel_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomoScreenController extends GetxController {
   final CarouselController carouselController = CarouselController();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   RxBool isLoading = false.obs;
 
   RxInt currentIndex = 0.obs;

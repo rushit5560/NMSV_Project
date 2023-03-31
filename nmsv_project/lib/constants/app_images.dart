@@ -2,13 +2,14 @@
 
 import 'package:flutter/material.dart';
 
-const defaultRadius = 14.0;
-const defaultPadding = 13.0;
-const primacolor = Color(0XFF65b804);
-const secondary = Color(0XFFf5f8fd);
+// const defaultRadius = 14.0;
+// const defaultPadding = 13.0;
+// const primacolor = Color(0XFF65b804);
+// const secondary = Color(0XFFf5f8fd);
 
 class AppImages {
   static const rootPath = 'assets/images';
 
-  static const logoImage = "$rootPath/acsn_logo.png";
+  //static const logoImage = "$rootPath/acsn_logo.png";
+  static const omImage = "$rootPath/om.png";
 }

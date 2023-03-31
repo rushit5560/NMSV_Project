@@ -15,7 +15,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
     return Drawer(
       child: SafeArea(
         child: Container(
-          color: AppColors.drawerBackGroundColor,
+          color: AppColors.whiteColor,
           child: Column(
             children: [
               GestureDetector(
@@ -25,7 +25,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
                 child: ListTile(
                   leading: const Icon(
                     Icons.home,
-                    color: Colors.white60,
+                    color: Colors.black,
                     size: 25,
                   ),
                   title: Text(
@@ -37,12 +37,12 @@ class HomeDrawerCustomModule extends StatelessWidget {
                   ),
                   trailing: const Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white60,
+                    color: Colors.black,
                     size: 25,
                   ),
                 ),
               ),
-              const Divider(height: 2, color: Colors.white60),
+              const Divider(height: 2, color: Colors.black),
               GestureDetector(
                 onTap: () {
                   Get.back();
@@ -50,24 +50,24 @@ class HomeDrawerCustomModule extends StatelessWidget {
                 child: ListTile(
                   leading: const Icon(
                     Icons.person,
-                    color: Colors.white60,
+                    color: Colors.black,
                     size: 25,
                   ),
                   title: Text(
                     AppMessage.home,
                     style: TextStyleConfig.textStyle(
                       fontSize: 16.sp,
-                      textColor: Colors.white60,
+                      textColor: Colors.black,
                     ),
                   ),
                   trailing: const Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white60,
+                    color: Colors.black,
                     size: 25,
                   ),
                 ),
               ),
-              const Divider(height: 2, color: Colors.white60),
+              const Divider(height: 2, color: Colors.black),
               ListTile(
                 leading: const Icon(
                   Icons.logout,
@@ -86,7 +86,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
               Container(
                 height: 0.5,
                 width: double.infinity,
-                color: Colors.white60,
+                color: Colors.black,
               ),
               GestureDetector(
                 onTap: () {
@@ -102,14 +102,14 @@ class HomeDrawerCustomModule extends StatelessWidget {
                 child: ListTile(
                   leading: const Icon(
                     Icons.logout,
-                    color: Colors.white60,
+                    color: Colors.black,
                     size: 25,
                   ),
                   title: Text(
                     AppMessage.logout,
                     style: TextStyleConfig.textStyle(
                       fontSize: 16.sp,
-                      textColor: Colors.white60,
+                      textColor: Colors.black,
                     ),
                   ),
                 ),
