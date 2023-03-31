@@ -12,8 +12,8 @@ class IndexScreen extends StatelessWidget {
   IndexScreen({Key? key}) : super(key: key);
   final indexScreenController = Get.put(IndexScreenController());
   final screen = [
-    ContactUsScreen(),
     HomeScreen(),
+    ContactUsScreen(),
     BhajanScreen(),
     ProfileScreen(),
   ];
