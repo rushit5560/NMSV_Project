@@ -18,69 +18,25 @@ class HomeDrawerCustomModule extends StatelessWidget {
           color: AppColors.whiteColor,
           child: Column(
             children: [
-              GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                child: ListTile(
-                  leading: const Icon(
-                    Icons.home,
-                    color: Colors.black,
-                    size: 25,
-                  ),
-                  title: Text(
-                    AppMessage.home,
-                    style: TextStyleConfig.textStyle(
-                      fontSize: 16.sp,
-                      textColor: Colors.white60,
-                    ),
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.black,
-                    size: 25,
-                  ),
-                ),
+              HomeDrawerModule(
+                  icon: Icons.home,
+                  text: AppMessage.home,
               ),
-              const Divider(height: 2, color: Colors.black),
-              GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                child: ListTile(
-                  leading: const Icon(
-                    Icons.person,
-                    color: Colors.black,
-                    size: 25,
-                  ),
-                  title: Text(
-                    AppMessage.home,
-                    style: TextStyleConfig.textStyle(
-                      fontSize: 16.sp,
-                      textColor: Colors.black,
-                    ),
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.black,
-                    size: 25,
-                  ),
-                ),
+              HomeDrawerModule(
+                  icon: Icons.music_note_rounded,
+                  text: AppMessage.bhajan,
               ),
-              const Divider(height: 2, color: Colors.black),
-              ListTile(
-                leading: const Icon(
-                  Icons.logout,
-                  color: AppColors.drawerBackGroundColor,
-                  size: 25,
-                ),
-                title: Text(
-                  AppMessage.home,
-                  style: TextStyleConfig.textStyle(
-                    fontSize: 16.sp,
-                    textColor: Colors.white60,
-                  ),
-                ),
+              HomeDrawerModule(
+                icon: Icons.music_note_rounded,
+                text: AppMessage.guruvani,
+              ),
+              HomeDrawerModule(
+                icon: Icons.calendar_month,
+                text: AppMessage.campSchedule,
+              ),
+              HomeDrawerModule(
+                icon: Icons.people,
+                text: AppMessage.meetWithGurudev,
               ),
               const Spacer(),
               Container(
@@ -118,6 +74,44 @@ class HomeDrawerCustomModule extends StatelessWidget {
           ).commonOnlyPadding(top: 10),
         ),
       ),
+    );
+  }
+}
+
+class HomeDrawerModule extends StatelessWidget {
+  final  IconData? icon;
+  final String text;
+  const HomeDrawerModule({
+    Key? key,
+    required this.icon,
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  Column(
+      children: [
+        GestureDetector(
+        onTap: () {
+          Get.back();
+        },
+        child: ListTile(
+          leading: Icon(
+            icon,
+            color: Colors.black,
+            size: 25,
+          ),
+          title: Text(
+            text,
+            style: TextStyleConfig.textStyle(
+              fontSize: 16.sp,
+              textColor: Colors.black,
+            ),
+          ),
+        ),
+      ),
+        const Divider(height: 2, color: Colors.black),
+    ],
     );
   }
 }

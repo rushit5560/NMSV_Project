@@ -28,32 +28,32 @@ class IndexScreen extends StatelessWidget {
       ),
       bottomNavigationBar: Obx(
             () => BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: AppColors.orangeColor,
-          unselectedItemColor: AppColors.greyColor,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          onTap: (index) {
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: AppColors.orangeColor,
+            unselectedItemColor: AppColors.greyColor,
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
+            onTap: (index) {
             //indexScreenController.homeScreenShow.value = false;
             indexScreenController.changeIndex(index);
-          },
-          currentIndex: indexScreenController.selectedIndex.value,
-          items: const [
+            },
+            currentIndex: indexScreenController.selectedIndex.value,
+            items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: '',
+              label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.import_contacts_outlined),
-              label: '',
+              icon: Icon(Icons.map_sharp),
+              label: 'Contact Us',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.music_note_outlined),
-              label: '',
+              label: 'Bhajan',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: '',
+              label: 'Profile',
             ),
           ],
         ),
