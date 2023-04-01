@@ -14,6 +14,11 @@ class AppMessage {
   static String yes = "Yes";
   static String no = "No";
   static String logoutMessage = "Are you sure you want to logout?";
+  static String contactUs = "Contact Us";
+  static String gallery = "Gallery";
+  static String darkTheme = "Dark Theme";
+  static String bhajanPlayer = "Bhajan Player";
+  static String search = "Search";
   static String passwordIsRequired = 'Please enter password.';
   static String passwordMustBeAtleast8CharactersLong = 'Password must be at least 8 characters long.';
 }
