@@ -21,7 +21,7 @@ final bhajanScreenController = Get.put(BhajanScreenController());
           leadingIcon: const Icon(Icons.navigate_before),
           leadingOnTap: () {
            // Get.to(HomeScreen());
-          }),
+          }, leadingShow: true),
       body: Column(
         children: [
           TextFiledModule(),

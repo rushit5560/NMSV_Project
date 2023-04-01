@@ -18,9 +18,10 @@ class BhajanAudioScreen extends StatelessWidget {
           actionIcon: const Icon(Icons.west_outlined),
           actionOnTap: () {},
           leadingIcon: const Icon(Icons.navigate_before),
+
           leadingOnTap: () {
             // Get.to(HomeScreen());
-          }),
+          }, leadingShow: true),
       body: Column(
         children:  [
           AudioModule().commonSymmetricPadding(horizontal: 10,vertical: 50),
