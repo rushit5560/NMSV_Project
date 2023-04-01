@@ -80,7 +80,6 @@ class CarouselBannerModule extends StatelessWidget {
   }
 }
 
-
 class ChoiceTopicModule extends StatelessWidget {
   const ChoiceTopicModule({Key? key}) : super(key: key);
 
@@ -89,34 +88,33 @@ class ChoiceTopicModule extends StatelessWidget {
     return SizedBox(
       height: 400,
       child: GridView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              crossAxisCount: 3),
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 3),
         itemCount: 9,
         itemBuilder: (context, index) {
-        return InkWell(
-          onTap: () {
-            log('message');
-          },
-          child: Container(
-            height: 100,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: AppColors.greyColor,width: 2),
-              //borderRadius: BorderRadius.circular(3),
-              color: Colors.white,
+          return InkWell(
+            onTap: () {
+              log('message');
+            },
+            child: Container(
+              height: 100,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                border: Border.all(color: AppColors.greyColor, width: 2),
+                //borderRadius: BorderRadius.circular(3),
+                color: Colors.white,
               ),
-              child:  Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                  height: 50,
+                    height: 50,
                     AppImages.omImage,
-                ),
-                   SizedBox(height: 1.h),
-                   Text('Mantra',
+                  ),
+                  SizedBox(height: 1.h),
+                  Text(
+                    'Mantra',
                     style: TextStyleConfig.textStyle(
                       fontFamily: FontFamilyText.roboto,
                       textColor: AppColors.blackColor,
@@ -124,15 +122,15 @@ class ChoiceTopicModule extends StatelessWidget {
                       fontSize: 12.sp,
                     ),
                   ),
-              ],
+                ],
               ),
-          ),
-        );
-      }),
+            ),
+          );
+        },
+      ),
     );
   }
 }
-
 
 class HomeScreenTextModule extends StatelessWidget {
   const HomeScreenTextModule({Key? key}) : super(key: key);
@@ -142,9 +140,8 @@ class HomeScreenTextModule extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Row(
-          children:[
-            Text(
+        Row(children: [
+          Text(
             '|| Aaano Bhadra Kratvo Yantu Vishwatah ||',
             style: TextStyleConfig.textStyle(
               fontFamily: FontFamilyText.roboto,
