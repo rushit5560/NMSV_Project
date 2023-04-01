@@ -3,20 +3,20 @@ import 'package:nmsv_project/constants/color.dart';
 
 PreferredSizeWidget customAppBar({
   required String titleText,
-  bool leadingShow = true,
-  required Widget leadingIcon,
-  required Function() leadingOnTap,
-  bool actionShow = true,
-  required Widget actionIcon,
-  required Function() actionOnTap,
+  required bool leadingShow,
+  Widget? leadingIcon,
+  Function()? leadingOnTap,
+  required bool actionShow,
+  Widget? actionIcon,
+  Function()? actionOnTap,
 }) {
   return AppBar(
     centerTitle: true,
     backgroundColor: AppColors.orangeColor,
     leading: leadingShow
         ? IconButton(
-            onPressed: leadingOnTap,
-            icon: leadingIcon,
+            onPressed: leadingOnTap ?? (){},
+            icon: leadingIcon!,
           )
         : null,
     title: Text(
@@ -27,8 +27,8 @@ PreferredSizeWidget customAppBar({
     actions: [
       actionShow
           ? IconButton(
-              onPressed: actionOnTap,
-              icon: actionIcon,
+              onPressed: actionOnTap ?? (){},
+              icon: actionIcon!,
             )
           : Container(),
     ],

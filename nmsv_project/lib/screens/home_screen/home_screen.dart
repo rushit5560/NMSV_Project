@@ -19,6 +19,7 @@ class HomeScreen extends StatelessWidget {
       key: homoScreenController.scaffoldKey,
       appBar: customAppBar(
         actionShow: false,
+        leadingShow: true,
         actionIcon: const Icon(Icons.menu),
         actionOnTap: () {},
         leadingIcon: const Icon(Icons.menu),

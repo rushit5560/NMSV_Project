@@ -37,7 +37,7 @@ class TextFieldModule extends StatelessWidget {
         focusedBorder: inputBorder(),
         errorBorder: inputBorder(),
         focusedErrorBorder: inputBorder(),
-        fillColor: AppColors.scaffoldBackGroundColor,
+        fillColor: AppColors.whiteColor1,
         filled: true,
         hintText: hintText,
         errorMaxLines: 2,
@@ -52,8 +52,8 @@ class TextFieldModule extends StatelessWidget {
 
   InputBorder inputBorder() {
     return const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10)),
-      borderSide: BorderSide(color: Colors.transparent),
+      borderRadius: BorderRadius.all(Radius.circular(30)),
+      borderSide: BorderSide(color: Colors.grey),
     );
   }
 }

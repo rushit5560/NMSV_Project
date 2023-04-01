@@ -4,6 +4,8 @@ import 'package:nmsv_project/screens/home_screen/home_screen.dart';
 import 'package:nmsv_project/screens/index_screen/index_screen.dart';
 import 'package:sizer/sizer.dart';
 
+import 'screens/auth_screens/login_screen/signin_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: IndexScreen(),
+          home: SignInScreen(),
         );
       },
     );
