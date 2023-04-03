@@ -34,49 +34,63 @@ class HomeDrawerCustomModule extends StatelessWidget {
             HomeDrawerModule(
               icon: Icons.home,
               text: AppMessage.home,
-              onTap: () => Get.to(HomeScreen()),
+              onTap:() {
+                Get.to(()=> HomeScreen());
+              },
             ),
             const Divider(color: AppColors.greyColor),
 
             HomeDrawerModule(
               icon: Icons.music_note_rounded,
               text: AppMessage.bhajan,
-              onTap: () => Get.to(BhajanScreen()),
+              onTap: () {
+                Get.to(()=> BhajanScreen());
+              },
             ),
             const Divider(color: AppColors.greyColor),
 
             HomeDrawerModule(
               icon: Icons.media_bluetooth_on,
               text: AppMessage.guruvani,
-              onTap:() => Get.to(GuruVaniScreen()),
+              onTap:() {
+                Get.to(()=>GuruVaniScreen());
+              },
             ),
             const Divider(color: AppColors.greyColor),
 
             HomeDrawerModule(
               icon: Icons.today,
               text: AppMessage.campSchedule,
-              onTap:() => Get.to(CampScheduleScreen()),
+              onTap:() {
+                Get.to(()=> CampScheduleScreen());
+              },
             ),
             const Divider(color: AppColors.greyColor),
 
             HomeDrawerModule(
               icon: Icons.people,
               text: AppMessage.meetWithGurudev,
-              onTap: () => Get.to(MeetWithGurudevScreen()),
+              onTap: () {
+                     Get.to(()=> MeetWithGurudevScreen());
+              },
             ),
             const Divider(color: AppColors.greyColor),
 
             HomeDrawerModule(
               icon: Icons.map_sharp,
               text: AppMessage.contactUs,
-              onTap: () => Get.to(ContactUsScreen()),
+              onTap: () {
+                Get.to(()=> ContactUsScreen());
+              },
             ),
             const Divider(color: AppColors.greyColor),
 
             HomeDrawerModule(
               icon: Icons.photo_library_outlined,
               text: AppMessage.gallery,
-              onTap: () => Get.to(GalleryScreen()),
+              onTap: () {
+                Get.to(()=>GalleryScreen());
+              },
             ),
             const Divider(color: AppColors.greyColor),
             const Spacer(),
