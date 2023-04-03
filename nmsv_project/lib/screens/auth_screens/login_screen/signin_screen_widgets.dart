@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:nmsv_project/common_modules/auth_screen_text_field.dart';
 import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/controller/auth_screens_controller/signin_screen_controller.dart';
+import 'package:nmsv_project/utils/field_validator.dart';
 import 'package:sizer/sizer.dart';
 
 class TextFormFieldModule extends StatelessWidget {
@@ -17,10 +18,12 @@ class TextFormFieldModule extends StatelessWidget {
           fieldController: loginScreenController.userNameEditingController,
           hintText: AppMessage.userName,
           keyboardType: TextInputType.text,
+          validate: (value)=> FieldValidator().validateEmail(value),
+
         ),
         SizedBox(height: 2.h),
-        Obx(()=>
-         TextFieldModule(
+        Obx(
+          () => TextFieldModule(
             obscureText: loginScreenController.isPasswordHide.value,
             fieldController: loginScreenController.passwordEditingController,
             hintText: AppMessage.password,
@@ -28,7 +31,7 @@ class TextFormFieldModule extends StatelessWidget {
             suffixIcon: IconButton(
               onPressed: () {
                 loginScreenController.isPasswordHide.value =
-                    loginScreenController.isPasswordHide.value;
+                    !loginScreenController.isPasswordHide.value;
               },
               icon: Icon(
                 loginScreenController.isPasswordHide.value
@@ -36,6 +39,7 @@ class TextFormFieldModule extends StatelessWidget {
                     : Icons.visibility_off,
               ),
             ),
+            validate: (value) => FieldValidator().validatePassword(value),
           ),
         ),
       ],
