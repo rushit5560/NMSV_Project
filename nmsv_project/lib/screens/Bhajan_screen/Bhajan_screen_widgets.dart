@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../common_widgets/custom_Text_form_filed.dart';
+
+import '../../common_modules/auth_screen_text_field.dart';
 import '../../constants/message.dart';
 import '../../controller/bhajan_screen_controller.dart';
 import '../Bhajan_player_screen/Bhajan_player_screen.dart';
@@ -10,7 +11,7 @@ class TextFiledModule extends StatelessWidget {
 final bhajanScreenController = Get.find<BhajanScreenController>();
   @override
   Widget build(BuildContext context) {
-    return CommonTextFormFieldModule(
+    return TextFieldModule(
       fieldController: bhajanScreenController.searchbarController,
       prefixIcon: const Icon(Icons.search),
       hintText: AppMessage.search,
