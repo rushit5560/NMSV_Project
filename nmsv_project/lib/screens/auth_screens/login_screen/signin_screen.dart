@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/common_modules/custom_submit_button.dart';
@@ -7,6 +8,7 @@ import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/screens/auth_screens/forgot_password_screen/forgot_password_screen.dart';
 import 'package:nmsv_project/screens/auth_screens/login_screen/signin_screen_widgets.dart';
+import 'package:nmsv_project/screens/auth_screens/register_screen/register_screen.dart';
 import 'package:nmsv_project/utils/style.dart';
 import 'package:sizer/sizer.dart';
 
@@ -48,31 +50,7 @@ class SignInScreen extends StatelessWidget {
           ),
           SizedBox(height: 3.h),
           TextFormFieldModule(),
-          SizedBox(height: 1.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Get.to(
-                    () => const ForgotPasswordScreen(),
-                  );
-                },
-                child: Text(
-                  AppMessage.forGotPassword,
-                  style: TextStyleConfig.textStyle(
-                    textColor: AppColors.orangeColor,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 2.h),
-          CustomSubmitButtonModule(
-            labelText: AppMessage.signin1,
-            buttonColor: AppColors.orangeColor,
-            onPress: () {},
-          ).commonSymmetricPadding(horizontal: 40),
+
           SizedBox(height: 2.h),
           Text(
             AppMessage.or,
@@ -119,6 +97,30 @@ class SignInScreen extends StatelessWidget {
               ).commonSymmetricPadding(vertical: 7),
             ),
           ).commonSymmetricPadding(horizontal: 40),
+          SizedBox(height: 2.h),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: AppMessage.dontAccount,
+                  style: TextStyleConfig.textStyle(
+                    textColor: AppColors.blackColor,
+                  ),
+                ),
+                TextSpan(
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Get.to(() => RegisterScreen());
+                    },
+                  text: " ${AppMessage.register}",
+                  style: TextStyleConfig.textStyle(
+                    textColor: AppColors.orangeColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
           // Container(,)
         ],
       ).commonSymmetricPadding(horizontal: 30, vertical: 2.h),

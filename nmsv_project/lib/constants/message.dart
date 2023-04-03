@@ -24,6 +24,10 @@ class AppMessage {
   static String passwordMustBeAtleast8CharactersLong =
       'Password must be at least 8 characters long.';
 
+  static String dontAccount = "Don't have an account yet?";
+  static String alreadyAccount = "Already have an account?";
+  static String register = "Register";
+
   static String diksha = "Diksha";
   static String yantra = "yantra";
   static String books = "Books";
