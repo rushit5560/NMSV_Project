@@ -11,11 +11,14 @@ class TextFormFiledModule extends StatelessWidget {
   final bhajanPlayerScreenController = Get.find<BhajanPlayerScreenController>();
   @override
   Widget build(BuildContext context) {
-    return TextFieldModule(
+    return SearchBarTextFieldModule(
       fieldController: bhajanPlayerScreenController.searchController,
-      prefixIcon: const Icon(Icons.search),
+      fillColor: Colors.grey[200],
+      prefixIcon: const Icon(Icons.search,color: Colors.grey),
+      suffixIcon: const Icon(Icons.close,color: Colors.grey),
       hintText: AppMessage.search,
       keyboardType: TextInputType.text,
+
     );
   }
 }
@@ -26,37 +29,46 @@ class BhajanPlayerListModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Expanded(
-      child: ListView.separated(
-        itemCount: 5,
+      child: ListView.builder(
+        // itemCount: galleryScreenController.allGalleryList.length,
+        itemCount: 10,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
               Get.to(()=> BhajanAudioScreen());
             },
             child: Container(
-              padding: const EdgeInsets.all(5),
-              decoration: const BoxDecoration(
-                //color: Colors.white,
+              padding: const EdgeInsets.all(8),
+              margin: const EdgeInsets.only(bottom: 10),
+              decoration:  BoxDecoration(
+                // border: Border.all(color: Colors.grey.shade400, width: 0.0),
+                color: Colors.white,
+                borderRadius: const BorderRadius.all(Radius.circular(10),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(0.3), //color of shadow
+                      // spreadRadius: 3,
+                      blurRadius: 5,
+                      blurStyle: BlurStyle.outer
+                  )
+                ],
               ),
               child: Row(
                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:  const [
-                  Text('Jab Yaad Tumhaari Aai 01'),
+                children:   const [
+                  //Text(galleryScreenController.allGalleryList[index].shivirGalleryTitle),
+                  Text('DMKSEFJMKTHMY,J,'),
                   Spacer(),
                   Icon(
-                    Icons.download,
+                    Icons.navigate_next_outlined,
                     size: 20,
                   ),
                 ],
               ),
             ),
           );
-        }, separatorBuilder: (BuildContext context, int index) {
-        return const Divider(
-          height: 3,
-          // color: AppColors.blackColor,
-        );
-      },
+        },
       ),
     );
   }
