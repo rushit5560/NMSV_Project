@@ -19,14 +19,14 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.whiteColor1,
       appBar: customAppBar(
         actionShow: false,
-        leadingShow: false,
+        leadingShow: true,
         actionIcon: const Icon(Icons.menu),
         actionOnTap: () {},
-        leadingIcon: const Icon(Icons.menu),
+        leadingIcon: Container(),
         leadingOnTap: () {},
         titleText: AppMessage.signin,
       ),
@@ -47,7 +47,7 @@ class SignInScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 3.h),
-            TextFormFieldModule(),
+           SignTextFormFieldModule(),
             SizedBox(height: 2.h),
             Text(
               AppMessage.or,

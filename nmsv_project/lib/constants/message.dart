@@ -4,6 +4,8 @@ class AppMessage {
   static String signUp = "Sign Up";
 
   static String signin1 = "SIGN IN";
+  static String getpassword = "Get Password";
+
   static String forGotPassword = "Forgot Password?";
   static String or = "OR";
   static String googleSign = "Sign in with Google";
@@ -45,6 +47,8 @@ class AppMessage {
   static String mantra = "Mantra";
   static String auspiciousTiming = "Auspicious Timing";
   static String campSchedule = "Camp Schedule";
+  static String shibir = "Shibir";
+  static String shibirPhotos = "Shibir Photos";
 
   static String meetToGurudev = "Meet To Gurudev";
   static String contactUs = "Contact Us";

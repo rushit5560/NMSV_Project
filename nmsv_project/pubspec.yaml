@@ -40,7 +40,10 @@ dependencies:
   carousel_slider: ^4.2.1
   fluttertoast: ^8.2.1
   audioplayers: ^0.20.1
+  shared_preferences: ^2.0.20
   http: ^0.13.5
+  flutter_html: ^2.2.1
+  #webview_flutter: ^3.0.2
 
 dev_dependencies:
   flutter_test:

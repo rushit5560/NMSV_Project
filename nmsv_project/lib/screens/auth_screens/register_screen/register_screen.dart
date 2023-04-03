@@ -6,6 +6,7 @@ import 'package:nmsv_project/constants/color.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/controller/auth_screens_controller/register_screen_controller.dart';
+import 'package:nmsv_project/screens/auth_screens/login_screen/signin_screen.dart';
 import 'package:nmsv_project/screens/auth_screens/register_screen/register_widgets_screen.dart';
 import 'package:nmsv_project/utils/style.dart';
 import 'package:sizer/sizer.dart';
@@ -17,7 +18,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.whiteColor1,
       appBar: customAppBar(
         actionShow: false,
@@ -46,7 +47,31 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 3.h),
-              SigninTextFormFieldModule(),
+              SignUpTextFormFieldModule(),
+              SizedBox(height: 2.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    AppMessage.alreadyAccount,
+                    style: TextStyleConfig.textStyle(
+                      textColor: AppColors.blackColor,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => SignInScreen());
+                    },
+                    child: Text(
+                      " ${AppMessage.signin}",
+                      style: TextStyleConfig.textStyle(
+                        textColor: AppColors.orangeColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ],
           ).commonSymmetricPadding(horizontal: 30, vertical: 2.h),
         ),

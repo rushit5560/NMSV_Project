@@ -11,8 +11,8 @@ import 'package:nmsv_project/controller/auth_screens_controller/register_screen_
 import 'package:nmsv_project/utils/field_validator.dart';
 import 'package:sizer/sizer.dart';
 
-class SigninTextFormFieldModule extends StatelessWidget {
-  SigninTextFormFieldModule({super.key});
+class SignUpTextFormFieldModule extends StatelessWidget {
+  SignUpTextFormFieldModule({super.key});
   final registerScreenController = Get.find<RegisterScreenController>();
 
   @override
@@ -23,16 +23,18 @@ class SigninTextFormFieldModule extends StatelessWidget {
         children: [
           TextFieldModule(
             fieldController: registerScreenController.fullnameEditingController,
-            hintText: AppMessage.userName,
+            hintText: AppMessage.fullNmae,
             keyboardType: TextInputType.text,
             validate: (value) => FieldValidator().validateFullName(value),
           ),
+          SizedBox(height: 2.h),
           TextFieldModule(
             fieldController: registerScreenController.emailEditingController,
             hintText: AppMessage.email,
             keyboardType: TextInputType.text,
             validate: (value) => FieldValidator().validateEmail(value),
           ),
+          SizedBox(height: 2.h),
           TextFieldModule(
             fieldController: registerScreenController.userNameEditingController,
             hintText: AppMessage.userName,
@@ -61,21 +63,22 @@ class SigninTextFormFieldModule extends StatelessWidget {
               validate: (value) => FieldValidator().validatePassword(value),
             ),
           ),
+          SizedBox(height: 2.h),
           TextFieldModule(
             fieldController:
                 registerScreenController.phoneNumberEditingController,
             hintText: AppMessage.phoneNumber,
             keyboardType: TextInputType.number,
-            validate: (value) => FieldValidator().validateEmail(value),
+            maxLength: 10,
+            validate: (value) => FieldValidator().validateMobileNumber(value),
           ),
-          SizedBox(height: 1.h),
-          SizedBox(height: 2.h),
+          SizedBox(height: 3.h),
           CustomSubmitButtonModule(
-            labelText: AppMessage.signin1,
+            labelText: AppMessage.signUp.toUpperCase(),
             buttonColor: AppColors.orangeColor,
-            onPress: () {
+            onPress: () async {
               if (registerScreenController.formKey.currentState!.validate()) {
-                log("login");
+                await registerScreenController.userRegisterFunction();
               }
             },
           ).commonSymmetricPadding(horizontal: 40),

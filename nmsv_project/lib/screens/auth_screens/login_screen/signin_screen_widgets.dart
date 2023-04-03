@@ -13,8 +13,8 @@ import 'package:nmsv_project/utils/field_validator.dart';
 import 'package:nmsv_project/utils/style.dart';
 import 'package:sizer/sizer.dart';
 
-class TextFormFieldModule extends StatelessWidget {
-  TextFormFieldModule({Key? key}) : super(key: key);
+class SignTextFormFieldModule extends StatelessWidget {
+  SignTextFormFieldModule({Key? key}) : super(key: key);
   final loginScreenController = Get.find<SignInScreenController>();
 
   @override
@@ -57,7 +57,7 @@ class TextFormFieldModule extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Get.to(
-                    () => const ForgotPasswordScreen(),
+                    () => ForgotPasswordScreen(),
                   );
                 },
                 child: Text(
@@ -73,9 +73,9 @@ class TextFormFieldModule extends StatelessWidget {
           CustomSubmitButtonModule(
             labelText: AppMessage.signin1,
             buttonColor: AppColors.orangeColor,
-            onPress: () {
+            onPress: () async {
               if (loginScreenController.formKey.currentState!.validate()) {
-                log("login");
+                await loginScreenController.userLoginFunction();
               }
             },
           ).commonSymmetricPadding(horizontal: 40),
