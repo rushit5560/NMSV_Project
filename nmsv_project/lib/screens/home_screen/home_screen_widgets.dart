@@ -103,7 +103,7 @@ class ChoiceTopicModule extends StatelessWidget {
               log('message');
             },
             child: Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey.shade400, width: 1),
                 borderRadius: BorderRadius.circular(10),
@@ -117,6 +117,7 @@ class ChoiceTopicModule extends StatelessWidget {
                 color: Colors.white,
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
                     height: 50,
@@ -139,7 +140,7 @@ class ChoiceTopicModule extends StatelessWidget {
             ),
           );
         },
-      ),
+      ).commonAllSidePadding(5),
     );
   }
 }

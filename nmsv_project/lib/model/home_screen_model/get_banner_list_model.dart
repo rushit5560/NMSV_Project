@@ -23,7 +23,7 @@ class GetBannerListModel {
       GetBannerListModel(
         status: json["status"] ?? "",
         data: List<GetBannerList>.from(
-          json["data"] ?? [].map((x) => GetBannerList.fromJson(x)),
+          (json["data"] ?? []).map((x) => GetBannerList.fromJson(x)),
         ),
       );
 

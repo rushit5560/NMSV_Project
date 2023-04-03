@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,8 @@ class HomoScreenController extends GetxController {
     AppMessage.meetToGurudev,
     AppMessage.contactUs,
   ];
-  Future<void> getBannerListFunction() async {
+
+  /*Future<void> getBannerListFunction() async {
     isLoading(true);
     String url = "https://narayanmantrasadhanavigyan.org/api/BannerList";
     log('getBannerListFunction Api Url : $url');
@@ -58,8 +60,9 @@ class HomoScreenController extends GetxController {
       };
       http.Response response =
           await http.get(Uri.parse(url), headers: headerData);
-      log('Response : ${response.body}');
+      log('StatusCode : ${response.statusCode}');
       log('headerData : $headerData');
+      log('Response : ${response.body}');
 
       // GetBannerListModel getBannerListModel =
       //     GetBannerListModel.fromJson(json.decode(response.body));
@@ -67,43 +70,41 @@ class HomoScreenController extends GetxController {
       log("getBannerListFunction Error :$e");
       rethrow;
     }
+  }*/
+
+  Future<void> getBannerListFunction() async {
+    isLoading(true);
+
+    String url = ApiUrl.getBannerList;
+    log("getBannerListFunction url : $url");
+    try {
+      var request = http.MultipartRequest('GET', Uri.parse(url));
+      request.headers['Authorization-Token'] = 'nmsvtoken';
+      log("getBannerListFunction request.headers: ${request.headers}");
+      var response = await request.send();
+
+      response.stream.transform(utf8.decoder).listen((value) {
+        log('getBannerListFunction response: $value');
+
+        GetBannerListModel getBannerListModel =
+            GetBannerListModel.fromJson(json.decode(value));
+
+        log("getBannerListModel $getBannerListModel");
+
+        if (response.statusCode == 200) {
+          log("message");
+          getBannerList.addAll(getBannerListModel.data);
+          log("getBannerListFunction getbannerlist: $getBannerList");
+        } else {
+          log("error");
+        }
+      });
+    } catch (e) {
+      log("getBannerListFunction error: $e");
+      rethrow;
+    }
+    isLoading(false);
   }
-
-  // Future<void> getBannerListFunction() async {
-  //   isLoading(true);
-
-  //   String url = "https://narayanmantrasadhanavigyan.org/api/BannerList";
-  //   log("getBannerListFunction url : $url");
-  //   try {
-  //     var request = http.MultipartRequest('GET', Uri.parse(url));
-  //     request.headers["Authorization-Token"] = "nmsvtoken";
-  //     log("getBannerListFunction request.headers: ${request.headers}");
-  //     var response = await request.send();
-
-  //     response.stream.transform(utf8.decoder).listen((value) {
-  //       log('getBannerListFunction response: $value');
-
-  //       GetBannerListModel getBannerListModel =
-  //           GetBannerListModel.fromJson(json.decode(value));
-
-  //       log("getBannerListModel $getBannerListModel");
-
-  //       if (response.statusCode == 200) {
-  //         log("message");
-  //         getBannerList.addAll(getBannerListModel.data);
-  //         log("getBannerListFunction getbannerlist: $getBannerList");
-  //       } else {
-  //         log("error");
-  //       }
-  //     });
-
-  //   } catch (e) {
-  //     log("getBannerListFunction error: $e");
-  //     rethrow;
-  //   } finally {
-  //     isLoading(false);
-  //   }
-  // }
 
   @override
   void onInit() {

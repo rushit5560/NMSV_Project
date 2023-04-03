@@ -1,7 +1,7 @@
 class ApiUrl {
-  static const apiMainPath = "https://narayanmantrasadhanavigyan.org/";
+  static const apiMainPath = "https://narayanmantrasadhanavigyan.org/api2/";
 
-  static const getBannerList = "${apiMainPath}api/BannerList";
+  static const getBannerList = "${apiMainPath}BannerList";
 }
 
 class ApiHeader {

@@ -9,4 +9,5 @@ class SignInScreenController extends GetxController {
  
 
   RxBool isPasswordHide = false.obs;
+
 }
