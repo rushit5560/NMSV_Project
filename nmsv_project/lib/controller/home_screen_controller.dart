@@ -7,70 +7,122 @@ import 'package:http/http.dart' as http;
 import 'package:nmsv_project/constants/api_url.dart';
 import 'package:nmsv_project/constants/app_images.dart';
 import 'package:nmsv_project/constants/message.dart';
+import 'package:nmsv_project/model/home_screen_model/category_model.dart';
 import 'package:nmsv_project/model/home_screen_model/get_banner_list_model.dart';
+
+import '../model/home_screen_model/introduction_model.dart';
+import '../screens/diksha_screen/diksha_screen.dart';
+import '../screens/sadhana_screen/sadhana_screen.dart';
 
 class HomoScreenController extends GetxController {
   final CarouselController carouselController = CarouselController();
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   RxBool isLoading = false.obs;
+  RxString successStatus = "".obs;
 
   RxInt currentIndex = 0.obs;
+  RxString introductionValue = "".obs;
 
   ApiHeader apiHeader = ApiHeader();
   List<GetBannerList> getBannerList = [];
 
-  List<String> announcementOfferList = [
-    "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/91QkiVdLMKL._SL1500_.jpg",
-    "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81NI3j6WsNL._SL1500_.jpg",
+  List<MainCategory> categoryList = [
+    MainCategory(
+      image: AppImages.iconDiksha,
+      name: AppMessage.diksha,
+    ),
+    MainCategory(
+      image: AppImages.iconYantra,
+      name: AppMessage.yantra,
+    ),
+    MainCategory(
+      image: AppImages.iconBooks,
+      name: AppMessage.books,
+    ),
+    MainCategory(
+      image: AppImages.iconSadhana,
+      name: AppMessage.shadhana,
+    ),
+    MainCategory(
+      image: AppImages.iconMantra,
+      name: AppMessage.mantra,
+    ),
+    MainCategory(
+      image: AppImages.iconAuspicious,
+      name: AppMessage.auspiciousTiming,
+    ),
+    MainCategory(
+      image: AppImages.iconSchedule,
+      name: AppMessage.campSchedule,
+    ),
+    MainCategory(
+      image: AppImages.iconMetting,
+      name: AppMessage.meetToGurudev,
+    ),
+    MainCategory(
+      image: AppImages.iconContact,
+      name: AppMessage.contactUs,
+    ),
   ];
 
-  List cotainerList = [
-    AppImages.iconDiksha,
-    AppImages.iconYantra,
-    AppImages.iconBooks,
-    AppImages.iconSadhana,
-    AppImages.iconMantra,
-    AppImages.iconAuspicious,
-    AppImages.iconSchedule,
-    AppImages.iconMetting,
-    AppImages.iconContact
-  ];
-
-  List containername = [
-    AppMessage.diksha,
-    AppMessage.yantra,
-    AppMessage.books,
-    AppMessage.shadhana,
-    AppMessage.mantra,
-    AppMessage.auspiciousTiming,
-    AppMessage.campSchedule,
-    AppMessage.meetToGurudev,
-    AppMessage.contactUs,
-  ];
-
-  /*Future<void> getBannerListFunction() async {
-    isLoading(true);
-    String url = "https://narayanmantrasadhanavigyan.org/api/BannerList";
-    log('getBannerListFunction Api Url : $url');
-
-    try {
-      Map<String, String> headerData = <String, String>{
-        "Authorization-Token": "nmsvtoken",
-        "Content-type": "application/json"
-      };
-      http.Response response =
-          await http.get(Uri.parse(url), headers: headerData);
-      log('StatusCode : ${response.statusCode}');
-      log('headerData : $headerData');
-      log('Response : ${response.body}');
-
-      // GetBannerListModel getBannerListModel =
-      //     GetBannerListModel.fromJson(json.decode(response.body));
-    } catch (e) {
-      log("getBannerListFunction Error :$e");
-      rethrow;
+  void categoryClickFunction(int i) {
+    if(i == 0) {
+      log('index : $i');
+      Get.to(
+        () => DikshaScreen(),
+        transition: Transition.zoom,
+      );
+    } else if(i == 1) {
+      log('index : $i');
+      // Get.to(
+      //   () => YantraScreen(),
+      //   transition: Transition.zoom,
+      // );
+    } else if(i == 2) {
+      log('index : $i');
+      // Get.to(
+      //   () => BooksScreen(),
+      //   transition: Transition.zoom,
+      // );
+    } else if(i == 3) {
+      log('index : $i');
+      Get.to(
+        () => SadhanaScreen(),
+        transition: Transition.zoom,
+      );
+    } else if(i == 4) {
+      log('index : $i');
+      // Get.to(
+      //   () => MantraScreen(),
+      //   transition: Transition.zoom,
+      // );
+    } else if(i == 5) {
+      log('index : $i');
+      // Get.to(
+      //   () => AuspiciousTimingScreen(),
+      //   transition: Transition.zoom,
+      // );
+    } else if(i == 6) {
+      log('index : $i');
+      // Get.to(
+      //   () => CampScheduleScreen(),
+      //   transition: Transition.zoom,
+      // );
+    } else if(i == 7) {
+      log('index : $i');
+      // Get.to(
+      //   () => MeetGurudevScreen(),
+      //   transition: Transition.zoom,
+      // );
+    } else if(i == 8) {
+      log('index : $i');
+      // Get.to(
+      //   () => ContactUsScreen(),
+      //   transition: Transition.zoom,
+      // );
     }
-  }*/
+  }
+
 
   Future<void> getBannerListFunction() async {
     isLoading(true);
@@ -101,6 +153,37 @@ class HomoScreenController extends GetxController {
       });
     } catch (e) {
       log("getBannerListFunction error: $e");
+      rethrow;
+    }
+
+    await getIntroductionFunction();
+  }
+
+
+  Future<void> getIntroductionFunction() async {
+    isLoading(true);
+    String url = "${ApiUrl.widgetSectionApi}?slug=introduction_section";
+    log('getIntroductionFunction Api Url : $url');
+
+    try {
+      var request = http.MultipartRequest('GET', Uri.parse(url));
+      var response = await request.send();
+
+      response.stream.transform(utf8.decoder).listen((value) {
+        log('getIntroductionFunction Body : $value');
+
+        IntroductionModel introductionModel = IntroductionModel.fromJson(json.decode(value));
+        successStatus.value = introductionModel.status;
+
+        if(successStatus.value == "ok") {
+          introductionValue.value = introductionModel.data[0].content;
+        } else {
+         log('getIntroductionFunction Else');
+        }
+
+      });
+    } catch(e) {
+      log('getIntroductionFunction Error :$e');
       rethrow;
     }
     isLoading(false);
