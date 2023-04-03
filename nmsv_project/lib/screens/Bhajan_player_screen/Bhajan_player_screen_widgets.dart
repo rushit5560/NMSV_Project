@@ -31,7 +31,7 @@ class BhajanPlayerListModule extends StatelessWidget {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              Get.to(BhajanAudioScreen());
+              Get.to(()=> BhajanAudioScreen());
             },
             child: Container(
               padding: const EdgeInsets.all(5),

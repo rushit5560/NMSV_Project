@@ -30,7 +30,7 @@ class BhajanListModule extends StatelessWidget {
         itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
-            Get.to(BhajanPlayerScreen());
+            Get.to(()=> BhajanPlayerScreen());
           },
           child: Container(
             padding: const EdgeInsets.all(3),

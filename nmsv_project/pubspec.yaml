@@ -39,7 +39,7 @@ dependencies:
   sizer: ^2.0.15
   carousel_slider: ^4.2.1
   fluttertoast: ^8.2.1
-  assets_audio_player: ^3.0.6
+  audioplayers: ^0.20.1
   http: ^0.13.5
 
 dev_dependencies:
