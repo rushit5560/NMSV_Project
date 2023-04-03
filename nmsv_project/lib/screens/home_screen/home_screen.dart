@@ -34,8 +34,8 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             CarouselBannerModule(),
-            const ChoiceTopicModule(),
-           // SizedBox(height: 2.h),
+            ChoiceTopicModule(),
+            SizedBox(height: 2.h),
             const HomeScreenTextModule(),
             SizedBox(height: 2.h),
           ],

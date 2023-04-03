@@ -13,6 +13,7 @@ class TextStyleConfig {
       fontSize: fontSize,
       fontWeight: fontWeight,
       fontFamily: fontFamily,
+      
     );
   }
 

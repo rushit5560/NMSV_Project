@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/screens/auth_screens/login_screen/signin_screen.dart';
 import '../../constants/color.dart';
 import '../../controller/index_screen_controller.dart';
 import '../Bhajan_screen/Bhajan_screen.dart';
@@ -15,30 +15,30 @@ class IndexScreen extends StatelessWidget {
     HomeScreen(),
     ContactUsScreen(),
     BhajanScreen(),
-    ProfileScreen(),
+    SignInScreen(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(
-            () => IndexedStack(
+        () => IndexedStack(
           index: indexScreenController.selectedIndex.value,
           children: screen,
         ),
       ),
       bottomNavigationBar: Obx(
-            () => BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            selectedItemColor: AppColors.orangeColor,
-            unselectedItemColor: AppColors.greyColor,
-            showSelectedLabels: true,
-            showUnselectedLabels: true,
-            onTap: (index) {
+        () => BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: AppColors.orangeColor,
+          unselectedItemColor: AppColors.greyColor,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          onTap: (index) {
             //indexScreenController.homeScreenShow.value = false;
             indexScreenController.changeIndex(index);
-            },
-            currentIndex: indexScreenController.selectedIndex.value,
-            items: const [
+          },
+          currentIndex: indexScreenController.selectedIndex.value,
+          items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',

@@ -67,7 +67,7 @@ class CarouselBannerModule extends StatelessWidget {
                             ? AppColors.whiteColor
                             : Colors.transparent),
                     color: homeScreenController.currentIndex.value == index
-                        ? AppColors.backGroundColor
+                        ? AppColors.orangeColor
                         : AppColors.greyColor,
                   ),
                 );
@@ -81,7 +81,8 @@ class CarouselBannerModule extends StatelessWidget {
 }
 
 class ChoiceTopicModule extends StatelessWidget {
-  const ChoiceTopicModule({Key? key}) : super(key: key);
+  ChoiceTopicModule({Key? key}) : super(key: key);
+  final homeScreenController = Get.find<HomoScreenController>();
 
   @override
   Widget build(BuildContext context) {
@@ -90,36 +91,47 @@ class ChoiceTopicModule extends StatelessWidget {
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 3),
-        itemCount: 9,
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 12,
+          crossAxisCount: 3,
+          childAspectRatio: 0.9,
+        ),
+        itemCount: homeScreenController.cotainerList.length,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
               log('message');
             },
             child: Container(
-              height: 100,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                border: Border.all(color: AppColors.greyColor, width: 2),
+                border: Border.all(color: Colors.grey.shade400, width: 1),
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5), //color of shadow
+                    spreadRadius: 3,
+                  )
+                ],
                 //borderRadius: BorderRadius.circular(3),
                 color: Colors.white,
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
                     height: 50,
-                    AppImages.omImage,
+                    homeScreenController.cotainerList[index].toString(),
                   ),
                   SizedBox(height: 1.h),
                   Text(
-                    'Mantra',
+                    // maxLines: 1,
+                    textAlign: TextAlign.center,
+                    homeScreenController.containername[index].toString(),
                     style: TextStyleConfig.textStyle(
                       fontFamily: FontFamilyText.roboto,
                       textColor: AppColors.blackColor,
                       fontWeight: FontWeight.w500,
-                      fontSize: 12.sp,
+                      fontSize: 10.sp,
                     ),
                   ),
                 ],

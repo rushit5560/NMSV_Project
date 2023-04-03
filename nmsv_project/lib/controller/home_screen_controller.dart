@@ -1,12 +1,11 @@
-import 'dart:convert';
 import 'dart:developer';
-
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:nmsv_project/constants/api_url.dart';
+import 'package:nmsv_project/constants/app_images.dart';
+import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/model/home_screen_model/get_banner_list_model.dart';
 
 class HomoScreenController extends GetxController {
@@ -24,6 +23,29 @@ class HomoScreenController extends GetxController {
     "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81NI3j6WsNL._SL1500_.jpg",
   ];
 
+  List cotainerList = [
+    AppImages.iconDiksha,
+    AppImages.iconYantra,
+    AppImages.iconBooks,
+    AppImages.iconSadhana,
+    AppImages.iconMantra,
+    AppImages.iconAuspicious,
+    AppImages.iconSchedule,
+    AppImages.iconMetting,
+    AppImages.iconContact
+  ];
+
+  List containername = [
+    AppMessage.diksha,
+    AppMessage.yantra,
+    AppMessage.books,
+    AppMessage.shadhana,
+    AppMessage.mantra,
+    AppMessage.auspiciousTiming,
+    AppMessage.campSchedule,
+    AppMessage.meetToGurudev,
+    AppMessage.contactUs,
+  ];
   Future<void> getBannerListFunction() async {
     isLoading(true);
     String url = "https://narayanmantrasadhanavigyan.org/api/BannerList";
@@ -31,7 +53,8 @@ class HomoScreenController extends GetxController {
 
     try {
       Map<String, String> headerData = <String, String>{
-        "Authorization-Token": "nmsvtoken"
+        "Authorization-Token": "nmsvtoken",
+        "Content-type": "application/json"
       };
       http.Response response =
           await http.get(Uri.parse(url), headers: headerData);

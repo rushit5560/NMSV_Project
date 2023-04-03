@@ -14,7 +14,7 @@ class CustomSubmitButtonModule extends StatelessWidget {
     Key? key,
     required this.onPress,
     required this.labelText,
-    this.buttonColor = AppColors.backGroundColor,
+    this.buttonColor = AppColors.blackColor,
     this.labelSize,
   }) : super(key: key);
   // final locationManageScreenController = Get.find<LocationManageScreenController>();

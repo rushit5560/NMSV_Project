@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/screens/aplsh_screen/splash_screen.dart';
 import 'package:nmsv_project/screens/home_screen/home_screen.dart';
 import 'package:nmsv_project/screens/index_screen/index_screen.dart';
 import 'package:sizer/sizer.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: SignInScreen(),
+          home: SplashScareen(),
         );
       },
     );
