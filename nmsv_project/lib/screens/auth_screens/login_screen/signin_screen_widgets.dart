@@ -27,7 +27,7 @@ class TextFormFieldModule extends StatelessWidget {
             fieldController: loginScreenController.userNameEditingController,
             hintText: AppMessage.userName,
             keyboardType: TextInputType.text,
-            validate: (value) => FieldValidator().validateEmail(value),
+            validate: (value) => FieldValidator().validateUserName(value),
           ),
           SizedBox(height: 2.h),
           Obx(

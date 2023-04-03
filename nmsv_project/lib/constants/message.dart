@@ -10,6 +10,14 @@ class AppMessage {
 
   static String userName = "Username";
   static String password = "Password";
+  static String fullNmae = "Full Name";
+  static String email = "Email";
+  static String phoneNumber = "Phone Number";
+  static String patternRegX = r'(^[0-9]*$)';
+
+  static String pleaseEnterPhoneNumber = 'Please enter mobile number.';
+  static String mobileNumberMustTenDigits = 'Mobile number must 10 digits.';
+  static String mobileNumberMustBeDigits = 'Mobile Number must be digits.';
 
   static String logout = "Logout";
   static String bhajan = "Bhajan";

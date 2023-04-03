@@ -20,6 +20,18 @@ class FieldValidator {
     }
     return null;
   }
+  String? validateUserName(String value) {
+    if(value.isEmpty) {
+      return "Please enter your username.";
+    }
+    return null;
+  }
+   String? validateFullName(String value) {
+    if(value.isEmpty) {
+      return "Please enter your fullname.";
+    }
+    return null;
+  }
     String? validatePassword(String value) {
     if (value.isEmpty) {
       return AppMessage.passwordIsRequired;
@@ -37,6 +49,22 @@ class FieldValidator {
     } else if (!isNumeric(value) &&
         !RegExp(emailRegExp).hasMatch(value)) {
       return "Invalid email address.";
+    } else {
+      return null;
+    }
+  }
+
+
+  String? validateHomePhoneNumber(String value) {
+    String patttern = AppMessage.patternRegX;
+    RegExp regExp = RegExp(patttern);
+
+    if (value.isEmpty) {
+      return AppMessage.pleaseEnterPhoneNumber;
+    } else if (value.length != 10) {
+      return AppMessage.mobileNumberMustTenDigits;
+    } else if (!regExp.hasMatch(value)) {
+      return AppMessage.mobileNumberMustBeDigits;
     } else {
       return null;
     }

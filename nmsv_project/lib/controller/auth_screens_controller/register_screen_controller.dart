@@ -6,5 +6,8 @@ class RegisterScreenController extends GetxController{
 
   TextEditingController userNameEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
+   TextEditingController fullnameEditingController = TextEditingController();
+  TextEditingController emailEditingController = TextEditingController();
+  TextEditingController phoneNumberEditingController = TextEditingController();
   RxBool isPasswordHide = false.obs;
 }

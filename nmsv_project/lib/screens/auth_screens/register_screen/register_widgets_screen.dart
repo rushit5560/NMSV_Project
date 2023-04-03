@@ -22,10 +22,22 @@ class SigninTextFormFieldModule extends StatelessWidget {
       child: Column(
         children: [
           TextFieldModule(
+            fieldController: registerScreenController.fullnameEditingController,
+            hintText: AppMessage.userName,
+            keyboardType: TextInputType.text,
+            validate: (value) => FieldValidator().validateFullName(value),
+          ),
+          TextFieldModule(
+            fieldController: registerScreenController.emailEditingController,
+            hintText: AppMessage.email,
+            keyboardType: TextInputType.text,
+            validate: (value) => FieldValidator().validateEmail(value),
+          ),
+          TextFieldModule(
             fieldController: registerScreenController.userNameEditingController,
             hintText: AppMessage.userName,
             keyboardType: TextInputType.text,
-            validate: (value) => FieldValidator().validateEmail(value),
+            validate: (value) => FieldValidator().validateUserName(value),
           ),
           SizedBox(height: 2.h),
           Obx(
@@ -48,6 +60,13 @@ class SigninTextFormFieldModule extends StatelessWidget {
               ),
               validate: (value) => FieldValidator().validatePassword(value),
             ),
+          ),
+          TextFieldModule(
+            fieldController:
+                registerScreenController.phoneNumberEditingController,
+            hintText: AppMessage.phoneNumber,
+            keyboardType: TextInputType.number,
+            validate: (value) => FieldValidator().validateEmail(value),
           ),
           SizedBox(height: 1.h),
           SizedBox(height: 2.h),
