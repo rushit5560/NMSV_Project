@@ -7,24 +7,22 @@ import 'package:nmsv_project/common_modules/custom_submit_button.dart';
 import 'package:nmsv_project/constants/color.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/constants/message.dart';
-import 'package:nmsv_project/controller/auth_screens_controller/signin_screen_controller.dart';
-import 'package:nmsv_project/screens/auth_screens/forgot_password_screen/forgot_password_screen.dart';
+import 'package:nmsv_project/controller/auth_screens_controller/register_screen_controller.dart';
 import 'package:nmsv_project/utils/field_validator.dart';
-import 'package:nmsv_project/utils/style.dart';
 import 'package:sizer/sizer.dart';
 
-class TextFormFieldModule extends StatelessWidget {
-  TextFormFieldModule({Key? key}) : super(key: key);
-  final loginScreenController = Get.find<SignInScreenController>();
+class SigninTextFormFieldModule extends StatelessWidget {
+  SigninTextFormFieldModule({super.key});
+  final registerScreenController = Get.find<RegisterScreenController>();
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: loginScreenController.formKey,
+      key: registerScreenController.formKey,
       child: Column(
         children: [
           TextFieldModule(
-            fieldController: loginScreenController.userNameEditingController,
+            fieldController: registerScreenController.userNameEditingController,
             hintText: AppMessage.userName,
             keyboardType: TextInputType.text,
             validate: (value) => FieldValidator().validateEmail(value),
@@ -32,17 +30,18 @@ class TextFormFieldModule extends StatelessWidget {
           SizedBox(height: 2.h),
           Obx(
             () => TextFieldModule(
-              obscureText: loginScreenController.isPasswordHide.value,
-              fieldController: loginScreenController.passwordEditingController,
+              obscureText: registerScreenController.isPasswordHide.value,
+              fieldController:
+                  registerScreenController.passwordEditingController,
               hintText: AppMessage.password,
               keyboardType: TextInputType.text,
               suffixIcon: IconButton(
                 onPressed: () {
-                  loginScreenController.isPasswordHide.value =
-                      !loginScreenController.isPasswordHide.value;
+                  registerScreenController.isPasswordHide.value =
+                      !registerScreenController.isPasswordHide.value;
                 },
                 icon: Icon(
-                  loginScreenController.isPasswordHide.value
+                  registerScreenController.isPasswordHide.value
                       ? Icons.visibility
                       : Icons.visibility_off,
                 ),
@@ -51,30 +50,12 @@ class TextFormFieldModule extends StatelessWidget {
             ),
           ),
           SizedBox(height: 1.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Get.to(
-                    () => const ForgotPasswordScreen(),
-                  );
-                },
-                child: Text(
-                  AppMessage.forGotPassword,
-                  style: TextStyleConfig.textStyle(
-                    textColor: AppColors.orangeColor,
-                  ),
-                ),
-              ),
-            ],
-          ),
           SizedBox(height: 2.h),
           CustomSubmitButtonModule(
             labelText: AppMessage.signin1,
             buttonColor: AppColors.orangeColor,
             onPress: () {
-              if (loginScreenController.formKey.currentState!.validate()) {
+              if (registerScreenController.formKey.currentState!.validate()) {
                 log("login");
               }
             },
@@ -82,5 +63,6 @@ class TextFormFieldModule extends StatelessWidget {
         ],
       ),
     );
+    ;
   }
 }

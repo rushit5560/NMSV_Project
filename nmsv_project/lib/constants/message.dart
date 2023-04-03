@@ -1,6 +1,8 @@
 class AppMessage {
   static String home = "Home";
   static String signin = "Sign In";
+  static String signUp = "Sign Up";
+
   static String signin1 = "SIGN IN";
   static String forGotPassword = "Forgot Password?";
   static String or = "OR";

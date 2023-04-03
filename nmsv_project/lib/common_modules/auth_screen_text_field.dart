@@ -10,6 +10,7 @@ class TextFieldModule extends StatelessWidget {
   int? maxLength;
   Widget? suffixIcon;
   bool? obscureText;
+  Widget? prefixIcon;
 
   TextFieldModule({
     Key? key,
@@ -17,6 +18,7 @@ class TextFieldModule extends StatelessWidget {
     required this.hintText,
     required this.keyboardType,
     this.validate,
+    this.prefixIcon,
     this.maxLength,
     this.suffixIcon,
     this.obscureText,
@@ -42,8 +44,10 @@ class TextFieldModule extends StatelessWidget {
         hintText: hintText,
         errorMaxLines: 2,
         suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
         counterText: '',
-        hintStyle: const TextStyle(color: AppColors.greyColor),
+        hintStyle:
+            const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 15, vertical: 11),
       ),
