@@ -22,9 +22,8 @@ class BhajanPlayerScreen extends StatelessWidget {
           actionIcon: const Icon(Icons.west_outlined),
           actionOnTap: () {},
           leadingIcon: const Icon(Icons.navigate_before),
-          leadingOnTap: () {
-            Get.to(BhajanScreen());
-          }, leadingShow: true),
+          leadingOnTap:  () => Get.back(),
+          leadingShow: true),
       body: Column(
         children: [
           TextFormFiledModule(),
