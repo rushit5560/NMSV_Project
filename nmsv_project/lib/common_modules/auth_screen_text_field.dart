@@ -74,6 +74,7 @@ class SearchBarTextFieldModule extends StatelessWidget {
   bool? obscureText;
   Widget? prefixIcon;
   Color? fillColor;
+  Function(String)? onChanged;
 
   SearchBarTextFieldModule({
     Key? key,
@@ -86,6 +87,7 @@ class SearchBarTextFieldModule extends StatelessWidget {
     this.suffixIcon,
     this.obscureText,
     this.fillColor,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -98,6 +100,7 @@ class SearchBarTextFieldModule extends StatelessWidget {
       keyboardType: keyboardType,
       maxLength: maxLength,
       cursorColor: AppColors.backGroundColor,
+      onChanged: onChanged,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderSide: BorderSide.none,

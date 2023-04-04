@@ -6,7 +6,7 @@ import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/screens/Bhajan_screen/Bhajan_screen.dart';
 import 'package:nmsv_project/screens/Contact_us_screen/Contact_us_screen.dart';
-import 'package:nmsv_project/screens/gallery_screen/gallery_screen.dart';
+import 'package:nmsv_project/screens/gallery_screen/gallery_list_screen/gallery_list_screen.dart';
 import 'package:nmsv_project/screens/home_screen/home_screen.dart';
 import 'package:nmsv_project/utils/style.dart';
 import 'package:sizer/sizer.dart';

@@ -10,7 +10,10 @@ class GalleryScreenController extends GetxController {
   RxBool isLoading = false.obs;
   RxString successStatus = ''.obs;
   TextEditingController gallerySearchbarController = TextEditingController();
+  TextEditingController searchGallerySearchbarController = TextEditingController();
   List<GalleryList> allGalleryList = [];
+  List<GalleryList> searchDepartmentDataList = [];
+
 
   Future<void> getAllListFunction() async {
     isLoading(true);
@@ -27,8 +30,9 @@ class GalleryScreenController extends GetxController {
       successStatus.value=galleryListModel.status;
       if (successStatus.value == "ok") {
         allGalleryList.addAll(galleryListModel.data);
-        log("allGalleryList : $allGalleryList");
-        log("allGalleryList length : ${allGalleryList.length}");
+        searchDepartmentDataList=allGalleryList;
+        log("searchDepartmentDataList : $searchDepartmentDataList");
+        // log("allGalleryList length : ${allGalleryList.length}");
       } else {
         log('getSadhanaFunction Else');
       }
@@ -44,5 +48,10 @@ class GalleryScreenController extends GetxController {
   void onInit() {
     getAllListFunction();
     super.onInit();
+  }
+
+  loadUI() {
+    isLoading(true);
+    isLoading(false);
   }
 }
