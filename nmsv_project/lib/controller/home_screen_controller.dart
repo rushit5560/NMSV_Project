@@ -11,8 +11,10 @@ import 'package:nmsv_project/model/home_screen_model/category_model.dart';
 import 'package:nmsv_project/model/home_screen_model/get_banner_list_model.dart';
 
 import '../model/home_screen_model/introduction_model.dart';
+import '../screens/books_screen/books_screen.dart';
 import '../screens/diksha_screen/diksha_screen.dart';
 import '../screens/sadhana_screen/sadhana_screen.dart';
+import '../screens/yantra_screen/yantra_screen.dart';
 
 class HomoScreenController extends GetxController {
   final CarouselController carouselController = CarouselController();
@@ -74,16 +76,16 @@ class HomoScreenController extends GetxController {
       );
     } else if(i == 1) {
       log('index : $i');
-      // Get.to(
-      //   () => YantraScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+        () => YantraScreen(),
+        transition: Transition.zoom,
+      );
     } else if(i == 2) {
       log('index : $i');
-      // Get.to(
-      //   () => BooksScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+        () => BooksScreen(),
+        transition: Transition.zoom,
+      );
     } else if(i == 3) {
       log('index : $i');
       Get.to(

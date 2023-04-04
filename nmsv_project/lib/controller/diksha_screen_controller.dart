@@ -29,11 +29,11 @@ class DikshaScreenController extends GetxController {
           .transform(const Utf8Decoder())
           .transform(const LineSplitter())
           .listen((value) {
-        log('getDikshaDataFunction value : $value');
+        // log('getDikshaDataFunction value : $value');
         DikshaModel dikshaModel = DikshaModel.fromJson(json.decode(value.toString()));
         successStatus = dikshaModel.status;
 
-        if(successStatus == "ok") {
+        if(successStatus.toLowerCase() == "ok") {
           dikshaData.value = dikshaModel.data[0].cmsDescription;
         } else {
           log('getDikshaDataFunction Else');
@@ -53,7 +53,11 @@ class DikshaScreenController extends GetxController {
   }
 
   Future<void> initMethod() async {
-    getDikshaDataFunction();
+    isLoading(true);
+    Future.delayed(const Duration(seconds: 1), () {
+      isLoading(false);
+    });
+    // getDikshaDataFunction();
   }
 
 }

@@ -18,13 +18,13 @@ class SadhanaScreenController extends GetxController {
 
     try {
       var request = http.MultipartRequest('GET', Uri.parse(url));
-      request.headers['Authorization-Token'] = 'nmsvtoken';
+      // request.headers['Authorization-Token'] = 'nmsvtoken';
 
       var response = await request.send();
 
       response.stream.transform(utf8.decoder).listen((value) {
         log('SadhanaFunction value : $value');
-        SadhanaListModel sadhanaListModel = SadhanaListModel.fromJson(json.decode(value));
+        SadhanaModel sadhanaListModel = SadhanaModel.fromJson(json.decode(value));
         successStatus = sadhanaListModel.status;
 
         if(successStatus == "ok") {

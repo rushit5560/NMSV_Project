@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
         },
         titleText: AppMessage.home,
       ),
-      drawer: HomeDrawerCustomModule(),
+      drawer: const HomeDrawerCustomModule(),
       body: Obx(
         ()=> homeScreenController.isLoading.value
         ? const CustomLoader()
