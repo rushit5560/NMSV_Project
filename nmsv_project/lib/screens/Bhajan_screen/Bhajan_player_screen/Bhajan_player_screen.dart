@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/constants/message.dart';
-import 'package:nmsv_project/screens/Bhajan_screen/Bhajan_screen.dart';
+import 'package:nmsv_project/screens/Bhajan_screen/bhajan_list_screen/Bhajan_list_screen.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../common_widgets/custom_appbar.dart';
-import '../../controller/bhajan_player_screen_controller.dart';
-import '../Bhajan_screen/Bhajan_screen_widgets.dart';
+import '../../../common_widgets/custom_appbar.dart';
+import '../../../controller/bhajan_player_screen_controller.dart';
+import '../bhajan_list_screen/Bhajan_list_screen_widgets.dart';
 import 'Bhajan_player_screen_widgets.dart';
 
 class BhajanPlayerScreen extends StatelessWidget {

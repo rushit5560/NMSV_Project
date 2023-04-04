@@ -24,13 +24,13 @@ class GalleryScreen extends StatelessWidget {
         //leadingOnTap: () => Get.to(HomeScreen()),
         leadingShow: true,
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: SingleChildScrollView(
-          child: Obx(
-            () => galleryScreenController.isLoading.value
-                ?const CustomLoader()
-                : Column(
+      body: Obx(
+        () => galleryScreenController.isLoading.value
+            ? const CustomLoader()
+            : SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: SingleChildScrollView(
+                  child: Column(
                     children: [
                       // SizedBox(height: 1.h),
                       GalleryTextFiledModule(),
@@ -38,8 +38,8 @@ class GalleryScreen extends StatelessWidget {
                       GalleryListModule(),
                     ],
                   ).commonSymmetricPadding(horizontal: 10, vertical: 10),
-          ),
-        ),
+                ),
+              ),
       ),
     );
   }

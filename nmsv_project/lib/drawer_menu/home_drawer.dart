@@ -4,7 +4,7 @@ import 'package:nmsv_project/constants/app_images.dart';
 import 'package:nmsv_project/constants/color.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/constants/message.dart';
-import 'package:nmsv_project/screens/Bhajan_screen/Bhajan_screen.dart';
+import 'package:nmsv_project/screens/Bhajan_screen/bhajan_list_screen/Bhajan_list_screen.dart';
 import 'package:nmsv_project/screens/Contact_us_screen/Contact_us_screen.dart';
 import 'package:nmsv_project/screens/gallery_screen/gallery_list_screen/gallery_list_screen.dart';
 import 'package:nmsv_project/screens/home_screen/home_screen.dart';
@@ -34,8 +34,8 @@ class HomeDrawerCustomModule extends StatelessWidget {
             HomeDrawerModule(
               icon: Icons.home,
               text: AppMessage.home,
-              onTap:() {
-                Get.to(()=> HomeScreen());
+              onTap: () {
+                Get.to(() => HomeScreen());
               },
             ),
             const Divider(color: AppColors.greyColor),
@@ -44,7 +44,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.music_note_rounded,
               text: AppMessage.bhajan,
               onTap: () {
-                Get.to(()=> BhajanScreen());
+                Get.to(() => BhajanListScreen());
               },
             ),
             const Divider(color: AppColors.greyColor),
@@ -52,8 +52,8 @@ class HomeDrawerCustomModule extends StatelessWidget {
             HomeDrawerModule(
               icon: Icons.media_bluetooth_on,
               text: AppMessage.guruvani,
-              onTap:() {
-                Get.to(()=>GuruVaniScreen());
+              onTap: () {
+                Get.to(() => GuruVaniScreen());
               },
             ),
             const Divider(color: AppColors.greyColor),
@@ -61,8 +61,8 @@ class HomeDrawerCustomModule extends StatelessWidget {
             HomeDrawerModule(
               icon: Icons.today,
               text: AppMessage.campSchedule,
-              onTap:() {
-                Get.to(()=> CampScheduleScreen());
+              onTap: () {
+                Get.to(() => CampScheduleScreen());
               },
             ),
             const Divider(color: AppColors.greyColor),
@@ -71,7 +71,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.people,
               text: AppMessage.meetWithGurudev,
               onTap: () {
-                     Get.to(()=> MeetWithGurudevScreen());
+                Get.to(() => MeetWithGurudevScreen());
               },
             ),
             const Divider(color: AppColors.greyColor),
@@ -80,7 +80,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.map_sharp,
               text: AppMessage.contactUs,
               onTap: () {
-                Get.to(()=> ContactUsScreen());
+                Get.to(() => ContactUsScreen());
               },
             ),
             const Divider(color: AppColors.greyColor),
@@ -89,7 +89,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.photo_library_outlined,
               text: AppMessage.gallery,
               onTap: () {
-                Get.to(()=>GalleryScreen());
+                Get.to(() => GalleryScreen());
               },
             ),
             const Divider(color: AppColors.greyColor),

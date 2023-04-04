@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:nmsv_project/screens/auth_screens/login_screen/signin_screen.dart';
 import '../../constants/color.dart';
 import '../../controller/index_screen_controller.dart';
-import '../Bhajan_screen/Bhajan_screen.dart';
+import '../Bhajan_screen/bhajan_list_screen/Bhajan_list_screen.dart';
 import '../Contact_us_screen/Contact_us_screen.dart';
 import '../home_screen/home_screen.dart';
 import '../profile_screen/profile_screen.dart';
@@ -14,7 +14,7 @@ class IndexScreen extends StatelessWidget {
   final screen = [
     HomeScreen(),
     ContactUsScreen(),
-    BhajanScreen(),
+    BhajanListScreen(),
     SignInScreen(),
   ];
   @override

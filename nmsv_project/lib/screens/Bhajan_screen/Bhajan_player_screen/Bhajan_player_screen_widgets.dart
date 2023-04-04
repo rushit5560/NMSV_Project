@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/constants/message.dart';
+import '../../../common_modules/auth_screen_text_field.dart';
+import '../../../controller/bhajan_player_screen_controller.dart';
+import '../Bhajan_audio_screen/Bhajan_audio_screen.dart';
 
-import '../../common_modules/auth_screen_text_field.dart';
-import '../../constants/message.dart';
-import '../../controller/bhajan_screen_controller.dart';
-import '../Bhajan_player_screen/Bhajan_player_screen.dart';
 
-class TextFiledModule extends StatelessWidget {
-   TextFiledModule({Key? key}) : super(key: key);
-final bhajanScreenController = Get.find<BhajanScreenController>();
+class TextFormFiledModule extends StatelessWidget {
+  TextFormFiledModule({Key? key}) : super(key: key);
+  final bhajanPlayerScreenController = Get.find<BhajanPlayerScreenController>();
   @override
   Widget build(BuildContext context) {
     return SearchBarTextFieldModule(
-      fieldController: bhajanScreenController.searchbarController,
+      fieldController: bhajanPlayerScreenController.searchController,
       fillColor: Colors.grey[200],
       prefixIcon: const Icon(Icons.search,color: Colors.grey),
       suffixIcon: const Icon(Icons.close,color: Colors.grey),
@@ -23,19 +23,19 @@ final bhajanScreenController = Get.find<BhajanScreenController>();
   }
 }
 
-class BhajanListModule extends StatelessWidget {
-  const BhajanListModule({Key? key}) : super(key: key);
+class BhajanPlayerListModule extends StatelessWidget {
+  const BhajanPlayerListModule({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return  Expanded(
       child: ListView.builder(
         // itemCount: galleryScreenController.allGalleryList.length,
         itemCount: 10,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              Get.to(()=> BhajanPlayerScreen());
+              Get.to(()=> BhajanAudioScreen());
             },
             child: Container(
               padding: const EdgeInsets.all(8),

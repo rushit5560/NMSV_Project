@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:nmsv_project/constants/app_images.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:sizer/sizer.dart';
-import '../../controller/Bhajan_audio_screen_controller.dart';
+import '../../../controller/bhajan_audio_screen_controller.dart';
 
 class AudioModule extends StatefulWidget {
   const AudioModule({Key? key}) : super(key: key);

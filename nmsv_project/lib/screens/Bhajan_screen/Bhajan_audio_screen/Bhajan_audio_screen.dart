@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/constants/extension.dart';
-import '../../common_widgets/custom_appbar.dart';
-import '../../constants/message.dart';
-import '../../controller/Bhajan_audio_screen_controller.dart';
+import '../../../common_widgets/custom_appbar.dart';
+import '../../../constants/message.dart';
+import '../../../controller/bhajan_audio_screen_controller.dart';
 import 'Bhajan_audio_screen_widgets.dart';
 
 class BhajanAudioScreen extends StatelessWidget {

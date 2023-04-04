@@ -62,7 +62,6 @@ class TextFieldModule extends StatelessWidget {
   }
 }
 
-
 // ignore: must_be_immutable
 class SearchBarTextFieldModule extends StatelessWidget {
   TextEditingController fieldController;
@@ -99,7 +98,7 @@ class SearchBarTextFieldModule extends StatelessWidget {
       textInputAction: TextInputAction.next,
       keyboardType: keyboardType,
       maxLength: maxLength,
-      cursorColor: AppColors.backGroundColor,
+      // cursorColor: AppColors.backGroundColor,
       onChanged: onChanged,
       decoration: InputDecoration(
         border: OutlineInputBorder(
@@ -114,9 +113,9 @@ class SearchBarTextFieldModule extends StatelessWidget {
         prefixIcon: prefixIcon,
         counterText: '',
         hintStyle:
-        const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+            const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
         contentPadding:
-        const EdgeInsets.symmetric(horizontal: 15, vertical: 11),
+            const EdgeInsets.symmetric(horizontal: 15, vertical: 11),
       ),
     );
   }

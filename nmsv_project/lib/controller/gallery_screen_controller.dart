@@ -12,7 +12,7 @@ class GalleryScreenController extends GetxController {
   TextEditingController gallerySearchbarController = TextEditingController();
   TextEditingController searchGallerySearchbarController = TextEditingController();
   List<GalleryList> allGalleryList = [];
-  List<GalleryList> searchDepartmentDataList = [];
+  List<GalleryList> searchGalleryDataList = [];
 
 
   Future<void> getAllListFunction() async {
@@ -30,8 +30,8 @@ class GalleryScreenController extends GetxController {
       successStatus.value=galleryListModel.status;
       if (successStatus.value == "ok") {
         allGalleryList.addAll(galleryListModel.data);
-        searchDepartmentDataList=allGalleryList;
-        log("searchDepartmentDataList : $searchDepartmentDataList");
+        searchGalleryDataList=allGalleryList;
+        log("searchDepartmentDataList : $searchGalleryDataList");
         // log("allGalleryList length : ${allGalleryList.length}");
       } else {
         log('getSadhanaFunction Else');

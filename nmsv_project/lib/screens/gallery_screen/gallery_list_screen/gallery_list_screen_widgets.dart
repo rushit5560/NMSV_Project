@@ -22,28 +22,33 @@ class GalleryTextFiledModule extends StatelessWidget {
       keyboardType: TextInputType.text,
       onChanged: (value) {
         // galleryScreenController.isLoading(true);
-        galleryScreenController.searchDepartmentDataList =
-            galleryScreenController.allGalleryList;
-        galleryScreenController.allGalleryList
+        // galleryScreenController.searchGalleryDataList =
+        //     galleryScreenController.allGalleryList;
+        galleryScreenController.searchGalleryDataList = galleryScreenController
+            .allGalleryList
             .where((element) =>
-                element.shivirGalleryTitle!.toLowerCase().contains(value))
+                element.shivirGalleryTitle.toLowerCase().contains(value))
             .toList();
         // galleryScreenController.isLoading(false);
         galleryScreenController.loadUI();
       },
-      suffixIcon: IconButton(
-        onPressed: () {
-          galleryScreenController.isLoading(true);
-          galleryScreenController.searchDepartmentDataList =
-              galleryScreenController.allGalleryList;
-          galleryScreenController.searchGallerySearchbarController.clear();
-          galleryScreenController.isLoading(false);
-        },
-        icon: Icon(
-          Icons.close,
-          color: Colors.grey,
-        ),
-      ),
+      suffixIcon:
+          galleryScreenController.searchGallerySearchbarController.text.isEmpty
+              ? null
+              : IconButton(
+                  onPressed: () {
+                    galleryScreenController.isLoading(true);
+                    galleryScreenController.searchGalleryDataList =
+                        galleryScreenController.allGalleryList;
+                    galleryScreenController.searchGallerySearchbarController
+                        .clear();
+                    galleryScreenController.isLoading(false);
+                  },
+                  icon: const Icon(
+                    Icons.close,
+                    color: Colors.grey,
+                  ),
+                ),
     );
   }
 }
@@ -58,13 +63,15 @@ class GalleryListModule extends StatelessWidget {
     return ListView.builder(
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: galleryScreenController.searchDepartmentDataList.length,
+      itemCount: galleryScreenController.searchGalleryDataList.length,
       itemBuilder: (context, index) {
-        final valuedata =
-            galleryScreenController.searchDepartmentDataList[index];
+        final valuedata = galleryScreenController.searchGalleryDataList[index];
         return InkWell(
           onTap: () {
-            Get.to(() => const ShibirPhotosScreen());
+            Get.to(() => const ShibirPhotosScreen(),
+            
+             arguments: galleryScreenController.searchGalleryDataList[index].shivirGalleryId,
+            );
           },
           child: Container(
               padding: const EdgeInsets.all(8),
