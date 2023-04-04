@@ -29,50 +29,23 @@ final  shibirPhotosScreenController = Get.find<ShibirPhotosScreenController>();
         : Stack(
         alignment: Alignment.center,
           children: [
-            Expanded(
-              child: PhotoViewGallery.builder(
-                itemCount: shibirPhotosScreenController.galleryPhotos.length,
-                builder: (context, index) {
-                  var value = shibirPhotosScreenController.galleryPhotos[index];
-                return  PhotoViewGalleryPageOptions(
-                  imageProvider: NetworkImage(value.imageUrl),
-                );
-              },
-              loadingBuilder: (context, event) {
-              return CarouselSlider(
-                carouselController: shibirPhotosScreenController.carouselController,
-                items: shibirPhotosScreenController.galleryPhotos
-                    .map(
-                      (value) => Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          image: NetworkImage(value.imageUrl), fit: BoxFit.cover),
-                    ),
-                    // child: Image.network(item.imageUrl)
-                  ),
-                )
-                    .toList(),
-                options: CarouselOptions(
-                  scrollPhysics: const BouncingScrollPhysics(),
-                  enlargeCenterPage: true,
-                  autoPlay: false,
-                  aspectRatio: 2,
-                  viewportFraction: 1,
-                  onPageChanged: (index, reason) {
-                    shibirPhotosScreenController.isLoading(true);
-                    shibirPhotosScreenController.currentIndex.value = index;
-                    shibirPhotosScreenController.isLoading(false);
-                  },
-                ),
+            PhotoViewGallery.builder(
+              itemCount: shibirPhotosScreenController.galleryPhotos.length,
+              builder: (context, index) {
+                var value = shibirPhotosScreenController.galleryPhotos[index];
+              return  PhotoViewGalleryPageOptions(
+                imageProvider: NetworkImage(value.imageUrl),
               );
-        },
-                backgroundDecoration:const BoxDecoration(
-                  color: AppColors.whiteColor1
-                ) ,
-               // onPageChanged: ,
+            },
+              backgroundDecoration:const BoxDecoration(
+                color: AppColors.whiteColor1
+              ) ,
+              onPageChanged: (index) {
+                shibirPhotosScreenController.isLoading(true);
+                shibirPhotosScreenController.currentIndex.value = index;
+                shibirPhotosScreenController.isLoading(false);
+              },
         ),
-            ),
             Positioned(
               top: 500,
               child: Row(
