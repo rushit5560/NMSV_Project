@@ -20,7 +20,12 @@ class GalleryScreen extends StatelessWidget {
         actionShow: false,
         // actionIcon: const Icon(Icons.west_outlined),
         actionOnTap: () {},
-        leadingIcon: const Icon(Icons.navigate_before),
+        leadingIcon: IconButton(
+          onPressed: () {
+          Get.back();
+        },
+          icon: const Icon(Icons.navigate_before),
+        ),
         //leadingOnTap: () => Get.to(HomeScreen()),
         leadingShow: true,
       ),
