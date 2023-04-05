@@ -8,7 +8,7 @@ DikshaModel dikshaModelFromJson(String str) => DikshaModel.fromJson(json.decode(
 
 String dikshaModelToJson(DikshaModel data) => json.encode(data.toJson());
 
-class DikshaModel {
+class   DikshaModel {
   DikshaModel({
     required this.status,
     required this.data,

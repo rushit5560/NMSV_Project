@@ -2,12 +2,12 @@ import 'dart:developer';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
-import 'package:nmsv_project/constants/app_images.dart';
-import 'package:nmsv_project/controller/bhajan_player_screen_controller.dart';
 
-class BhajanAudioScreenController extends GetxController {
-  String bhajanAudio = Get.arguments;
-  final bhajanPlayerScreenController = Get.find<BhajanPlayerScreenController>();
+import 'package:nmsv_project/controller/guruvani_player_screen_controller.dart';
+
+class GuruvaniAudioScreenController extends GetxController {
+  String guruvaniAudio = Get.arguments;
+  final guruvaniPlayerScreenController = Get.find<GuruvaniPlayerScreenController>();
 
   RxBool isPlaying = false.obs;
   RxBool isLoading = false.obs;
@@ -21,10 +21,10 @@ class BhajanAudioScreenController extends GetxController {
   void onInit() async {
     super.onInit();
 
-    await audioPlayer.play(bhajanAudio);
+    await audioPlayer.play(guruvaniAudio);
 
     setup();
-    log("bhajanPlayerScreenController mediaUrl play: $bhajanAudio");
+    log("GuruvaniAudioScreenController mediaUrl play: $guruvaniAudio");
   }
 
   setup() {
@@ -40,7 +40,7 @@ class BhajanAudioScreenController extends GetxController {
   }
 
   playMusic() {
-    audioPlayer.play(bhajanAudio);
+    audioPlayer.play(guruvaniAudio);
   }
 
   stopMusic() {

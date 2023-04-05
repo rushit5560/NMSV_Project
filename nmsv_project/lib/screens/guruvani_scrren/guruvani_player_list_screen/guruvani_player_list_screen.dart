@@ -1,24 +1,22 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/common_widgets/custom_appbar.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/constants/message.dart';
-import 'package:nmsv_project/screens/Bhajan_screen/bhajan_list_screen/Bhajan_list_screen.dart';
+import 'package:nmsv_project/controller/guruvani_player_screen_controller.dart';
+import 'package:nmsv_project/screens/guruvani_scrren/guruvani_player_list_screen/guruvani_player_list_screen_widgets.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../common_widgets/custom_appbar.dart';
-import '../../../controller/bhajan_player_screen_controller.dart';
-import '../bhajan_list_screen/Bhajan_list_screen_widgets.dart';
-import 'Bhajan_player_screen_widgets.dart';
-
-class BhajanPlayerScreen extends StatelessWidget {
-  BhajanPlayerScreen({Key? key}) : super(key: key);
-  final bhajanPlayerScreenController = Get.put(BhajanPlayerScreenController());
+class GuruvaniPlayerScreen extends StatelessWidget {
+  GuruvaniPlayerScreen({Key? key}) : super(key: key);
+  final guruvaniPlayerScreenController = Get.put(GuruvaniPlayerScreenController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-          titleText: AppMessage.bhajanPlayer,
+          titleText: AppMessage.guruvani,
           actionShow: false,
           actionIcon: const Icon(Icons.west_outlined),
           actionOnTap: () {},
@@ -26,14 +24,14 @@ class BhajanPlayerScreen extends StatelessWidget {
           leadingOnTap: () => Get.back(),
           leadingShow: true),
       body: Obx(
-        () => bhajanPlayerScreenController.isLoading.value
+        () => guruvaniPlayerScreenController.isLoading.value
             ? const CustomLoader()
             : SingleChildScrollView(
                 child: Column(
                   children: [
-                    TextFormFiledModule(),
+                    GuruvaniTextFormFiledModule(),
                     SizedBox(height: 2.h),
-                    BhajanPlayerListModule(),
+                    GuruvaniPlayerListModule(),
                   ],
                 ).commonSymmetricPadding(horizontal: 10, vertical: 10),
               ),

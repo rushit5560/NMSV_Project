@@ -1,10 +1,6 @@
-import 'dart:developer';
-
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nmsv_project/constants/app_images.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:sizer/sizer.dart';
 import '../../../controller/bhajan_audio_screen_controller.dart';
@@ -59,16 +55,14 @@ class _AudioModuleState extends State<AudioModule> {
               //       : log("44444");
               // },
               onChanged: (value) {
-
-                Text("dgrge 111111");
                 bhajanAudioScreenController.seekTo(value.toInt());
-                bhajanAudioScreenController.isLoading(true);
+                // bhajanAudioScreenController.isLoading(true);
 
-                bhajanAudioScreenController.currentPosition.value ==
-                        bhajanAudioScreenController.musicLength.value
-                    ? log("11111")
-                    : log("222222");
-                bhajanAudioScreenController.isLoading(false);
+                // bhajanAudioScreenController.currentPosition.value ==
+                //         bhajanAudioScreenController.musicLength.value
+                //     ? log("11111")
+                //     : log("222222");
+                // bhajanAudioScreenController.isLoading(false);
               },
             ),
           ),
@@ -141,7 +135,7 @@ class _AudioModuleState extends State<AudioModule> {
                             .musicLength.value.inSeconds);
                     bhajanAudioScreenController.isPlaying.value =
                         !bhajanAudioScreenController.isPlaying.value;
-                    bhajanAudioScreenController.player.stop();
+                    bhajanAudioScreenController.audioPlayer.stop();
                   }
                 },
               ),

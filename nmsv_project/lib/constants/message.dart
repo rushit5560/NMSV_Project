@@ -48,6 +48,7 @@ class AppMessage {
   static String auspiciousTiming = "Auspicious Timing";
   static String campSchedule = "Camp Schedule";
   static String shibir = "Shibir";
+
   static String shibirPhotos = "Shibir Photos";
 
   static String meetToGurudev = "Meet To Gurudev";

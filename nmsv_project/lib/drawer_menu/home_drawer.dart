@@ -12,7 +12,7 @@ import 'package:nmsv_project/utils/style.dart';
 import 'package:sizer/sizer.dart';
 
 import '../screens/camp_schedule_screen/camp_schedule_screen.dart';
-import '../screens/guruvani_scrren/guruvani_scrren.dart';
+import '../screens/guruvani_scrren/guruvani_list_screen/guruvani_list_scrren.dart';
 import '../screens/meet_with_gurudev_scrren/meet_with_gurudev_scrren.dart';
 
 class HomeDrawerCustomModule extends StatelessWidget {
@@ -53,7 +53,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.media_bluetooth_on,
               text: AppMessage.guruvani,
               onTap: () {
-                Get.to(() => GuruVaniScreen());
+                Get.to(() => GuruVaniListScreen());
               },
             ),
             const Divider(color: AppColors.greyColor),
@@ -71,6 +71,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.people,
               text: AppMessage.meetWithGurudev,
               onTap: () {
+                Get.back();
                 Get.to(() => MeetWithGurudevScreen());
               },
             ),
@@ -80,6 +81,8 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.map_sharp,
               text: AppMessage.contactUs,
               onTap: () {
+                Get.back();
+
                 Get.to(() => ContactUsScreen());
               },
             ),

@@ -52,7 +52,7 @@ class BhajanListModule extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       // itemCount: bhajanListScreenController.allGalleryList.length,
-      physics: const AlwaysScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: bhajanListScreenController.searchBhajanDataList.length,
       itemBuilder: (context, index) {

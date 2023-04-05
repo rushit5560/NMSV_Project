@@ -33,6 +33,6 @@ class AppImages {
 
 
 class AppAudio {
-  static const rootPath = 'audios';
-  static const bhajanAudio = "$rootPath/music.mp3";
+  // static const rootPath = 'audios';
+  static const bhajanAudio = "https://narayanmantrasadhanavigyan.org/assets/uploads/bhajan/762941_Gurudev-Kar-Do-Krupa_07.mp3";
 }

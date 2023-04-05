@@ -25,7 +25,7 @@ class ShibirPhotosScreenController extends GetxController{
       GalleryPhotosListModel.fromJson(json.decode(response.body));
       // log("response.body : ${response.body}");
       successStatus.value=galleryPhotosListModel.status;
-      if (successStatus.value == "ok") {
+      if (successStatus.value.toLowerCase() == "ok") {
         galleryPhotos.addAll(galleryPhotosListModel.data);
         log("galleryPhotos : $galleryPhotos");
         // log("allGalleryList length : ${allGalleryList.length}");
