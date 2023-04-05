@@ -9,11 +9,12 @@ class SadhanaScreenController extends GetxController {
   RxBool isLoading = false.obs;
   String successStatus = "";
 
-  List<SadhanaData> sadhanaList = [];
+  // List<SadhanaData> sadhanaList = [];
+  List<String> sadhanaImageList = [];
 
   Future<void> getSadhanaFunction() async {
     isLoading(true);
-    String url = ApiUrl.sadhanaListApi;
+    String url = "${ApiUrl.sadhanaListApi}?order=DESCG";
     log('getSadhanaFunction Api Url : $url');
 
     try {
@@ -23,14 +24,24 @@ class SadhanaScreenController extends GetxController {
       var response = await request.send();
 
       response.stream.transform(utf8.decoder).listen((value) {
-        log('SadhanaFunction value : $value');
-        SadhanaModel sadhanaListModel = SadhanaModel.fromJson(json.decode(value));
+        // log('SadhanaFunction value : $value');
+        SadhanaListModel sadhanaListModel = SadhanaListModel.fromJson(json.decode(value));
         successStatus = sadhanaListModel.status;
 
-        if(successStatus == "ok") {
-          sadhanaList.clear();
-          sadhanaList.addAll(sadhanaListModel.data);
-          log('sadhanaList : ${sadhanaList.length}');
+        if(successStatus.toLowerCase() == "ok") {
+          // sadhanaList.clear();
+          sadhanaImageList.clear();
+          if(sadhanaListModel.data.isNotEmpty) {
+            for(int i=0; i < sadhanaListModel.data.length; i++) {
+              if(sadhanaListModel.data[i].images.isNotEmpty) {
+                for(int j =0; j < sadhanaListModel.data[i].images.length; j++) {
+                  sadhanaImageList.add(sadhanaListModel.data[i].images[j].imageUrl);
+                }
+              }
+            }
+          }
+
+          log('sadhanaList : ${sadhanaImageList.length}');
         } else {
           log('getSadhanaFunction Else');
         }
@@ -41,6 +52,7 @@ class SadhanaScreenController extends GetxController {
       log('getSadhanaFunction Error :$e');
       rethrow;
     }
+    isLoading(false);
   }
 
   @override

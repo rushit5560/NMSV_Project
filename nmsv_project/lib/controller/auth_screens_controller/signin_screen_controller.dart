@@ -28,6 +28,7 @@ class SignInScreenController extends GetxController {
   // }
 
   Future<void> setUserLoginDetails({
+    required bool userLoggedIn,
     required String userID,
     required String userName,
     required String emailId,
@@ -37,6 +38,11 @@ class SignInScreenController extends GetxController {
   }) async {
     UserPreference userPreference = UserPreference();
 
+    // 1
+    await userPreference.setBoolValueInPrefs(
+      key: UserPreference.isUserLoggedInKey,
+      value: userLoggedIn,
+    );
     // 1
     await userPreference.setStringValueInPrefs(
       key: UserPreference.userIdKey,
@@ -92,6 +98,7 @@ class SignInScreenController extends GetxController {
 
       if (successStatus.value.toLowerCase() == "ok") {
         await setUserLoginDetails(
+          userLoggedIn: true,
           userID: loginModel.userId,
           userName: loginModel.userName,
           emailId: loginModel.emailId,

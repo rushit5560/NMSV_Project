@@ -12,7 +12,7 @@ class DikshaScreenController extends GetxController {
   String successStatus = "";
 
   RxString dikshaData = "".obs;
-  late WebViewController webViewController;
+  // late WebViewController webViewController;
 
   Future<void> getDikshaDataFunction() async {
     isLoading(true);
@@ -54,7 +54,7 @@ class DikshaScreenController extends GetxController {
 
   Future<void> initMethod() async {
     isLoading(true);
-    Future.delayed(const Duration(seconds: 1), () {
+    Future.delayed(const Duration(milliseconds: 200), () {
       isLoading(false);
     });
     // getDikshaDataFunction();

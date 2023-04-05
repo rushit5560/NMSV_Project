@@ -126,14 +126,15 @@ class SadhanaImage {
 }
 */
 
+
 import 'dart:convert';
 
-SadhanaModel sadhanaModelFromJson(String str) => SadhanaModel.fromJson(json.decode(str));
+SadhanaListModel sadhanaListModelFromJson(String str) => SadhanaListModel.fromJson(json.decode(str));
 
-String sadhanaModelToJson(SadhanaModel data) => json.encode(data.toJson());
+String sadhanaListModelToJson(SadhanaListModel data) => json.encode(data.toJson());
 
-class SadhanaModel {
-  SadhanaModel({
+class SadhanaListModel {
+  SadhanaListModel({
     required this.status,
     required this.data,
   });
@@ -141,9 +142,9 @@ class SadhanaModel {
   String status;
   List<SadhanaData> data;
 
-  factory SadhanaModel.fromJson(Map<String, dynamic> json) => SadhanaModel(
+  factory SadhanaListModel.fromJson(Map<String, dynamic> json) => SadhanaListModel(
     status: json["status"] ?? "",
-    data: List<SadhanaData>.from(json["data"].map((x) => SadhanaData.fromJson(x))),
+    data: List<SadhanaData>.from((json["data"] ?? []).map((x) => SadhanaData.fromJson(x ?? {}))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -156,7 +157,7 @@ class SadhanaData {
   SadhanaData({
     required this.shivirGalleryId,
     required this.title,
-    required  this.isActive,
+    required this.isActive,
     required this.tempCode,
     required this.createdOn,
     required this.modifiedOn,
@@ -174,14 +175,14 @@ class SadhanaData {
   List<SadhanaImage> images;
 
   factory SadhanaData.fromJson(Map<String, dynamic> json) => SadhanaData(
-    shivirGalleryId: json["ShivirGalleryID"],
-    title: json["title"],
-    isActive: json["IsActive"],
-    tempCode: json["TempCode"],
-    createdOn: json["CreatedOn"],
-    modifiedOn: DateTime.parse(json["ModifiedOn"]),
-    createdBy: json["CreatedBy"],
-    images: List<SadhanaImage>.from(json["images"].map((x) => SadhanaImage.fromJson(x))),
+    shivirGalleryId: json["ShivirGalleryID"] ?? "",
+    title: json["title"] ?? "",
+    isActive: json["IsActive"] ?? "",
+    tempCode: json["TempCode"] ?? "",
+    createdOn: json["CreatedOn"] ?? "",
+    modifiedOn: DateTime.parse(json["ModifiedOn"] ?? DateTime.now()),
+    createdBy: json["CreatedBy"] ?? "",
+    images: List<SadhanaImage>.from((json["images"] ?? []).map((x) => SadhanaImage.fromJson(x ?? {}))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -202,7 +203,7 @@ class SadhanaImage {
     required this.imageName,
     required this.imageFile,
     required this.shivirGalleryId,
-    required  this.createdOn,
+    required this.createdOn,
     required this.imageUrl,
   });
 
@@ -214,12 +215,12 @@ class SadhanaImage {
   String imageUrl;
 
   factory SadhanaImage.fromJson(Map<String, dynamic> json) => SadhanaImage(
-    gallryid: json["gallryid"],
-    imageName: json["ImageName"],
-    imageFile: json["ImageFile"],
-    shivirGalleryId: json["ShivirGalleryID"],
-    createdOn: DateTime.parse(json["CreatedOn"]),
-    imageUrl: json["ImageURL"],
+    gallryid: json["gallryid"] ?? "",
+    imageName: json["ImageName"] ?? "",
+    imageFile: json["ImageFile"] ?? "",
+    shivirGalleryId: json["ShivirGalleryID"] ?? "",
+    createdOn: DateTime.parse(json["CreatedOn"] ?? DateTime.now()),
+    imageUrl: json["ImageURL"] ?? "",
   );
 
   Map<String, dynamic> toJson() => {

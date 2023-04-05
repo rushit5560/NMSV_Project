@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class YantraScreenController extends GetxController {
+class MantraScreenController extends GetxController {
   RxBool isLoading = false.obs;
 
 

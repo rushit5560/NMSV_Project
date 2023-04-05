@@ -1,29 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nmsv_project/screens/auth_screens/login_screen/signin_screen.dart';
+import 'package:nmsv_project/common_widgets/custom_loader.dart';
 import '../../constants/color.dart';
 import '../../controller/index_screen_controller.dart';
-import '../Bhajan_screen/bhajan_list_screen/Bhajan_list_screen.dart';
-import '../Contact_us_screen/Contact_us_screen.dart';
-import '../home_screen/home_screen.dart';
-import '../profile_screen/profile_screen.dart';
+
 
 class IndexScreen extends StatelessWidget {
   IndexScreen({Key? key}) : super(key: key);
   final indexScreenController = Get.put(IndexScreenController());
-  final screen = [
-    HomeScreen(),
-    ContactUsScreen(),
-    BhajanListScreen(),
-    SignInScreen(),
-  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(
-        () => IndexedStack(
+        () => indexScreenController.isLoading.value
+        ? CustomLoader()
+        : IndexedStack(
           index: indexScreenController.selectedIndex.value,
-          children: screen,
+          children: indexScreenController.screen,
         ),
       ),
       bottomNavigationBar: Obx(

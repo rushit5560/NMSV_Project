@@ -11,8 +11,10 @@ import 'package:nmsv_project/model/home_screen_model/category_model.dart';
 import 'package:nmsv_project/model/home_screen_model/get_banner_list_model.dart';
 
 import '../model/home_screen_model/introduction_model.dart';
+import '../screens/auspicious_timing_screen/auspicious_timing_screen.dart';
 import '../screens/books_screen/books_screen.dart';
 import '../screens/diksha_screen/diksha_screen.dart';
+import '../screens/mantra_screen/mantra_screen.dart';
 import '../screens/sadhana_screen/sadhana_screen.dart';
 import '../screens/yantra_screen/yantra_screen.dart';
 
@@ -94,16 +96,16 @@ class HomoScreenController extends GetxController {
       );
     } else if(i == 4) {
       log('index : $i');
-      // Get.to(
-      //   () => MantraScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+        () => MantraScreen(),
+        transition: Transition.zoom,
+      );
     } else if(i == 5) {
       log('index : $i');
-      // Get.to(
-      //   () => AuspiciousTimingScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+        () => AuspiciousTimingScreen(),
+        transition: Transition.zoom,
+      );
     } else if(i == 6) {
       log('index : $i');
       // Get.to(
