@@ -5,7 +5,7 @@ import '../constants/api_url.dart';
 import '../model/video_screen_model/video_screen_model.dart';
 import 'package:http/http.dart' as http;
 
-class VideoScreenController extends GetxController{
+class VideoListScreenController extends GetxController{
   RxBool isLoading = false.obs;
   RxString successStatus = ''.obs;
   List<VideoList> videoList = [];

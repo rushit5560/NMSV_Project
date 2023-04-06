@@ -5,14 +5,9 @@ import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/controller/guruvani_audio_screen_controller.dart';
 import 'package:sizer/sizer.dart';
 
-class GuruvaniAudioModule extends StatefulWidget {
-  const GuruvaniAudioModule({Key? key}) : super(key: key);
+class GuruvaniAudioModule extends StatelessWidget {
+   GuruvaniAudioModule({Key? key}) : super(key: key);
 
-  @override
-  State<GuruvaniAudioModule> createState() => _AudioModuleState();
-}
-
-class _AudioModuleState extends State<GuruvaniAudioModule> {
   final guruvaniAudioScreenController =
       Get.find<GuruvaniAudioScreenController>();
 

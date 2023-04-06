@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/constants/color.dart';
-import '../../../../controller/shibir_photos_screen_controller.dart';
+import '../../../controller/shibir_photos_screen_controller.dart';
 import '../shibir_photos_slider_screen/shibir_photos_slider_screen.dart';
 
 class PhotosGridViewListModule extends StatelessWidget {

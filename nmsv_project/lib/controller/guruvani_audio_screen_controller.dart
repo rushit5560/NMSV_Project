@@ -8,7 +8,8 @@ import 'package:nmsv_project/controller/guruvani_player_screen_controller.dart';
 class GuruvaniAudioScreenController extends GetxController {
   String guruvaniTitle = Get.arguments[0];
   String guruvaniAudio = Get.arguments[1];
-  final guruvaniPlayerScreenController = Get.find<GuruvaniPlayerScreenController>();
+  final guruvaniPlayerScreenController =
+      Get.find<GuruvaniPlayerScreenController>();
 
   RxBool isPlaying = false.obs;
   RxBool isLoading = false.obs;

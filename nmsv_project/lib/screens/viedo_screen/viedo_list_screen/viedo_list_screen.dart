@@ -6,9 +6,9 @@ import 'package:nmsv_project/screens/viedo_screen/viedo_list_screen/viedo_list_s
 import '../../../common_widgets/custom_appbar.dart';
 import '../../../controller/video_screen_controller.dart';
 
-class VideoScreen extends StatelessWidget {
-   VideoScreen({Key? key}) : super(key: key);
-final videoScreenController = Get.put(VideoScreenController());
+class VideoListScreen extends StatelessWidget {
+   VideoListScreen({Key? key}) : super(key: key);
+final videoListScreenController = Get.put(VideoListScreenController());
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -17,7 +17,7 @@ final videoScreenController = Get.put(VideoScreenController());
           leadingShow: false,
           actionShow: false,
       ),
-      body: Obx(()=> videoScreenController.isLoading.value
+      body: Obx(()=> videoListScreenController.isLoading.value
           ? const CustomLoader()
           : VideoAllListModule().commonSymmetricPadding(horizontal: 15,vertical: 15)),
     );

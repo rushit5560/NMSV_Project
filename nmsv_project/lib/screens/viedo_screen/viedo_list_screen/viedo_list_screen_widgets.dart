@@ -8,19 +8,19 @@ import '../youtube_video_screen/youtube_video_screen.dart';
 
 class VideoAllListModule extends StatelessWidget {
    VideoAllListModule({Key? key}) : super(key: key);
-   final videoScreenController = Get.find<VideoScreenController>();
+   final videoListScreenController = Get.find<VideoListScreenController>();
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: videoScreenController.videoList.length,
+      itemCount: videoListScreenController.videoList.length,
       itemBuilder: (context, index) {
-        var value = videoScreenController.videoList[index];
+        var value = videoListScreenController.videoList[index];
         return InkWell(
           onTap: () {
             Get.to(() => YouTubeVideoScreen(),
 
-            arguments: videoScreenController.videoList[index].videoUrl,
+            arguments: videoListScreenController.videoList[index].videoUrl,
             );
           },
           child: Container(

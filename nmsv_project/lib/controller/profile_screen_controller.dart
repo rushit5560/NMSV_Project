@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/common_modules/custom_alert_dialog.dart';
 import 'package:nmsv_project/constants/app_images.dart';
@@ -8,6 +6,7 @@ import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/screens/camp_schedule_screen/camp_schedule_screen.dart';
 import 'package:nmsv_project/screens/index_screen/index_screen.dart';
 import 'package:nmsv_project/screens/meet_with_gurudev_scrren/meet_with_gurudev_scrren.dart';
+import 'package:nmsv_project/screens/viedo_screen/viedo_list_screen/viedo_list_screen.dart';
 import 'package:nmsv_project/utils/user_preference.dart';
 
 import '../model/home_screen_model/category_model.dart';
@@ -78,8 +77,8 @@ class ProfileScreenController extends GetxController {
       );
     } else if (i == 7) {
       log('index : $i');
-     Get.to(
-        () => VideoScreen(),
+      Get.to(
+        () => VideoListScreen(),
         transition: Transition.zoom,
       );
     } else if (i == 8) {

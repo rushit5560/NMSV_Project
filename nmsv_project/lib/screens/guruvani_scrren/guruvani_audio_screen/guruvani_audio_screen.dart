@@ -28,7 +28,7 @@ class GuruvaniAudioScreen extends StatelessWidget {
             ? const CustomLoader()
             : Column(
                 children: [
-                  const GuruvaniAudioModule()
+                   GuruvaniAudioModule()
                       .commonSymmetricPadding(horizontal: 10, vertical: 50),
                 ],
               ),

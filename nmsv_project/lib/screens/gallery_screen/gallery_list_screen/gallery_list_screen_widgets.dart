@@ -1,12 +1,12 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/screens/gallery_screen/gallery_shibir_photos_screen/gallery_shibir_photos_screen.dart';
 import 'package:nmsv_project/utils/style.dart';
 import 'package:sizer/sizer.dart';
 import '../../../common_modules/auth_screen_text_field.dart';
 import '../../../constants/message.dart';
 import '../../../controller/gallery_screen_controller.dart';
-import '../shibir_photos_screen/shibir_photos_screen.dart';
 
 class GalleryTextFiledModule extends StatelessWidget {
   GalleryTextFiledModule({Key? key}) : super(key: key);
@@ -69,7 +69,7 @@ class GalleryListModule extends StatelessWidget {
         return InkWell(
           onTap: () {
             Get.to(
-              () => ShibirPhotosScreen(),
+              () => GalleryShibirPhotosScreen(),
               arguments: galleryScreenController
                   .searchGalleryDataList[index].shivirGalleryId,
             );

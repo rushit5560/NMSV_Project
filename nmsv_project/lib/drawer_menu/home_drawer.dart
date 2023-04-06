@@ -7,11 +7,8 @@ import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/screens/Bhajan_screen/bhajan_list_screen/Bhajan_list_screen.dart';
 import 'package:nmsv_project/screens/Contact_us_screen/Contact_us_screen.dart';
 import 'package:nmsv_project/screens/gallery_screen/gallery_list_screen/gallery_list_screen.dart';
-import 'package:nmsv_project/screens/home_screen/home_screen.dart';
-import 'package:nmsv_project/screens/index_screen/index_screen.dart';
 import 'package:nmsv_project/utils/style.dart';
 import 'package:sizer/sizer.dart';
-
 import '../screens/camp_schedule_screen/camp_schedule_screen.dart';
 import '../screens/guruvani_scrren/guruvani_list_screen/guruvani_list_scrren.dart';
 import '../screens/meet_with_gurudev_scrren/meet_with_gurudev_scrren.dart';
@@ -36,7 +33,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.home,
               text: AppMessage.home,
               onTap: () {
-                Get.to(() => IndexScreen());
+                Get.back();
               },
             ),
             const Divider(color: AppColors.greyColor),
@@ -45,6 +42,8 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.music_note_rounded,
               text: AppMessage.bhajan,
               onTap: () {
+                Get.back();
+
                 Get.to(() => BhajanListScreen());
               },
             ),
@@ -54,6 +53,8 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.media_bluetooth_on,
               text: AppMessage.guruvani,
               onTap: () {
+                Get.back();
+
                 Get.to(() => GuruVaniListScreen());
               },
             ),
@@ -63,6 +64,8 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.today,
               text: AppMessage.campSchedule,
               onTap: () {
+                Get.back();
+
                 Get.to(() => CampScheduleScreen());
               },
             ),
@@ -93,6 +96,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.photo_library_outlined,
               text: AppMessage.gallery,
               onTap: () {
+                Get.back();
                 Get.to(() => GalleryScreen());
               },
             ),
