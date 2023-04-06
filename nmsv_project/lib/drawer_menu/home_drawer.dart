@@ -8,6 +8,7 @@ import 'package:nmsv_project/screens/Bhajan_screen/bhajan_list_screen/Bhajan_lis
 import 'package:nmsv_project/screens/Contact_us_screen/Contact_us_screen.dart';
 import 'package:nmsv_project/screens/gallery_screen/gallery_list_screen/gallery_list_screen.dart';
 import 'package:nmsv_project/screens/home_screen/home_screen.dart';
+import 'package:nmsv_project/screens/index_screen/index_screen.dart';
 import 'package:nmsv_project/utils/style.dart';
 import 'package:sizer/sizer.dart';
 
@@ -35,7 +36,7 @@ class HomeDrawerCustomModule extends StatelessWidget {
               icon: Icons.home,
               text: AppMessage.home,
               onTap: () {
-                Get.to(() => HomeScreen());
+                Get.to(() => IndexScreen());
               },
             ),
             const Divider(color: AppColors.greyColor),
@@ -96,12 +97,12 @@ class HomeDrawerCustomModule extends StatelessWidget {
               },
             ),
             const Divider(color: AppColors.greyColor),
-            const Spacer(),
-            HomeDrawerModule(
-              icon: Icons.logout,
-              text: AppMessage.logOut,
-              onTap: () {},
-            ),
+            // const Spacer(),
+            // HomeDrawerModule(
+            //   icon: Icons.logout,
+            //   text: AppMessage.logOut,
+            //   onTap: () {},
+            // ),
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
             //   children: [

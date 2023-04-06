@@ -11,10 +11,13 @@ import 'package:nmsv_project/model/home_screen_model/category_model.dart';
 import 'package:nmsv_project/model/home_screen_model/get_banner_list_model.dart';
 
 import '../model/home_screen_model/introduction_model.dart';
+import '../screens/Contact_us_screen/Contact_us_screen.dart';
 import '../screens/auspicious_timing_screen/auspicious_timing_screen.dart';
 import '../screens/books_screen/books_screen.dart';
+import '../screens/camp_schedule_screen/camp_schedule_screen.dart';
 import '../screens/diksha_screen/diksha_screen.dart';
 import '../screens/mantra_screen/mantra_screen.dart';
+import '../screens/meet_with_gurudev_scrren/meet_with_gurudev_scrren.dart';
 import '../screens/sadhana_screen/sadhana_screen.dart';
 import '../screens/yantra_screen/yantra_screen.dart';
 
@@ -108,25 +111,24 @@ class HomoScreenController extends GetxController {
       );
     } else if(i == 6) {
       log('index : $i');
-      // Get.to(
-      //   () => CampScheduleScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+        () => CampScheduleScreen(),
+        transition: Transition.zoom,
+      );
     } else if(i == 7) {
       log('index : $i');
-      // Get.to(
-      //   () => MeetGurudevScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+        () => MeetWithGurudevScreen(),
+        transition: Transition.zoom,
+      );
     } else if(i == 8) {
       log('index : $i');
-      // Get.to(
-      //   () => ContactUsScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+        () => ContactUsScreen(),
+        transition: Transition.zoom,
+      );
     }
   }
-
 
   Future<void> getBannerListFunction() async {
     isLoading(true);

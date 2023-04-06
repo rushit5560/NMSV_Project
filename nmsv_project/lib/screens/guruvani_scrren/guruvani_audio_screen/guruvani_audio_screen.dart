@@ -21,9 +21,7 @@ class GuruvaniAudioScreen extends StatelessWidget {
         actionShow: false,
         actionIcon: const Icon(Icons.west_outlined),
         actionOnTap: () {},
-        leadingIcon: const Icon(Icons.navigate_before),
-        leadingOnTap: () => Get.back(),
-        leadingShow: true,
+        leadingShow: false,
       ),
       body: Obx(
         () => guruvaniAudioScreenController.isLoading.value

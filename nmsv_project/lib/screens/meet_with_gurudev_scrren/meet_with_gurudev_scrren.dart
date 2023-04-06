@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/common_widgets/custom_appbar.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
@@ -19,15 +18,7 @@ class MeetWithGurudevScreen extends StatelessWidget {
       appBar: customAppBar(
         titleText: AppMessage.meetToGurudev,
         actionShow: false,
-        // actionIcon: const Icon(Icons.west_outlined),
         actionOnTap: () {},
-        // leadingIcon: IconButton(
-        //   icon: const Icon(Icons.navigate_before),
-        //   onPressed: () {
-        //     Get.ba(() => IndexScreen());
-        //   },
-        // ),
-        //leadingOnTap: () => Get.to(HomeScreen()),
         leadingShow: false,
       ),
       body: Obx(
@@ -35,8 +26,6 @@ class MeetWithGurudevScreen extends StatelessWidget {
             ? const CustomLoader()
             : Html(
                 data: meetWithGurudevScreenController.meetToGurudevData.value,
-
-                // url: 'https://narayanmantrasadhanavigyan.org/api2/WidgetSection/?slug=meeting_with_gurudev',
               ),
       ),
     );

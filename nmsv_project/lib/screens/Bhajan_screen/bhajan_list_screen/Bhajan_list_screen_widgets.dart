@@ -2,10 +2,13 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../common_modules/auth_screen_text_field.dart';
+import '../../../constants/font_family.dart';
 import '../../../constants/message.dart';
 import '../../../controller/bhajan_list_screen_controller.dart';
+import '../../../utils/style.dart';
 import '../Bhajan_player_screen/Bhajan_player_screen.dart';
 
 class TextFiledModule extends StatelessWidget {
@@ -65,8 +68,6 @@ class BhajanListModule extends StatelessWidget {
                     .searchBhajanDataList[index].allBhajanId);
           },
           child: Container(
-            padding: const EdgeInsets.all(8),
-            margin: const EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: const BorderRadius.all(
@@ -79,17 +80,16 @@ class BhajanListModule extends StatelessWidget {
                     blurStyle: BlurStyle.outer)
               ],
             ),
-            child: Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //Text(bhajanListScreenController.allGalleryList[index].shivirGalleryTitle),
-                Text(val.title),
-                const Spacer(),
-                const Icon(
-                  Icons.navigate_next_outlined,
-                  size: 20,
+            child: ListTile(
+              title: Text(
+                val.title,
+                style: TextStyleConfig.textStyle(
+                    fontSize: 13.sp,
+                    fontFamily: FontFamilyText.roboto,
+                    fontWeight: FontWeight.w500
                 ),
-              ],
+              ),
+              trailing: const Icon(Icons.navigate_next_outlined),
             ),
           ),
         );

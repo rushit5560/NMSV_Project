@@ -12,19 +12,13 @@ import '../../utils/style.dart';
 class CampScheduleScreen extends StatelessWidget {
    CampScheduleScreen({Key? key}) : super(key: key);
   final campScheduleScreenController = Get.put(CampScheduleScreenController());
-  bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: customAppBar(
         titleText: AppMessage.campSchedule,
         actionShow: false,
-        actionOnTap: () {},
-        leadingIcon: const Icon(Icons.navigate_before),
-        leadingOnTap: () {
-          Get.back();
-        },
-        leadingShow: true,
+        leadingShow: false,
       ),
       body: Obx(()=>campScheduleScreenController.isLoading.value
             ? const CustomLoader()
@@ -37,14 +31,13 @@ class CampScheduleScreen extends StatelessWidget {
             return  Container(
             margin: const EdgeInsets.all(5),
             child: ExpansionTile(
-              collapsedBackgroundColor:AppColors.orangeColor,
-              collapsedIconColor:  AppColors.orangeColor,
+              collapsedBackgroundColor: AppColors.orangeColor,
               expandedCrossAxisAlignment: CrossAxisAlignment.end,
               collapsedTextColor: AppColors.whiteColor,
-              //iconColor: isExpanded? AppColors.orangeColor :AppColors.whiteColor,
+              trailing: const SizedBox(),
               title:  Text(campScheduleScreenController.campSchedule[index].date),
               tilePadding: const EdgeInsets.symmetric(horizontal: 5,vertical: 4),
-              textColor: isExpanded ? AppColors.whiteColor :AppColors.blackColor ,
+              textColor: campScheduleScreenController.isExpanded.value ? AppColors.whiteColor :AppColors.blackColor ,
               subtitle:  Text(campScheduleScreenController.campSchedule[index].campScheduleTitle),
               children: [
                 Column(

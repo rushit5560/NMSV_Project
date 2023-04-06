@@ -9,6 +9,7 @@ import '../../model/camp_schedule_screen_model/camp_schedule_screen_model.dart';
 class CampScheduleScreenController extends GetxController{
   RxBool isLoading = false.obs;
   RxString successStatus = ''.obs;
+  RxBool isExpanded = false.obs;
   List<CampSchedule> campSchedule = [];
   Future<void> getCampScheduleFunction() async {
     isLoading(true);

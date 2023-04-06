@@ -17,11 +17,7 @@ class BhajanListScreen extends StatelessWidget {
       appBar: customAppBar(
         titleText: AppMessage.bhajan,
         actionShow: false,
-        // actionIcon: const Icon(Icons.west_outlined),
-        actionOnTap: () {},
-        leadingIcon: const Icon(Icons.navigate_before),
-        //leadingOnTap: () => Get.to(HomeScreen()),
-        leadingShow: true,
+        leadingShow: false,
       ),
       body: Obx(
         () => bhajanListScreenController.isLoading.value

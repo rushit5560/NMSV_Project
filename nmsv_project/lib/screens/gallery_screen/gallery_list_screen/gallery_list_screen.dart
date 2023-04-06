@@ -18,16 +18,7 @@ class GalleryScreen extends StatelessWidget {
       appBar: customAppBar(
         titleText: AppMessage.shibir,
         actionShow: false,
-        // actionIcon: const Icon(Icons.west_outlined),
-        actionOnTap: () {},
-        leadingIcon: IconButton(
-          onPressed: () {
-          Get.back();
-        },
-          icon: const Icon(Icons.navigate_before),
-        ),
-        //leadingOnTap: () => Get.to(HomeScreen()),
-        leadingShow: true,
+        leadingShow: false,
       ),
       body: Obx(
         () => galleryScreenController.isLoading.value

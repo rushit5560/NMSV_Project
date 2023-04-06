@@ -1,12 +1,12 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nmsv_project/screens/gallery_screen/gallery_list_screen/shibir_photos_screen/shibir_photos_screen.dart';
 import 'package:nmsv_project/utils/style.dart';
 import 'package:sizer/sizer.dart';
 import '../../../common_modules/auth_screen_text_field.dart';
 import '../../../constants/message.dart';
 import '../../../controller/gallery_screen_controller.dart';
+import '../shibir_photos_screen/shibir_photos_screen.dart';
 
 class GalleryTextFiledModule extends StatelessWidget {
   GalleryTextFiledModule({Key? key}) : super(key: key);
@@ -75,8 +75,6 @@ class GalleryListModule extends StatelessWidget {
             );
           },
           child: Container(
-            padding: const EdgeInsets.all(8),
-            margin: const EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: const BorderRadius.all(

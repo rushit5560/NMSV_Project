@@ -75,8 +75,6 @@ class GuruvaniListModule extends StatelessWidget {
             );
           },
           child: Container(
-              padding: const EdgeInsets.all(8),
-              margin: const EdgeInsets.only(bottom: 10),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: const BorderRadius.all(
@@ -95,7 +93,8 @@ class GuruvaniListModule extends StatelessWidget {
                   style: TextStyleConfig.textStyle(fontSize: 12.sp),
                 ),
                 trailing: const Icon(Icons.navigate_next_outlined),
-              )),
+              ),
+          ),
         );
       },
     );

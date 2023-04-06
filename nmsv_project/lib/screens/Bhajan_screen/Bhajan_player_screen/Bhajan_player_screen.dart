@@ -20,11 +20,8 @@ class BhajanPlayerScreen extends StatelessWidget {
       appBar: customAppBar(
           titleText: AppMessage.bhajanPlayer,
           actionShow: false,
-          actionIcon: const Icon(Icons.west_outlined),
-          actionOnTap: () {},
-          leadingIcon: const Icon(Icons.navigate_before),
-          leadingOnTap: () => Get.back(),
-          leadingShow: true),
+          leadingShow: false,
+      ),
       body: Obx(
         () => bhajanPlayerScreenController.isLoading.value
             ? const CustomLoader()

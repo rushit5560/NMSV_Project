@@ -19,12 +19,8 @@ class ContactUsScreen extends StatelessWidget {
       appBar: customAppBar(
         titleText: AppMessage.contactUs,
         actionShow: false,
-        actionOnTap: () {},
-        leadingIcon: const Icon(Icons.navigate_before),
-        leadingOnTap: () {
-          Get.back();
-        },
-        leadingShow: true,
+        leadingShow: false,
+
       ),
       body: ListView.builder(
         shrinkWrap: true,
