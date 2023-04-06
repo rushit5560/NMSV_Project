@@ -6,7 +6,8 @@ import 'package:get/get.dart';
 import 'package:nmsv_project/controller/guruvani_player_screen_controller.dart';
 
 class GuruvaniAudioScreenController extends GetxController {
-  String guruvaniAudio = Get.arguments;
+  String guruvaniTitle = Get.arguments[0];
+  String guruvaniAudio = Get.arguments[1];
   final guruvaniPlayerScreenController = Get.find<GuruvaniPlayerScreenController>();
 
   RxBool isPlaying = false.obs;
@@ -25,9 +26,11 @@ class GuruvaniAudioScreenController extends GetxController {
 
     setup();
     log("GuruvaniAudioScreenController mediaUrl play: $guruvaniAudio");
+    loadUI();
   }
 
   setup() {
+    isLoading(true);
     audioPlayer.onAudioPositionChanged.listen((index) {
       currentPosition.value = index;
     });
@@ -37,6 +40,8 @@ class GuruvaniAudioScreenController extends GetxController {
     audioPlayer.onPlayerStateChanged.listen((state) {
       playState.value = state;
     });
+    isPlaying(true);
+    isLoading(false);
   }
 
   playMusic() {
@@ -49,5 +54,10 @@ class GuruvaniAudioScreenController extends GetxController {
 
   seekTo(int seconds) {
     audioPlayer.seek(Duration(seconds: seconds));
+  }
+
+  loadUI() {
+    isLoading(true);
+    isLoading(false);
   }
 }

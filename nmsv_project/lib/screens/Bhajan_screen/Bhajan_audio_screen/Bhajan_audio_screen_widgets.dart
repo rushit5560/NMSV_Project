@@ -26,7 +26,7 @@ class _AudioModuleState extends State<AudioModule> {
             size: 200,
           ),
           SizedBox(height: 2.h),
-          const Text('Jab Yaad Tumhaari Aai 01'),
+          Text(bhajanAudioScreenController.bhajanTitle.replaceAll(".mp3", "")),
           SliderTheme(
             data: const SliderThemeData(
               trackHeight: 1,
@@ -70,9 +70,9 @@ class _AudioModuleState extends State<AudioModule> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                  '${bhajanAudioScreenController.currentPosition.value.inMinutes}:${bhajanAudioScreenController.currentPosition.value.inSeconds}'),
+                  '${bhajanAudioScreenController.currentPosition.value.inMinutes.remainder(60)}:${bhajanAudioScreenController.currentPosition.value.inSeconds.remainder(60)}'),
               Text(
-                  '${bhajanAudioScreenController.musicLength.value.inMinutes}:${bhajanAudioScreenController.musicLength.value.inSeconds}'),
+                  '${bhajanAudioScreenController.musicLength.value.inMinutes.remainder(60)}:${bhajanAudioScreenController.musicLength.value.inSeconds.remainder(60)}'),
             ],
           ).commonSymmetricPadding(horizontal: 25),
           Row(

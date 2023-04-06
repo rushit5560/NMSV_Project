@@ -2,7 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/constants/font_family.dart';
 import 'package:nmsv_project/constants/message.dart';
+import 'package:nmsv_project/utils/style.dart';
+import 'package:sizer/sizer.dart';
 import '../../../common_modules/auth_screen_text_field.dart';
 import '../../../controller/bhajan_player_screen_controller.dart';
 import '../Bhajan_audio_screen/Bhajan_audio_screen.dart';
@@ -62,15 +65,18 @@ class BhajanPlayerListModule extends StatelessWidget {
             Get.to(
               () => BhajanAudioScreen(
                
-              ),arguments:  bhajanPlayerScreenController
-                    .serchBhajanplayerList[index].mediaUrl,
+              ),arguments:  [
+              bhajanPlayerScreenController
+              .serchBhajanplayerList[index].bhajanName.toString().replaceAll(".mp3", ""),
+                bhajanPlayerScreenController
+                    .serchBhajanplayerList[index].mediaUrl,],
               // arguments: bhajanPlayerScreenController
               //     .serchBhajanplayerList[index].mediaUrl
             );
           },
           child: Container(
-            padding: const EdgeInsets.all(8),
-            margin: const EdgeInsets.only(bottom: 10),
+            // padding: const EdgeInsets.all(8),
+            // margin: const EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
               // border: Border.all(color: Colors.grey.shade400, width: 0.0),
               color: Colors.white,
@@ -85,17 +91,17 @@ class BhajanPlayerListModule extends StatelessWidget {
                     blurStyle: BlurStyle.outer)
               ],
             ),
-            child: Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //Text(bhajanPlayerScreenController.allGalleryList[index].shivirGalleryTitle),
-                Text(value.bhajanName),
-                const Spacer(),
-                const Icon(
-                  Icons.navigate_next_outlined,
-                  size: 20,
+            child: ListTile(
+              title: Text(
+                value.bhajanName,
+                style: TextStyleConfig.textStyle(
+                    fontSize: 13.sp,
+                    fontWeight: FontWeight.w500
                 ),
-              ],
+              ),
+              trailing: GestureDetector(
+                  onTap: (){},
+                  child: const Icon(Icons.download)),
             ),
           ),
         );

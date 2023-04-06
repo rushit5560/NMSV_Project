@@ -6,7 +6,7 @@ import 'package:nmsv_project/screens/index_screen/index_screen.dart';
 class SplashScreenController extends GetxController {
   startTimer() async {
     Timer(const Duration(milliseconds: 2500), () async {
-      Get.to(() => IndexScreen());
+      Get.offAll(() => IndexScreen());
     });
   }
 

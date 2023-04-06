@@ -19,11 +19,11 @@ class BhajanAudioScreen extends StatelessWidget {
       appBar: customAppBar(
           titleText: AppMessage.bhajan,
           actionShow: false,
-          actionIcon: const Icon(Icons.west_outlined),
-          actionOnTap: () {},
-          leadingIcon: const Icon(Icons.navigate_before),
-          leadingOnTap: () => Get.back(),
-          leadingShow: true),
+          // actionIcon: const Icon(Icons.west_outlined),
+          // actionOnTap: () {},
+          // leadingIcon: const Icon(Icons.navigate_before),
+          // leadingOnTap: () => Get.back(),
+          leadingShow: false),
       body: Obx(
         () => bhajanAudioScreenController.isLoading.value
             ? const CustomLoader()

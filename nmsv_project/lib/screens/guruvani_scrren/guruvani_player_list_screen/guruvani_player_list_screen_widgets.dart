@@ -6,6 +6,8 @@ import 'package:nmsv_project/common_modules/auth_screen_text_field.dart';
 import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/controller/guruvani_player_screen_controller.dart';
 import 'package:nmsv_project/screens/guruvani_scrren/guruvani_audio_screen/guruvani_audio_screen.dart';
+import 'package:nmsv_project/utils/style.dart';
+import 'package:sizer/sizer.dart';
 
 class GuruvaniTextFormFiledModule extends StatelessWidget {
   GuruvaniTextFormFiledModule({Key? key}) : super(key: key);
@@ -63,15 +65,17 @@ class GuruvaniPlayerListModule extends StatelessWidget {
           onTap: () {
             Get.to(
               () => GuruvaniAudioScreen(),
-              arguments: guruvaniPlayerScreenController
-                  .serchGuruvaniplayerList[index].mediaUrl,
+              arguments: [
+                guruvaniPlayerScreenController
+                    .serchGuruvaniplayerList[index].title.replaceAll(".mp3", ""),
+                guruvaniPlayerScreenController
+                  .serchGuruvaniplayerList[index].mediaUrl],
               // arguments: guruvaniPlayerScreenController
               //     .serchBhajanplayerList[index].mediaUrl
             );
           },
           child: Container(
-            padding: const EdgeInsets.all(8),
-            margin: const EdgeInsets.only(bottom: 10),
+
             decoration: BoxDecoration(
               // border: Border.all(color: Colors.grey.shade400, width: 0.0),
               color: Colors.white,
@@ -86,17 +90,14 @@ class GuruvaniPlayerListModule extends StatelessWidget {
                     blurStyle: BlurStyle.outer)
               ],
             ),
-            child: Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //Text(guruvaniPlayerScreenController.allGalleryList[index].shivirGalleryTitle),
-                Text(value.title),
-                const Spacer(),
-                const Icon(
-                  Icons.navigate_next_outlined,
-                  size: 20,
-                ),
-              ],
+            child:ListTile(
+              title: Text(
+                value.title.replaceAll(".mp3", ""),
+                style: TextStyleConfig.textStyle(fontSize: 12.sp),
+              ),
+              trailing: GestureDetector(
+                  onTap: (){},
+                  child: const Icon(Icons.download)),
             ),
           ),
         );

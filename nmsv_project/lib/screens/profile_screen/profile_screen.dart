@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/common_widgets/custom_appbar.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:sizer/sizer.dart';
 
@@ -15,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: customAppBar(titleText: "Dashboard", leadingShow: false, actionShow: false),
       body: SafeArea(
         child: GridView.builder(
           physics: const NeverScrollableScrollPhysics(),

@@ -27,7 +27,7 @@ class _AudioModuleState extends State<GuruvaniAudioModule> {
             size: 200,
           ),
           SizedBox(height: 2.h),
-          const Text('Jab Yaad Tumhaari Aai 01'),
+          Text(guruvaniAudioScreenController.guruvaniTitle),
           SliderTheme(
             data: const SliderThemeData(
               trackHeight: 1,
@@ -72,9 +72,9 @@ class _AudioModuleState extends State<GuruvaniAudioModule> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                  '${guruvaniAudioScreenController.currentPosition.value.inMinutes}:${guruvaniAudioScreenController.currentPosition.value.inSeconds}'),
+                  '${guruvaniAudioScreenController.currentPosition.value.inMinutes.remainder(60)}:${guruvaniAudioScreenController.currentPosition.value.inSeconds.remainder(60)}'),
               Text(
-                  '${guruvaniAudioScreenController.musicLength.value.inMinutes}:${guruvaniAudioScreenController.musicLength.value.inSeconds}'),
+                  '${guruvaniAudioScreenController.musicLength.value.inMinutes.remainder(60)}:${guruvaniAudioScreenController.musicLength.value.inSeconds.remainder(60)}'),
             ],
           ).commonSymmetricPadding(horizontal: 25),
           Row(

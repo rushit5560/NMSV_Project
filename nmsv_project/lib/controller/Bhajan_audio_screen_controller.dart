@@ -2,12 +2,14 @@ import 'dart:developer';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
-import 'package:nmsv_project/constants/app_images.dart';
-import 'package:nmsv_project/controller/bhajan_player_screen_controller.dart';
+// import 'package:nmsv_project/constants/app_images.dart';
+// import 'package:nmsv_project/controller/bhajan_player_screen_controller.dart';
 
 class BhajanAudioScreenController extends GetxController {
-  String bhajanAudio = Get.arguments;
-  final bhajanPlayerScreenController = Get.find<BhajanPlayerScreenController>();
+  String bhajanTitle = Get.arguments[0];
+  String bhajanAudio = Get.arguments[1];
+
+  // final bhajanPlayerScreenController = Get.find<BhajanPlayerScreenController>();
 
   RxBool isPlaying = false.obs;
   RxBool isLoading = false.obs;
@@ -25,9 +27,11 @@ class BhajanAudioScreenController extends GetxController {
 
     setup();
     log("bhajanPlayerScreenController mediaUrl play: $bhajanAudio");
+    loadUI();
   }
 
   setup() {
+    isLoading(true);
     audioPlayer.onAudioPositionChanged.listen((index) {
       currentPosition.value = index;
     });
@@ -37,6 +41,8 @@ class BhajanAudioScreenController extends GetxController {
     audioPlayer.onPlayerStateChanged.listen((state) {
       playState.value = state;
     });
+    isPlaying(true);
+    isLoading(false);
   }
 
   playMusic() {
@@ -49,5 +55,10 @@ class BhajanAudioScreenController extends GetxController {
 
   seekTo(int seconds) {
     audioPlayer.seek(Duration(seconds: seconds));
+  }
+
+  loadUI() {
+    isLoading(true);
+    isLoading(false);
   }
 }
