@@ -6,11 +6,9 @@ class ApiUrl {
   static const loginApi = "${apiMainPath}userLogin";
   static const galleryList = "${apiMainPath}Gallery";
   static const guruvaniList = "${apiMainPath}MediaSection";
-
   static const sadhanaListApi = "${apiMainPath}shadhanalist?order=DESCG";
   static const pageSectionApi = "${apiMainPath}PageSection/";
   static const meeToGurudevApi = "${apiMainPath}WidgetSection/";
-
   static const widgetSectionApi = "${apiMainPath}WidgetSection/";
   static const getBhajanListApi = "${apiMainPath}MediaSection/";
   static const galleryPhotoApi = "${apiMainPath}GalleryPhoto";
@@ -18,8 +16,7 @@ class ApiUrl {
   static const guruvaniPlayerApi = "${apiMainPath}SingleMedia";
   static const campScheduleApi = "${apiMainPath}CampSchedule";
   static const magazineHistoryApi = "${apiMainPath}MagazineSubscibeUserList";
-
-
+  static const magazinePdfDetailsApi = "${apiMainPath}Magazinepdfdetail";
 
 
 

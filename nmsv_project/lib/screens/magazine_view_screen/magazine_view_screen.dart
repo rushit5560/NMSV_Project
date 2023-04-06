@@ -4,8 +4,7 @@ import 'package:nmsv_project/common_widgets/custom_appbar.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
 import 'package:nmsv_project/constants/color.dart';
 import 'package:nmsv_project/constants/extension.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-
+import 'package:nmsv_project/screens/magazine_view_screen/view_magazine_screen/view_magazine_screen.dart';
 import '../../controller/magazine_view_screen_controller.dart';
 import '../../model/magazine_view_screen_model/magazine_list_model.dart';
 
@@ -34,34 +33,42 @@ class MagazineViewScreen extends StatelessWidget {
                 itemBuilder: (context, i) {
                   MagazinePdf singleItem =
                       magazineViewScreenController.magazineList[i];
-                  return Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(singleItem.imageurl),
-                            fit: BoxFit.cover,
+                  return InkWell(
+                    onTap: () {
+                      Get.to(
+                            () => ViewMagazineScreen(),
+                        arguments: singleItem.magazinepdfId
+                      );
+                    },
+                    child: Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(singleItem.imageurl),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: Get.width,
-                        decoration: const BoxDecoration(
-                          color: AppColors.blackColor,
-                        ),
-                        child: Text(
-                            singleItem.magazinepdfTitle,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: AppColors.whiteColor,
+                        Container(
+                          width: Get.width,
+                          decoration: const BoxDecoration(
+                            color: AppColors.blackColor,
                           ),
-                        ).commonSymmetricPadding(vertical: 3),
-                      ),
-                      // SfPdfViewer.network(
-                      //   singleItem.pdfurl,
-                      // ),
-                    ],
+                          child: Text(
+                              singleItem.magazinepdfTitle,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: AppColors.whiteColor,
+                            ),
+                          ).commonSymmetricPadding(vertical: 3),
+                        ),
+                        // SfPdfViewer.network(
+                        //   singleItem.pdfurl,
+                        // ),
+                      ],
+                    ),
                   );
                 },
               ).commonAllSidePadding(10),

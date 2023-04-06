@@ -36,8 +36,6 @@ class MagazineViewScreenController extends GetxController {
       } else {
         log('getMagazineListFunction Else');
       }
-
-      
     } catch(e) {
       log('getMagazineListFunction Error :$e');
       rethrow;

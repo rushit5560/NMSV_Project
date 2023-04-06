@@ -2,9 +2,15 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:nmsv_project/constants/app_images.dart';
+import 'package:nmsv_project/screens/camp_schedule_screen/camp_schedule_screen.dart';
+import 'package:nmsv_project/screens/meet_with_gurudev_scrren/meet_with_gurudev_scrren.dart';
 
 import '../model/home_screen_model/category_model.dart';
+import '../screens/Bhajan_screen/bhajan_list_screen/Bhajan_list_screen.dart';
+import '../screens/guruvani_scrren/guruvani_list_screen/guruvani_list_scrren.dart';
+import '../screens/magazine_history_screen/magazine_history_screen.dart';
 import '../screens/magazine_view_screen/magazine_view_screen.dart';
+import '../screens/profile_screen/my_profile_screen/my_profile_screen.dart';
 
 class ProfileScreenController extends GetxController {
 
@@ -51,10 +57,10 @@ class ProfileScreenController extends GetxController {
   void optionClickFunction(int i) {
     if(i == 0) {
       log('index : $i');
-      // Get.to(
-      //       () => DikshaScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+            () => MagazineHistoryScreen(),
+        transition: Transition.zoom,
+      );
     } else if(i == 1) {
       log('index : $i');
       Get.to(
@@ -63,34 +69,34 @@ class ProfileScreenController extends GetxController {
       );
     } else if(i == 2) {
       log('index : $i');
-      // Get.to(
-      //       () => BooksScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+            () => MyProfileScreen(),
+        transition: Transition.zoom,
+      );
     } else if(i == 3) {
       log('index : $i');
-      // Get.to(
-      //       () => SadhanaScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+            () => CampScheduleScreen(),
+        transition: Transition.zoom,
+      );
     } else if(i == 4) {
       log('index : $i');
-      // Get.to(
-      //       () => MantraScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+            () => MeetWithGurudevScreen(),
+        transition: Transition.zoom,
+      );
     } else if(i == 5) {
       log('index : $i');
-      // Get.to(
-      //       () => AuspiciousTimingScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+            () => BhajanListScreen(),
+        transition: Transition.zoom,
+      );
     } else if(i == 6) {
       log('index : $i');
-      // Get.to(
-      //   () => CampScheduleScreen(),
-      //   transition: Transition.zoom,
-      // );
+      Get.to(
+        () => GuruVaniListScreen(),
+        transition: Transition.zoom,
+      );
     } else if(i == 7) {
       log('index : $i');
       // Get.to(
