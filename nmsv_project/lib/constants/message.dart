@@ -54,5 +54,10 @@ class AppMessage {
   static String meetToGurudev = "Meet To Gurudev";
   static String contactUs = "Contact Us";
   static String logOut = "Logout";
+  static String cancle = "Cancle";
+  static String updateProfile = "UPDATE PROFILE";
+
+
   static String appMesage = "Narayan Mantra Sadhana Vigyan";
+  
 }

@@ -10,6 +10,8 @@ class TextFieldModule extends StatelessWidget {
   int? maxLength;
   Widget? suffixIcon;
   bool? obscureText;
+  bool? readonly = false;
+
   Widget? prefixIcon;
 
   TextFieldModule({
@@ -22,11 +24,13 @@ class TextFieldModule extends StatelessWidget {
     this.maxLength,
     this.suffixIcon,
     this.obscureText,
+    this.readonly,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: false,
       controller: fieldController,
       validator: validate,
       obscureText: obscureText ?? false,
@@ -121,8 +125,6 @@ class SearchBarTextFieldModule extends StatelessWidget {
   }
 }
 
-
-
 class MyProfileTextFieldModule extends StatelessWidget {
   TextEditingController fieldController;
   String hintText;
@@ -162,7 +164,7 @@ class MyProfileTextFieldModule extends StatelessWidget {
       onChanged: onChanged,
       decoration: InputDecoration(
         border: OutlineInputBorder(
-          borderSide:BorderSide(color: Colors.grey),
+          borderSide: BorderSide(color: Colors.grey),
           //borderRadius: BorderRadius.circular(25),
         ),
         fillColor: fillColor,
@@ -173,9 +175,9 @@ class MyProfileTextFieldModule extends StatelessWidget {
         prefixIcon: prefixIcon,
         counterText: '',
         hintStyle:
-        const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+            const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
         contentPadding:
-        const EdgeInsets.symmetric(horizontal: 15, vertical: 11),
+            const EdgeInsets.symmetric(horizontal: 15, vertical: 11),
       ),
     );
   }

@@ -30,13 +30,10 @@ class CustomAlertDialog {
               children: [
                 OutlinedButton(
                   onPressed: onYesTap,
-                  style: OutlinedButton.styleFrom(
-                    backgroundColor: AppColors.orangeColor1,
-                  ),
                   child: Text(
                     AppMessage.yes,
                     style: TextStyleConfig.textStyle(
-                      textColor: AppColors.whiteColor,
+                      textColor: AppColors.blackColor,
                       fontSize: 17,
                     ),
                   ),
@@ -44,8 +41,7 @@ class CustomAlertDialog {
                 OutlinedButton(
                   onPressed: onCancelTap,
                   style: OutlinedButton.styleFrom(
-                    backgroundColor: AppColors.orangeColor1,
-                  ),
+                      backgroundColor: AppColors.orangeColor),
                   child: Text(
                     AppMessage.no,
                     style: TextStyleConfig.textStyle(

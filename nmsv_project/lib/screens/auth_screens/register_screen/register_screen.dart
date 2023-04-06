@@ -60,7 +60,7 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => SignInScreen());
+                      Get.back();
                     },
                     child: Text(
                       " ${AppMessage.signin}",

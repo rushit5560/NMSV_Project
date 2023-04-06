@@ -17,6 +17,11 @@ class ApiUrl {
   static const campScheduleApi = "${apiMainPath}CampSchedule";
   static const magazineHistoryApi = "${apiMainPath}MagazineSubscibeUserList";
   static const magazinePdfDetailsApi = "${apiMainPath}Magazinepdfdetail";
+  static const getProfileApi = "${apiMainPath}UserProfile";
+  static const upDateProfileApi = "${apiMainPath}EditProfile";
+  static const mediaSectionApi = "${apiMainPath}MediaSection";
+
+
 
 
 

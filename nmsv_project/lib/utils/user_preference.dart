@@ -8,14 +8,18 @@ class UserPreference {
   static String fullNameKey = "fullNameKey";
   // static String emailKey = "emailKey";
   static String userIdKey = "userIdKey";
-  static String userEmailKey = "userIdKey";
-  static String userNameKey = "userEmailKey";
+  static String userEmailKey = "userEmailKey";
+  static String userNameKey = "userNameKey";
   static String userPasswordKey = "userPasswordKey";
   static String phoneNumberKey = "phoneNumberKey";
+  static String stateKey = "stateKey";
+  static String cityKey = "cityKey";
+  static String countryKey = "countryKey";
+    static String zipCodeKey = "zipCodeKey";
+
+
   static String userFNameKey = "userFNameKey";
   static String userLNameKey = "userLNameKey";
-
-  
 
   Future<void> setUserDetails({
     required String fullName,
@@ -23,6 +27,7 @@ class UserPreference {
     required String userName,
     required String password,
     required String phoneNumber,
+    required bool userLoggedIn,
   }) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(fullNameKey, fullName);
@@ -44,6 +49,31 @@ class UserPreference {
     log("userName : ${UserDetails.username}");
     log("password : ${UserDetails.password}");
     log("phoneNumber : ${UserDetails.phoneNumber}");
+  }
+
+//logout
+
+  Future<void> removeUserDetails() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool(isUserLoggedInKey, false);
+    prefs.setString(userEmailKey, '');
+    prefs.setString(userFNameKey, '');
+    prefs.setString(userLNameKey, '');
+    prefs.setString(userPasswordKey, '');
+    prefs.setString(userNameKey, '');
+    prefs.setString(userIdKey, '');
+    prefs.setString(fullNameKey, '');
+    prefs.setString(phoneNumberKey, '');
+
+    UserDetails.isUserLoggedIn = prefs.getBool(isUserLoggedInKey) ?? false;
+    UserDetails.userId = prefs.getString(userIdKey) ?? "";
+    UserDetails.email = prefs.getString(userEmailKey) ?? "";
+    UserDetails.fullName = prefs.getString(fullNameKey) ?? "";
+    UserDetails.password = prefs.getString(userPasswordKey) ?? "";
+    UserDetails.phoneNumber = prefs.getString(phoneNumberKey) ?? "";
+    UserDetails.username = prefs.getString(userNameKey) ?? "";
+    UserDetails.userFNameKey = prefs.getString(userFNameKey) ?? "";
+    UserDetails.userLNameKey = prefs.getString(userLNameKey) ?? "";
   }
 
   Future<void> userAllDataFromPrefs() async {

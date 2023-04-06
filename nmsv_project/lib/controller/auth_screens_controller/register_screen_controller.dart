@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/model/auth_screen_model/register_model.dart';
+import 'package:nmsv_project/screens/auth_screens/login_screen/signin_screen.dart';
 import 'package:nmsv_project/screens/home_screen/home_screen.dart';
 import 'package:nmsv_project/screens/index_screen/index_screen.dart';
 import 'package:nmsv_project/utils/user_preference.dart';
@@ -99,7 +100,7 @@ class RegisterScreenController extends GetxController {
           if (successStatus.value.toLowerCase() == "ok") {
             log("1111");
             await setUserRegisterDetails();
-            Get.to(() => IndexScreen());
+            Get.to(() => SignInScreen());
             log("222");
           } else {
             Fluttertoast.showToast(

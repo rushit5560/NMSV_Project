@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -106,8 +107,13 @@ class SignInScreenController extends GetxController {
           lastName: loginModel.lastName,
           mobileNo: loginModel.mobileNo,
         );
+        log('userLoginFunction userId : ${loginModel.userId}');
         Get.offAll(() => IndexScreen());
       } else {
+        Fluttertoast.showToast(
+          // backgroundColor: AppColors.orangeColor1,
+          msg: loginModel.message,
+        );
         log("userLoginFunction error");
       }
     } catch (e) {

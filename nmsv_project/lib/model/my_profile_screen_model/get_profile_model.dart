@@ -1,16 +1,16 @@
 // To parse this JSON data, do
 //
-//     final loginModel = loginModelFromJson(jsonString);
+//     final getProfileModel = getProfileModelFromJson(jsonString);
 
 import 'dart:convert';
 
-LoginModel loginModelFromJson(String str) =>
-    LoginModel.fromJson(json.decode(str));
+GetProfileModel getProfileModelFromJson(String str) =>
+    GetProfileModel.fromJson(json.decode(str));
 
-// String loginModelToJson(LoginModel data) => json.encode(data.toJson());
+// String getProfileModelToJson(GetProfileModel data) => json.encode(data.toJson());
 
-class LoginModel {
-  LoginModel({
+class GetProfileModel {
+  GetProfileModel({
     required this.status,
     required this.userId,
     required this.userName,
@@ -18,7 +18,11 @@ class LoginModel {
     required this.firstName,
     required this.lastName,
     required this.mobileNo,
-    required this.message,
+    required this.address,
+    required this.city,
+    required this.state,
+    required this.country,
+    required this.postalCode,
   });
 
   final String status;
@@ -28,9 +32,14 @@ class LoginModel {
   final String firstName;
   final String lastName;
   final String mobileNo;
-  final String message;
+  final String address;
+  final String city;
+  final String state;
+  final String country;
+  final String postalCode;
 
-  factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
+  factory GetProfileModel.fromJson(Map<String, dynamic> json) =>
+      GetProfileModel(
         status: json["status"] ?? "",
         userId: json["UserID"] ?? "",
         userName: json["UserName"] ?? "",
@@ -38,7 +47,11 @@ class LoginModel {
         firstName: json["FirstName"] ?? "",
         lastName: json["LastName"] ?? "",
         mobileNo: json["MobileNo"] ?? "",
-        message: json["message"]??"",
+        address: json["Address"] ?? "",
+        city: json["City"] ?? "",
+        state: json["State"] ?? "",
+        country: json["Country"] ?? "",
+        postalCode: json["PostalCode"] ?? "",
       );
 
   // Map<String, dynamic> toJson() => {
@@ -49,5 +62,10 @@ class LoginModel {
   //     "FirstName": firstName,
   //     "LastName": lastName,
   //     "MobileNo": mobileNo,
+  //     "Address": address,
+  //     "City": city,
+  //     "State": state,
+  //     "Country": country,
+  //     "PostalCode": postalCode,
   // };
 }
