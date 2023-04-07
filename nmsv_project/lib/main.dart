@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:nmsv_project/screens/aplsh_screen/splash_screen.dart';
-import 'package:nmsv_project/screens/home_screen/home_screen.dart';
-import 'package:nmsv_project/screens/index_screen/index_screen.dart';
+import 'package:nmsv_project/screens/splash_screen/splash_screen.dart';
 import 'package:sizer/sizer.dart';
 
-import 'screens/auth_screens/login_screen/signin_screen.dart';
 
 void main() {
   runApp(const MyApp());
+
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ],
+  );
 }
 
 class MyApp extends StatelessWidget {
