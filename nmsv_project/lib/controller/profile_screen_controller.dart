@@ -1,5 +1,7 @@
 import 'dart:developer';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nmsv_project/common_modules/custom_alert_dialog.dart';
 import 'package:nmsv_project/constants/app_images.dart';
 import 'package:nmsv_project/constants/message.dart';
@@ -18,16 +20,17 @@ import '../screens/profile_screen/my_profile_screen/my_profile_screen.dart';
 
 class ProfileScreenController extends GetxController {
   UserPreference userPreference = UserPreference();
+  var googleSignIn = GoogleSignIn();
+
   List<MainCategory> optionList = [
     MainCategory(
         image: AppImages.iconMessImage, name: "Magazine Subs. History"),
     MainCategory(image: AppImages.magazineImage, name: "View Magazine"),
     MainCategory(image: AppImages.iconProfileImage, name: "My Profile"),
     MainCategory(image: AppImages.iconSchedule, name: "Camp Schedule"),
-    MainCategory(
-        image: AppImages.iconMettingImage, name: "Meeting With Gurudev"),
+    MainCategory(image: AppImages.iconMettingImage, name: "Meet with Gurudev"),
     MainCategory(image: AppImages.bhajanImage, name: "Bhajan"),
-    MainCategory(image: AppImages.iconMusicImage, name: "Gurudev"),
+    MainCategory(image: AppImages.iconGuruvaniImage, name: "Guruvani"),
     MainCategory(image: AppImages.iconVideoImage, name: "Video"),
     MainCategory(image: AppImages.iconLogoutImage, name: "Logout"),
   ];
@@ -100,6 +103,12 @@ class ProfileScreenController extends GetxController {
   Future<void> userLogOutFunction() async {
     await userPreference.removeUserDetails();
     // await fb.logOut();
+    await googleSignIn.signOut();
+
+    Fluttertoast.showToast(
+      // backgroundColor: AppColors.orangeColor1,
+      msg: "logout successfully..",
+    );
 
     Get.offAll(() => IndexScreen(),
         transition: Transition.native,

@@ -14,7 +14,7 @@ class DikshaScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-          titleText: "Diskha", leadingShow: false, actionShow: false),
+          titleText: "Diksha", leadingShow: false, actionShow: false),
       body: Obx(
         () => dikshaScreenController.isLoading.value
             ? const CustomLoader()

@@ -5,7 +5,11 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../constants/api_url.dart';
 import '../model/gallery_screen_model/shibir_photos_list_model.dart';
-class ShibirPhotosScreenController extends GetxController{
+
+class ShibirPhotosScreenController extends GetxController {
+  // String imageUrl = Get.arguments[0];
+  // String index = Get.arguments[1];
+
   final CarouselController carouselController = CarouselController();
   RxInt currentIndex = 0.obs;
   String galleryId = Get.arguments;
@@ -22,9 +26,9 @@ class ShibirPhotosScreenController extends GetxController{
       http.Response response = await http.get(Uri.parse(url));
 
       GalleryPhotosListModel galleryPhotosListModel =
-      GalleryPhotosListModel.fromJson(json.decode(response.body));
+          GalleryPhotosListModel.fromJson(json.decode(response.body));
       // log("response.body : ${response.body}");
-      successStatus.value=galleryPhotosListModel.status;
+      successStatus.value = galleryPhotosListModel.status;
       if (successStatus.value.toLowerCase() == "ok") {
         galleryPhotos.addAll(galleryPhotosListModel.data);
         log("galleryPhotos : $galleryPhotos");
@@ -39,9 +43,10 @@ class ShibirPhotosScreenController extends GetxController{
       isLoading(false);
     }
   }
-@override
+
+  @override
   void onInit() {
-  getGalleryPhotosListFunction();
+    getGalleryPhotosListFunction();
     super.onInit();
   }
 }

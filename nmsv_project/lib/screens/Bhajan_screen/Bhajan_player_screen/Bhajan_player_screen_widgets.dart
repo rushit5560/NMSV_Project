@@ -52,60 +52,68 @@ class BhajanPlayerListModule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      // itemCount: bhajanPlayerScreenController.allGalleryList.length,
-      itemCount: bhajanPlayerScreenController.serchBhajanplayerList.length,
-      itemBuilder: (context, index) {
-        var value = bhajanPlayerScreenController.serchBhajanplayerList[index];
-        return InkWell(
-          onTap: () {
-            log("mediaUrl  ${bhajanPlayerScreenController.serchBhajanplayerList[index].mediaUrl}");
-            Get.to(
-              () => BhajanAudioScreen(
-               
-              ),arguments:  [
-              bhajanPlayerScreenController
-              .serchBhajanplayerList[index].bhajanName.toString().replaceAll(".mp3", ""),
-                bhajanPlayerScreenController
-                    .serchBhajanplayerList[index].mediaUrl,],
-              // arguments: bhajanPlayerScreenController
-              //     .serchBhajanplayerList[index].mediaUrl
-            );
-          },
-          child: Container(
-            // padding: const EdgeInsets.all(8),
-            // margin: const EdgeInsets.only(bottom: 10),
-            decoration: BoxDecoration(
-              // border: Border.all(color: Colors.grey.shade400, width: 0.0),
-              color: Colors.white,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10),
-              ),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.3), //color of shadow
-                    // spreadRadius: 3,
-                    blurRadius: 5,
-                    blurStyle: BlurStyle.outer)
-              ],
+    return bhajanPlayerScreenController.serchBhajanplayerList.isEmpty
+        ? Center(
+            child: Text(
+              "No data found.",
+              style: TextStyleConfig.textStyle(fontSize: 14.sp),
             ),
-            child: ListTile(
-              title: Text(
-                value.bhajanName,
-                style: TextStyleConfig.textStyle(
-                    fontSize: 13.sp,
-                    fontWeight: FontWeight.w500
+          )
+        : ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            // itemCount: bhajanPlayerScreenController.allGalleryList.length,
+            itemCount:
+                bhajanPlayerScreenController.serchBhajanplayerList.length,
+            itemBuilder: (context, index) {
+              var value =
+                  bhajanPlayerScreenController.serchBhajanplayerList[index];
+              return InkWell(
+                onTap: () {
+                  log("mediaUrl  ${bhajanPlayerScreenController.serchBhajanplayerList[index].mediaUrl}");
+                  Get.to(
+                    () => BhajanAudioScreen(),
+                    arguments: [
+                      bhajanPlayerScreenController
+                          .serchBhajanplayerList[index].bhajanName
+                          .toString()
+                          .replaceAll(".mp3", ""),
+                      bhajanPlayerScreenController
+                          .serchBhajanplayerList[index].mediaUrl,
+                    ],
+                    // arguments: bhajanPlayerScreenController
+                    //     .serchBhajanplayerList[index].mediaUrl
+                  );
+                },
+                child: Container(
+                  // padding: const EdgeInsets.all(8),
+                  // margin: const EdgeInsets.only(bottom: 10),
+                  decoration: BoxDecoration(
+                    // border: Border.all(color: Colors.grey.shade400, width: 0.0),
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(0.3), //color of shadow
+                          // spreadRadius: 3,
+                          blurRadius: 5,
+                          blurStyle: BlurStyle.outer)
+                    ],
+                  ),
+                  child: ListTile(
+                    title: Text(
+                      value.bhajanName,
+                      style: TextStyleConfig.textStyle(
+                          fontSize: 13.sp, fontWeight: FontWeight.w500),
+                    ),
+                    trailing: GestureDetector(
+                        onTap: () {}, child: const Icon(Icons.download)),
+                  ),
                 ),
-              ),
-              trailing: GestureDetector(
-                  onTap: (){},
-                  child: const Icon(Icons.download)),
-            ),
-          ),
-        );
-      },
-    );
+              );
+            },
+          );
   }
 }

@@ -37,6 +37,7 @@ class CarouselBannerModule extends StatelessWidget {
             enlargeCenterPage: true,
             autoPlay: true,
             aspectRatio: 2,
+            height: 200,
             viewportFraction: 1,
             onPageChanged: (index, reason) {
               homeScreenController.isLoading(true);
@@ -45,33 +46,32 @@ class CarouselBannerModule extends StatelessWidget {
             },
           ),
         ),
-       Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: homeScreenController.getBannerList.map((url) {
-              int index = homeScreenController.getBannerList.indexOf(url);
-              return Container(
-                width:
-                    homeScreenController.currentIndex.value == index ? 16 : 11,
-                height:
-                    homeScreenController.currentIndex.value == index ? 16 : 11,
-                margin:
-                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                      width: homeScreenController.currentIndex.value == index
-                          ? 2
-                          : 0,
-                      color: homeScreenController.currentIndex.value == index
-                          ? AppColors.whiteColor
-                          : Colors.transparent),
-                  color: homeScreenController.currentIndex.value == index
-                      ? AppColors.orangeColor
-                      : AppColors.greyColor,
-                ),
-              );
-            }).toList(),
-          ).commonOnlyPadding(right: 0.5.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: homeScreenController.getBannerList.map((url) {
+            int index = homeScreenController.getBannerList.indexOf(url);
+            return Container(
+              width: homeScreenController.currentIndex.value == index ? 16 : 11,
+              height:
+                  homeScreenController.currentIndex.value == index ? 16 : 11,
+              margin:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                    width: homeScreenController.currentIndex.value == index
+                        ? 2
+                        : 0,
+                    color: homeScreenController.currentIndex.value == index
+                        ? AppColors.whiteColor
+                        : Colors.transparent),
+                color: homeScreenController.currentIndex.value == index
+                    ? AppColors.orangeColor
+                    : AppColors.greyColor,
+              ),
+            );
+          }).toList(),
+        ).commonOnlyPadding(right: 0.5.h),
       ],
     ).commonSymmetricPadding(vertical: 8);
   }
@@ -113,10 +113,10 @@ class ChoiceTopicModule extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  height: 50,
+                  height: 55,
                   homeScreenController.categoryList[i].image,
                 ),
-                SizedBox(height: 1.h),
+                SizedBox(height: 1.5.h),
                 Text(
                   // maxLines: 1,
                   textAlign: TextAlign.center,
@@ -125,7 +125,7 @@ class ChoiceTopicModule extends StatelessWidget {
                     fontFamily: FontFamilyText.roboto,
                     textColor: AppColors.blackColor,
                     fontWeight: FontWeight.w500,
-                    fontSize: 10.sp,
+                    fontSize: 11.sp,
                   ),
                 ),
               ],

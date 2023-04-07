@@ -56,8 +56,9 @@ class SignUpTextFormFieldModule extends StatelessWidget {
                 },
                 icon: Icon(
                   registerScreenController.isPasswordHide.value
-                      ? Icons.visibility
-                      : Icons.visibility_off,
+                      ? Icons.visibility_off
+                      : Icons.visibility,
+                  color: Colors.grey,
                 ),
               ),
               validate: (value) => FieldValidator().validatePassword(value),

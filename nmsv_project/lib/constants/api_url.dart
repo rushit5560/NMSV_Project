@@ -4,6 +4,8 @@ class ApiUrl {
   static const getBannerList = "${apiMainPath}BannerList";
   static const registerApi = "${apiMainPath}userRegister";
   static const loginApi = "${apiMainPath}userLogin";
+  static const forgotPasswordApi = "${apiMainPath}Forgotpassword";
+
   static const galleryList = "${apiMainPath}Gallery";
   static const guruvaniList = "${apiMainPath}MediaSection";
   static const sadhanaListApi = "${apiMainPath}shadhanalist?order=DESCG";
@@ -20,6 +22,7 @@ class ApiUrl {
   static const getProfileApi = "${apiMainPath}UserProfile";
   static const upDateProfileApi = "${apiMainPath}EditProfile";
   static const mediaSectionApi = "${apiMainPath}MediaSection";
+  static const googleLoginApi = "${apiMainPath}GoogleLogin";
 
 
 

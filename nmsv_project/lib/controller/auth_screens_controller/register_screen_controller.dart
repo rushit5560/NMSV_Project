@@ -5,8 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/model/auth_screen_model/register_model.dart';
 import 'package:nmsv_project/screens/auth_screens/login_screen/signin_screen.dart';
-import 'package:nmsv_project/screens/home_screen/home_screen.dart';
-import 'package:nmsv_project/screens/index_screen/index_screen.dart';
 import 'package:nmsv_project/utils/user_preference.dart';
 import 'package:http/http.dart' as http;
 import '../../constants/api_url.dart';
@@ -100,6 +98,10 @@ class RegisterScreenController extends GetxController {
           if (successStatus.value.toLowerCase() == "ok") {
             log("1111");
             await setUserRegisterDetails();
+            Fluttertoast.showToast(
+              // backgroundColor: AppColors.orangeColor1,
+              msg: "register successfully..",
+            );
             Get.to(() => SignInScreen());
             log("222");
           } else {

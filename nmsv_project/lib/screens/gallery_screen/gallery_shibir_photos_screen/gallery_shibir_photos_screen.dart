@@ -9,13 +9,12 @@ import '../../../common_widgets/custom_loader.dart';
 import '../../../constants/message.dart';
 import '../../../controller/shibir_photos_screen_controller.dart';
 
-
 class GalleryShibirPhotosScreen extends StatelessWidget {
-   GalleryShibirPhotosScreen({Key? key}) : super(key: key);
-final shibirPhotosScreenController = Get.put(ShibirPhotosScreenController());
+  GalleryShibirPhotosScreen({Key? key}) : super(key: key);
+  final shibirPhotosScreenController = Get.put(ShibirPhotosScreenController());
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.whiteColor1,
       appBar: customAppBar(
         titleText: AppMessage.shibirPhotos,
@@ -28,15 +27,15 @@ final shibirPhotosScreenController = Get.put(ShibirPhotosScreenController());
         },
         leadingShow: false,
       ),
-      body: Obx(()=> shibirPhotosScreenController.isLoading.value
-         ? const CustomLoader()
-      : Column(
-          children: [
-            SizedBox(height: 2.h),
-          PhotosGridViewListModule(),
-        ],
-        ).commonSymmetricPadding(horizontal: 15),
-      ) ,
+      body: Obx(
+        () => shibirPhotosScreenController.isLoading.value
+            ? const CustomLoader()
+            : Column(
+                children: [
+                  PhotosGridViewListModule(),
+                ],
+              ).commonSymmetricPadding(horizontal: 15, vertical: 20),
+      ),
     );
   }
 }

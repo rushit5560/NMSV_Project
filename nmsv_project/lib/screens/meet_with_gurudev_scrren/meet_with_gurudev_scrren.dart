@@ -5,7 +5,6 @@ import 'package:nmsv_project/common_widgets/custom_appbar.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
 import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/controller/meet_with_gurudev_screen_controller.dart';
-import 'package:nmsv_project/screens/index_screen/index_screen.dart';
 
 class MeetWithGurudevScreen extends StatelessWidget {
   MeetWithGurudevScreen({Key? key}) : super(key: key);
@@ -16,7 +15,7 @@ class MeetWithGurudevScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-        titleText: AppMessage.meetToGurudev,
+        titleText: AppMessage.meetWithGurudev,
         actionShow: false,
         actionOnTap: () {},
         leadingShow: false,
@@ -24,8 +23,10 @@ class MeetWithGurudevScreen extends StatelessWidget {
       body: Obx(
         () => meetWithGurudevScreenController.isLoading.value
             ? const CustomLoader()
-            : Html(
-                data: meetWithGurudevScreenController.meetToGurudevData.value,
+            : SingleChildScrollView(
+                child: Html(
+                  data: meetWithGurudevScreenController.meetToGurudevData.value,
+                ),
               ),
       ),
     );

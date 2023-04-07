@@ -7,19 +7,28 @@ import '../../../common_widgets/custom_appbar.dart';
 import '../../../controller/youtube_video_screen_controller.dart';
 
 class YouTubeVideoScreen extends StatelessWidget {
-   YouTubeVideoScreen({Key? key}) : super(key: key);
-   final youTubeVideoScreenController = Get.put(YouTubeVideoScreenController());
+  YouTubeVideoScreen({Key? key}) : super(key: key);
+  final youTubeVideoScreenController = Get.put(YouTubeVideoScreenController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-      titleText: "Youtube Video",
-      leadingShow: false,
-      actionShow: false,
-    ),
-      body: Obx(()=>youTubeVideoScreenController.isLoading.value
-          ? const CustomLoader()
-          : ViewYouTubeVideoModule().commonSymmetricPadding(vertical: 10, horizontal: 10)),
+        titleText: "Youtube Video",
+        leadingShow: false,
+        actionShow: false,
+      ),
+      body: Obx(
+        () => youTubeVideoScreenController.isLoading.value
+            ? const CustomLoader()
+            : SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ViewYouTubeVideoModule()
+                        .commonSymmetricPadding(vertical: 10, horizontal: 10),
+                  ],
+                ),
+              ),
+      ),
     );
   }
 }

@@ -1,0 +1,95 @@
+{
+  "project_info": {
+    "project_number": "197435896606",
+    "firebase_url": "https://nmsv-b56b4.firebaseio.com",
+    "project_id": "nmsv-b56b4",
+    "storage_bucket": "nmsv-b56b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197435896606:android:ec782ccb2ebed155",
+        "android_client_info": {
+          "package_name": "com.gurudev.narayanmantrasadhana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197435896606-0749j7qpngp57ohlrdap3gej2dikfojp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gurudev.narayanmantrasadhana",
+            "certificate_hash": "db9c884104dc1a5f83211ae2c365da12ec08b87c"
+          }
+        },
+        {
+          "client_id": "197435896606-a3kg27gp24h1db5j04vhqmmhpm499mek.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gurudev.narayanmantrasadhana",
+            "certificate_hash": "d109061079070ef4b339797a8a7d39d37145965d"
+          }
+        },
+        {
+          "client_id": "197435896606-apsood188vls83odo436esi1c4osegfi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gurudev.narayanmantrasadhana",
+            "certificate_hash": "93832194ea59db623c9540bd0303f41ec18dbb43"
+          }
+        },
+        {
+          "client_id": "197435896606-c1q80m59b2nk3luenei3dpmua0v35c3l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gurudev.narayanmantrasadhana",
+            "certificate_hash": "67779a4abcab1942a9a6f39bad30fb8ef152a983"
+          }
+        },
+        {
+          "client_id": "197435896606-l17qedcmicn8ijj1l15ip952bmv9kuek.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gurudev.narayanmantrasadhana",
+            "certificate_hash": "ca129e24b5ba7de9a1f5cd0b2b1d160d997fa28e"
+          }
+        },
+        {
+          "client_id": "197435896606-ps0qf6hi6oodf75a0622gtqkka01m135.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gurudev.narayanmantrasadhana",
+            "certificate_hash": "249fb0389fc8b2ad014d65f0cec95da889a77e45"
+          }
+        },
+        {
+          "client_id": "197435896606-8hmirfsdnk4hi9ithfjfjhofdi757skq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9uF6ZVpXW9D1x0HvOqC2RUG1clGt0zwk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197435896606-8hmirfsdnk4hi9ithfjfjhofdi757skq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "197435896606-vjcltrbnle0cfkhaorhha2be39l05npj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gurudev.narayanmantrasadhana"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,29 +7,31 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../../controller/youtube_video_screen_controller.dart';
 
 class ViewYouTubeVideoModule extends StatefulWidget {
-   ViewYouTubeVideoModule({Key? key}) : super(key: key);
+  const ViewYouTubeVideoModule({Key? key}) : super(key: key);
 
   @override
   State<ViewYouTubeVideoModule> createState() => _ViewYouTubeVideoModuleState();
 }
 
 class _ViewYouTubeVideoModuleState extends State<ViewYouTubeVideoModule> {
-   final youTubeVideoScreenController = Get.find<YouTubeVideoScreenController>();
-   YoutubePlayerController? controller;
-   @override
+  final youTubeVideoScreenController = Get.find<YouTubeVideoScreenController>();
+  YoutubePlayerController? controller;
+  @override
   void initState() {
-     log("youTubeVideoScreenController.videoUrl : ${youTubeVideoScreenController.videoUrl}");
+    log("youTubeVideoScreenController.videoUrl : ${youTubeVideoScreenController.videoUrl}");
     super.initState();
-    final videoId = YoutubePlayer.convertUrlToId(youTubeVideoScreenController.videoUrl);
-    controller = YoutubePlayerController(initialVideoId: videoId!,
+    final videoId =
+        YoutubePlayer.convertUrlToId(youTubeVideoScreenController.videoUrl);
+    controller = YoutubePlayerController(
+        initialVideoId: videoId!,
         flags: const YoutubePlayerFlags(
           enableCaption: false,
           isLive: false,
           autoPlay: false,
           loop: false,
-        )
-    );
+        ));
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(

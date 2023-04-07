@@ -30,16 +30,19 @@ class HomeDrawerCustomModule extends StatelessWidget {
             ).commonSymmetricPadding(horizontal: 20),
             const Divider(color: AppColors.greyColor),
             HomeDrawerModule(
-              icon: Icons.home,
+              // icon: Icons.home,
               text: AppMessage.home,
               onTap: () {
                 Get.back();
               },
+              imageIcon: AppImages.homeImage,
             ),
             const Divider(color: AppColors.greyColor),
 
             HomeDrawerModule(
-              icon: Icons.music_note_rounded,
+              // icon: Icons.music_note_rounded,
+              imageIcon: AppImages.bhajanImage,
+
               text: AppMessage.bhajan,
               onTap: () {
                 Get.back();
@@ -50,7 +53,9 @@ class HomeDrawerCustomModule extends StatelessWidget {
             const Divider(color: AppColors.greyColor),
 
             HomeDrawerModule(
-              icon: Icons.media_bluetooth_on,
+              // icon: Icons.media_bluetooth_on,
+              imageIcon: AppImages.iconGuruvaniImage,
+
               text: AppMessage.guruvani,
               onTap: () {
                 Get.back();
@@ -61,8 +66,10 @@ class HomeDrawerCustomModule extends StatelessWidget {
             const Divider(color: AppColors.greyColor),
 
             HomeDrawerModule(
-              icon: Icons.today,
+              // icon: Icons.today,
               text: AppMessage.campSchedule,
+              imageIcon: AppImages.iconSchedule,
+
               onTap: () {
                 Get.back();
 
@@ -72,8 +79,10 @@ class HomeDrawerCustomModule extends StatelessWidget {
             const Divider(color: AppColors.greyColor),
 
             HomeDrawerModule(
-              icon: Icons.people,
+              // icon: Icons.people,
               text: AppMessage.meetWithGurudev,
+              imageIcon: AppImages.iconMettingImage,
+
               onTap: () {
                 Get.back();
                 Get.to(() => MeetWithGurudevScreen());
@@ -82,8 +91,10 @@ class HomeDrawerCustomModule extends StatelessWidget {
             const Divider(color: AppColors.greyColor),
 
             HomeDrawerModule(
-              icon: Icons.map_sharp,
+              // icon: Icons.map_sharp,
               text: AppMessage.contactUs,
+              imageIcon: AppImages.iconContact,
+
               onTap: () {
                 Get.back();
 
@@ -93,7 +104,9 @@ class HomeDrawerCustomModule extends StatelessWidget {
             const Divider(color: AppColors.greyColor),
 
             HomeDrawerModule(
-              icon: Icons.photo_library_outlined,
+              // icon: Icons.photo_library_outlined,
+              imageIcon: AppImages.galleryImage,
+
               text: AppMessage.gallery,
               onTap: () {
                 Get.back();
@@ -166,15 +179,17 @@ class HomeDrawerCustomModule extends StatelessWidget {
 }
 
 class HomeDrawerModule extends StatelessWidget {
-  final IconData? icon;
+  // final IconData? icon;
   final String text;
   final Function()? onTap;
+  final String imageIcon;
 
   const HomeDrawerModule({
     Key? key,
-    required this.icon,
+    // required this.icon,
     required this.text,
     required this.onTap,
+    required this.imageIcon,
   }) : super(key: key);
 
   @override
@@ -183,17 +198,27 @@ class HomeDrawerModule extends StatelessWidget {
       onTap: onTap,
       child: ListTile(
         visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
-        leading: Icon(
-          icon,
-          color: Colors.black,
-          size: 25,
+        leading: Container(
+          height: 25,
+          width: 25,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(imageIcon),
+            ),
+          ),
         ),
+        // Icon(
+        //   icon,
+        //   color: Colors.black,
+        //   size: 25,
+        // ),
         title: Text(
           text,
           style: TextStyleConfig.textStyle(
-              fontSize: 14.sp,
-              textColor: AppColors.blackColor,
-              fontWeight: FontWeight.w300),
+            fontSize: 14.sp,
+            textColor: AppColors.blackColor,
+            fontWeight: FontWeight.w300,
+          ),
         ),
       ),
     );

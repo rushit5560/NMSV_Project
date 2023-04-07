@@ -11,8 +11,12 @@ import '../../../constants/color.dart';
 import '../../../controller/shibir_photos_screen_controller.dart';
 
 class ShibirPhotosSliderScreen extends StatelessWidget {
-  ShibirPhotosSliderScreen({Key? key}) : super(key: key);
+  ShibirPhotosSliderScreen({
+    Key? key,
+    required this.initialPageViewIndex,
+  }) : super(key: key);
   final shibirPhotosScreenController = Get.find<ShibirPhotosScreenController>();
+  final int initialPageViewIndex;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +35,8 @@ class ShibirPhotosSliderScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 children: [
                   PhotoViewGallery.builder(
+                    pageController:
+                        PageController(initialPage: initialPageViewIndex),
                     itemCount:
                         shibirPhotosScreenController.galleryPhotos.length,
                     builder: (context, index) {

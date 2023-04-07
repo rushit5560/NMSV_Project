@@ -52,56 +52,64 @@ class GuruvaniPlayerListModule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      // itemCount: guruvaniPlayerScreenController.allGalleryList.length,
-      itemCount: guruvaniPlayerScreenController.serchGuruvaniplayerList.length,
-      itemBuilder: (context, index) {
-        log("mediaUrl  ${guruvaniPlayerScreenController.serchGuruvaniplayerList[index].mediaUrl}");
-        var value =
-            guruvaniPlayerScreenController.serchGuruvaniplayerList[index];
-        return InkWell(
-          onTap: () {
-            Get.to(
-              () => GuruvaniAudioScreen(),
-              arguments: [
-                guruvaniPlayerScreenController
-                    .serchGuruvaniplayerList[index].title.replaceAll(".mp3", ""),
-                guruvaniPlayerScreenController
-                  .serchGuruvaniplayerList[index].mediaUrl],
-              // arguments: guruvaniPlayerScreenController
-              //     .serchBhajanplayerList[index].mediaUrl
-            );
-          },
-          child: Container(
-
-            decoration: BoxDecoration(
-              // border: Border.all(color: Colors.grey.shade400, width: 0.0),
-              color: Colors.white,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10),
-              ),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.3), //color of shadow
-                    // spreadRadius: 3,
-                    blurRadius: 5,
-                    blurStyle: BlurStyle.outer)
-              ],
+    return guruvaniPlayerScreenController.serchGuruvaniplayerList.isEmpty
+        ? Center(
+            child: Text(
+              "No data found.",
+              style: TextStyleConfig.textStyle(fontSize: 14.sp),
             ),
-            child:ListTile(
-              title: Text(
-                value.title.replaceAll(".mp3", ""),
-                style: TextStyleConfig.textStyle(fontSize: 12.sp),
-              ),
-              trailing: GestureDetector(
-                  onTap: (){},
-                  child: const Icon(Icons.download)),
-            ),
-          ),
-        );
-      },
-    );
+          )
+        : ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            // itemCount: guruvaniPlayerScreenController.allGalleryList.length,
+            itemCount:
+                guruvaniPlayerScreenController.serchGuruvaniplayerList.length,
+            itemBuilder: (context, index) {
+              log("mediaUrl  ${guruvaniPlayerScreenController.serchGuruvaniplayerList[index].mediaUrl}");
+              var value =
+                  guruvaniPlayerScreenController.serchGuruvaniplayerList[index];
+              return InkWell(
+                onTap: () {
+                  Get.to(
+                    () => GuruvaniAudioScreen(),
+                    arguments: [
+                      guruvaniPlayerScreenController
+                          .serchGuruvaniplayerList[index].title
+                          .replaceAll(".mp3", ""),
+                      guruvaniPlayerScreenController
+                          .serchGuruvaniplayerList[index].mediaUrl
+                    ],
+                    // arguments: guruvaniPlayerScreenController
+                    //     .serchBhajanplayerList[index].mediaUrl
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    // border: Border.all(color: Colors.grey.shade400, width: 0.0),
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(0.3), //color of shadow
+                          // spreadRadius: 3,
+                          blurRadius: 5,
+                          blurStyle: BlurStyle.outer)
+                    ],
+                  ),
+                  child: ListTile(
+                    title: Text(
+                      value.title.replaceAll(".mp3", ""),
+                      style: TextStyleConfig.textStyle(fontSize: 12.sp),
+                    ),
+                    trailing: GestureDetector(
+                        onTap: () {}, child: const Icon(Icons.download)),
+                  ),
+                ),
+              );
+            },
+          );
   }
 }

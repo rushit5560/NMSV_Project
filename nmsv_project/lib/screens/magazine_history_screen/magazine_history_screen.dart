@@ -9,7 +9,8 @@ import 'magazine_history_screen_widgets.dart';
 
 class MagazineHistoryScreen extends StatelessWidget {
   MagazineHistoryScreen({Key? key}) : super(key: key);
-  final magazineHistoryScreenController = Get.put(MagazineHistoryScreenController());
+  final magazineHistoryScreenController =
+      Get.put(MagazineHistoryScreenController());
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +19,19 @@ class MagazineHistoryScreen extends StatelessWidget {
           titleText: "Magazine History Subc.",
           leadingShow: false,
           actionShow: false),
-      body:Column(
+      body: Column(
         children: [
           MagazineHistoryModule(),
           const Divider(),
-          Text('SUBSRIBE NOW',
+          Text(
+            'SUBSCRIBE NOW',
             style: TextStyleConfig.textStyle(
-                fontSize: 12.sp,
-                //fontWeight: FontWeight.bold
+              fontSize: 12.sp,
+              //fontWeight: FontWeight.bold
             ),
           )
         ],
-      ).commonSymmetricPadding(horizontal: 10,vertical: 10),
+      ).commonSymmetricPadding(horizontal: 12, vertical: 15),
     );
   }
 }

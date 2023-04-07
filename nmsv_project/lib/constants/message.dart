@@ -10,13 +10,13 @@ class AppMessage {
   static String or = "OR";
   static String googleSign = "Sign in with Google";
 
-  static String userName = "Username";
+  static String userName = "Username/Email";
   static String password = "Password";
   static String fullNmae = "Full Name";
   static String email = "Email";
   static String phoneNumber = "Phone Number";
   static String patternRegX = r'(^[0-9]*$)';
-
+  static String backAlertMessage = "Are you sure you want to go to leave app?";
   static String pleaseEnterPhoneNumber = 'Please enter mobile number.';
   static String mobileNumberMustTenDigits = 'Mobile number must 10 digits.';
   static String mobileNumberMustBeDigits = 'Mobile Number must be digits.';
@@ -51,13 +51,13 @@ class AppMessage {
 
   static String shibirPhotos = "Shibir Photos";
 
-  static String meetToGurudev = "Meet To Gurudev";
+  // static String meetToGurudev = "Meet To Gurudev";
   static String contactUs = "Contact Us";
   static String logOut = "Logout";
-  static String cancle = "Cancle";
+  static String cancel = "Cancel";
   static String updateProfile = "UPDATE PROFILE";
 
-
   static String appMesage = "Narayan Mantra Sadhana Vigyan";
-  
+  static String regX =
+      r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
 }

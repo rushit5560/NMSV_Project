@@ -58,8 +58,15 @@ class GuruvaniListModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // log("guruvaniListScreenController.allGalleryList.length: ${guruvaniListScreenController.allGalleryList.length}");
-    return ListView.builder(
-      physics: NeverScrollableScrollPhysics(),
+    return guruvaniListScreenController.searchGuruvaniList.isEmpty
+        ? Center(
+            child: Text(
+              "No data found.",
+              style: TextStyleConfig.textStyle(fontSize: 14.sp),
+            ),
+          )
+        :ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: guruvaniListScreenController.searchGuruvaniList.length,
       itemBuilder: (context, index) {

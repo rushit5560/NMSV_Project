@@ -11,6 +11,9 @@ class UserDetails {
   static String city = "";
   static String country = "";
   static String zipCode = "";
+  static String displayName = "";
+  static String googleEmail = "";
+
 
 
   static bool isUserLoggedIn = false;

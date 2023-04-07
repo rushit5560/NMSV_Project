@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nmsv_project/utils/user_preference.dart';
-
 import '../screens/Bhajan_screen/bhajan_list_screen/Bhajan_list_screen.dart';
 import '../screens/Contact_us_screen/Contact_us_screen.dart';
-import '../screens/auth_screens/login_screen/signin_screen.dart';
 import '../screens/home_screen/home_screen.dart';
-import '../screens/profile_screen/profile_screen.dart';
 import '../screens/profile_section_screen/profile_section_screen.dart';
 
 class IndexScreenController extends GetxController {

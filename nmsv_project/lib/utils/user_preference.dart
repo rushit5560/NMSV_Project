@@ -15,8 +15,9 @@ class UserPreference {
   static String stateKey = "stateKey";
   static String cityKey = "cityKey";
   static String countryKey = "countryKey";
-    static String zipCodeKey = "zipCodeKey";
-
+  static String zipCodeKey = "zipCodeKey";
+  static String displaynameKey = "displaynameKey";
+  static String googleEmailKey = "googleEmailKey";
 
   static String userFNameKey = "userFNameKey";
   static String userLNameKey = "userLNameKey";
@@ -64,6 +65,8 @@ class UserPreference {
     prefs.setString(userIdKey, '');
     prefs.setString(fullNameKey, '');
     prefs.setString(phoneNumberKey, '');
+    prefs.setString(displaynameKey, '');
+    prefs.setString(googleEmailKey, '');
 
     UserDetails.isUserLoggedIn = prefs.getBool(isUserLoggedInKey) ?? false;
     UserDetails.userId = prefs.getString(userIdKey) ?? "";
@@ -74,6 +77,8 @@ class UserPreference {
     UserDetails.username = prefs.getString(userNameKey) ?? "";
     UserDetails.userFNameKey = prefs.getString(userFNameKey) ?? "";
     UserDetails.userLNameKey = prefs.getString(userLNameKey) ?? "";
+    UserDetails.displayName = prefs.getString(displaynameKey) ?? "";
+    UserDetails.googleEmail = prefs.getString(googleEmailKey) ?? "";
   }
 
   Future<void> userAllDataFromPrefs() async {

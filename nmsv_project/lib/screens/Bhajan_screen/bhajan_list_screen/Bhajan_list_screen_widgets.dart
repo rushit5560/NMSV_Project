@@ -53,47 +53,53 @@ class BhajanListModule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      // itemCount: bhajanListScreenController.allGalleryList.length,
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: bhajanListScreenController.searchBhajanDataList.length,
-      itemBuilder: (context, index) {
-        var val = bhajanListScreenController.searchBhajanDataList[index];
-        return InkWell(
-          onTap: () {
-            log("allBhajanId : ${bhajanListScreenController.searchBhajanDataList[index].allBhajanId}");
-            Get.to(() => BhajanPlayerScreen(),
-                arguments: bhajanListScreenController
-                    .searchBhajanDataList[index].allBhajanId);
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10),
-              ),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.3), //color of shadow
-                    blurRadius: 5,
-                    blurStyle: BlurStyle.outer)
-              ],
+    return bhajanListScreenController.searchBhajanDataList.isEmpty
+        ? Center(
+            child: Text(
+              "No data found.",
+              style: TextStyleConfig.textStyle(fontSize: 14.sp),
             ),
-            child: ListTile(
-              title: Text(
-                val.title,
-                style: TextStyleConfig.textStyle(
-                    fontSize: 13.sp,
-                    fontFamily: FontFamilyText.roboto,
-                    fontWeight: FontWeight.w500
+          )
+        : ListView.builder(
+            // itemCount: bhajanListScreenController.allGalleryList.length,
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: bhajanListScreenController.searchBhajanDataList.length,
+            itemBuilder: (context, index) {
+              var val = bhajanListScreenController.searchBhajanDataList[index];
+              return InkWell(
+                onTap: () {
+                  log("allBhajanId : ${bhajanListScreenController.searchBhajanDataList[index].allBhajanId}");
+                  Get.to(() => BhajanPlayerScreen(),
+                      arguments: bhajanListScreenController
+                          .searchBhajanDataList[index].allBhajanId);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(0.3), //color of shadow
+                          blurRadius: 5,
+                          blurStyle: BlurStyle.outer)
+                    ],
+                  ),
+                  child: ListTile(
+                    title: Text(
+                      val.title,
+                      style: TextStyleConfig.textStyle(
+                          fontSize: 13.sp,
+                          fontFamily: FontFamilyText.roboto,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    trailing: const Icon(Icons.navigate_next_outlined),
+                  ),
                 ),
-              ),
-              trailing: const Icon(Icons.navigate_next_outlined),
-            ),
-          ),
-        );
-      },
-    );
+              );
+            },
+          );
   }
 }

@@ -28,7 +28,7 @@ class MeetWithGurudevScreenController extends GetxController {
           .transform(const Utf8Decoder())
           .transform(const LineSplitter())
           .listen((value) {
-        // log('getDikshaDataFunction value : $value');
+        log('getDikshaDataFunction value : $value');
         MeetToGurudevModel meetToGurudevModel =
             MeetToGurudevModel.fromJson(json.decode(value.toString()));
         successStatus = meetToGurudevModel.status;

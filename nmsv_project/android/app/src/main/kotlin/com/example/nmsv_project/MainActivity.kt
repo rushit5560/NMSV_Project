@@ -1,4 +1,4 @@
-package com.example.nmsv_project
+package com.gurudev.narayanmantrasadhana
 
 import io.flutter.embedding.android.FlutterActivity
 

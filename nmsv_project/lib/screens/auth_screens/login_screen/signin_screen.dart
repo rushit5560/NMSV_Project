@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/constants/app_images.dart';
@@ -47,7 +49,7 @@ class SignInScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 3.h),
-           SignTextFormFieldModule(),
+            SignTextFormFieldModule(),
             SizedBox(height: 2.h),
             Text(
               AppMessage.or,
@@ -66,7 +68,11 @@ class SignInScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     )),
-                onPressed: () {},
+                onPressed: () {
+                  log("11111");
+                  loginScreenController.signInWithGoogle();
+                  log("22222");
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

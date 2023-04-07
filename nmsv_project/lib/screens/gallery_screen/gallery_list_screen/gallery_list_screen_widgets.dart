@@ -60,43 +60,52 @@ class GalleryListModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // log("galleryScreenController.allGalleryList.length: ${galleryScreenController.allGalleryList.length}");
-    return ListView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: galleryScreenController.searchGalleryDataList.length,
-      itemBuilder: (context, index) {
-        final valuedata = galleryScreenController.searchGalleryDataList[index];
-        return InkWell(
-          onTap: () {
-            Get.to(
-              () => GalleryShibirPhotosScreen(),
-              arguments: galleryScreenController
-                  .searchGalleryDataList[index].shivirGalleryId,
-            );
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10),
-              ),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.3), //color of shadow
-                    blurRadius: 5,
-                    blurStyle: BlurStyle.outer)
-              ],
+    // ignore: prefer_const_constructors
+    return galleryScreenController.searchGalleryDataList.isEmpty
+        ? Center(
+            child: Text(
+              "No data found.",
+              style: TextStyleConfig.textStyle(fontSize: 14.sp),
             ),
-            child: ListTile(
-              title: Text(
-                valuedata.shivirGalleryTitle,
-                style: TextStyleConfig.textStyle(fontSize: 12.sp),
-              ),
-              trailing: const Icon(Icons.navigate_next_outlined),
-            ),
-          ),
-        );
-      },
-    );
+          )
+        : ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: galleryScreenController.searchGalleryDataList.length,
+            itemBuilder: (context, index) {
+              final valuedata =
+                  galleryScreenController.searchGalleryDataList[index];
+              return InkWell(
+                onTap: () {
+                  Get.to(
+                    () => GalleryShibirPhotosScreen(),
+                    arguments: galleryScreenController
+                        .searchGalleryDataList[index].shivirGalleryId,
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(0.3), //color of shadow
+                          blurRadius: 5,
+                          blurStyle: BlurStyle.outer)
+                    ],
+                  ),
+                  child: ListTile(
+                    title: Text(
+                      valuedata.shivirGalleryTitle,
+                      style: TextStyleConfig.textStyle(fontSize: 12.sp),
+                    ),
+                    trailing: const Icon(Icons.navigate_next_outlined),
+                  ),
+                ),
+              );
+            },
+          );
   }
 }

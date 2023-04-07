@@ -64,7 +64,7 @@ class HomoScreenController extends GetxController {
     ),
     MainCategory(
       image: AppImages.iconMetting,
-      name: AppMessage.meetToGurudev,
+      name: AppMessage.meetWithGurudev,
     ),
     MainCategory(
       image: AppImages.iconContact,

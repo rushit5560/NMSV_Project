@@ -19,12 +19,12 @@ class MyProfileTextFormFieldWidgets extends StatelessWidget {
         children: [
           TextFieldModule(
             fieldController: myProfileScreenController.usernamecontroller,
-            hintText: 'Username',
+            hintText: 'UserName',
             keyboardType: TextInputType.text,
           ),
           SizedBox(height: 2.h),
           TextFieldModule(
-            readonly: true,
+            readOnly: true,
             fieldController: myProfileScreenController.emailcontroller,
             hintText: 'Email',
             keyboardType: TextInputType.text,
@@ -38,7 +38,7 @@ class MyProfileTextFormFieldWidgets extends StatelessWidget {
           SizedBox(height: 2.h),
           TextFieldModule(
             fieldController: myProfileScreenController.lastNameController,
-            hintText: 'LatName',
+            hintText: 'LastName',
             keyboardType: TextInputType.text,
           ),
           SizedBox(height: 2.h),
@@ -83,7 +83,7 @@ class MyProfileTextFormFieldWidgets extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: CustomSubmitButtonModule(
-                  labelText: AppMessage.cancle,
+                  labelText: AppMessage.cancel,
                   onPress: () {
                     Get.back();
                   },

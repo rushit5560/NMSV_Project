@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nmsv_project">
+    package="com.gurudev.narayanmantrasadhana">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="nmsv_project"

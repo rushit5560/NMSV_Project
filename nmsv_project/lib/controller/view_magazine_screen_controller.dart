@@ -24,11 +24,13 @@ class ViewMagazineScreenController extends GetxController {
     log("getViewMagazinePdfListFunction url : $url");
     try {
       Map<String, dynamic> bodyData = {"MagazinepdfID": magazinePdfId};
-      http.Response response = await http.post(Uri.parse(url),body: jsonEncode(bodyData));
+      http.Response response =
+          await http.post(Uri.parse(url), body: jsonEncode(bodyData));
       log('response.body : ${response.body}');
-      ViewPdfMagazineModel magazinePdf = ViewPdfMagazineModel.fromJson(json.decode(response.body));
-       log("response.body : ${response.body}");
-       successStatus.value = magazinePdf.status;
+      ViewPdfMagazineModel magazinePdf =
+          ViewPdfMagazineModel.fromJson(json.decode(response.body));
+      log("response.body : ${response.body}");
+      successStatus.value = magazinePdf.status;
       if (successStatus.value.toLowerCase() == "ok") {
         viewMagazinePdf.value = magazinePdf.data.imageurl;
         title = magazinePdf.data.archiveTitle;
@@ -36,7 +38,7 @@ class ViewMagazineScreenController extends GetxController {
         regularFeature = magazinePdf.data.regularFeature;
         sadhana = magazinePdf.data.sadhana;
         ayurveda = magazinePdf.data.ayurveda;
-        pdfurl = magazinePdf.data.pdfFile;
+        pdfurl = magazinePdf.data.pdfurl;
       } else {
         log('getViewMagazinePdfListFunction Else');
       }
@@ -46,7 +48,6 @@ class ViewMagazineScreenController extends GetxController {
     }
     isLoading(false);
   }
-
 
   @override
   void onInit() {

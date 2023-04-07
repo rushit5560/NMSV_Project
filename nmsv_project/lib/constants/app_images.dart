@@ -24,31 +24,29 @@ class AppImages {
   static const iconMetting = "$rootPath/icon_metting.png";
   static const iconContact = "$rootPath/icon_contact.png";
   static const logoImage1 = "$rootPath/logo.png";
-  static const appLogoImage="$rootPath/icon.png";
-  static const drawerIcon="$rootPath/logo.png";
-  static const googleImage="$rootPath/google.png";
-  static const iconMessImage="$rootPath/icon_mess.png";
+  static const appLogoImage = "$rootPath/icon.png";
+  static const drawerIcon = "$rootPath/logo.png";
+  static const googleImage = "$rootPath/google.png";
+  static const iconMessImage = "$rootPath/icon_mess.png";
 
-  static const magazineImage="$rootPath/magazine.png";
-  static const iconProfileImage="$rootPath/icon_profile.png";
-  static const iconMettingImage="$rootPath/icon_metting.png";
+  static const magazineImage = "$rootPath/magazine.png";
+  static const iconProfileImage = "$rootPath/icon_profile.png";
+  static const iconMettingImage = "$rootPath/icon_metting.png";
 
-  static const bhajanImage="$rootPath/bhajan.png";
-  static const iconMusicImage="$rootPath/icon_music.png";
+  static const bhajanImage = "$rootPath/bhajan.png";
+  static const iconGuruvaniImage = "$rootPath/icon_music.png";
 
-  static const iconVideoImage="$rootPath/icon_video.png";
+  static const iconVideoImage = "$rootPath/icon_video.png";
 
-  static const iconLogoutImage="$rootPath/icon_logout.png";
-
-
-
-
-
+  static const iconLogoutImage = "$rootPath/icon_logout.png";
+  static const gurudevImage = "$rootPath/arvindjigurudev.png";
+  static const galleryImage = "$rootPath/gallery.png";
+  static const homeImage = "$rootPath/home.png";
 
 }
 
-
 class AppAudio {
   // static const rootPath = 'audios';
-  static const bhajanAudio = "https://narayanmantrasadhanavigyan.org/assets/uploads/bhajan/762941_Gurudev-Kar-Do-Krupa_07.mp3";
+  static const bhajanAudio =
+      "https://narayanmantrasadhanavigyan.org/assets/uploads/bhajan/762941_Gurudev-Kar-Do-Krupa_07.mp3";
 }

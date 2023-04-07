@@ -6,11 +6,11 @@ import '../../../controller/shibir_photos_screen_controller.dart';
 import '../shibir_photos_slider_screen/shibir_photos_slider_screen.dart';
 
 class PhotosGridViewListModule extends StatelessWidget {
-   PhotosGridViewListModule({Key? key}) : super(key: key);
-final shibirPhotosScreenController = Get.find<ShibirPhotosScreenController>();
+  PhotosGridViewListModule({Key? key}) : super(key: key);
+  final shibirPhotosScreenController = Get.find<ShibirPhotosScreenController>();
   @override
   Widget build(BuildContext context) {
-     //log("shibirPhotosScreenController.galleryPhotos.length: ${shibirPhotosScreenController.galleryPhotos.length}");
+    //log("shibirPhotosScreenController.galleryPhotos.length: ${shibirPhotosScreenController.galleryPhotos.length}");
     return Expanded(
       child: GridView.builder(
         itemCount: shibirPhotosScreenController.galleryPhotos.length,
@@ -23,11 +23,15 @@ final shibirPhotosScreenController = Get.find<ShibirPhotosScreenController>();
           final value = shibirPhotosScreenController.galleryPhotos[index];
           return GestureDetector(
             onTap: () {
-              Get.to(()=> ShibirPhotosSliderScreen());
+              Get.to(
+                () => ShibirPhotosSliderScreen(
+                  initialPageViewIndex: index,
+                ),
+              );
             },
             child: Container(
               // height: 40.h,
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                   color: AppColors.whiteColor,
                   borderRadius: const BorderRadius.all(
                     Radius.circular(10),

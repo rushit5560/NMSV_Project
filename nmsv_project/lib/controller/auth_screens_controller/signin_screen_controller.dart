@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:nmsv_project/constants/api_url.dart';
+import 'package:nmsv_project/constants/color.dart';
 import 'package:nmsv_project/model/auth_screen_model/login_model.dart';
 import 'package:nmsv_project/screens/index_screen/index_screen.dart';
 import 'package:nmsv_project/utils/user_preference.dart';
@@ -15,6 +16,12 @@ class SignInScreenController extends GetxController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   RxBool isLoading = false.obs;
   RxString successStatus = "".obs;
+  FirebaseAuth auth = FirebaseAuth.instance;
+  var googleSignIn = GoogleSignIn();
+  var googleAccount = Rx<GoogleSignInAccount?>(null);
+  var isSignIn = false.obs;
+  var displayname = "";
+  var email = "";
 
   TextEditingController userNameEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
@@ -107,7 +114,11 @@ class SignInScreenController extends GetxController {
           lastName: loginModel.lastName,
           mobileNo: loginModel.mobileNo,
         );
-        log('userLoginFunction userId : ${loginModel.userId}');
+        log('userId : ${loginModel.userId}');
+        Fluttertoast.showToast(
+          // backgroundColor: AppColors.orangeColor1,
+          msg: "login successfully..",
+        );
         Get.offAll(() => IndexScreen());
       } else {
         Fluttertoast.showToast(
@@ -123,4 +134,99 @@ class SignInScreenController extends GetxController {
       isLoading(false);
     }
   }
+
+  void signInWithGoogle() async {
+    isLoading(true);
+    try {
+      googleAccount.value = await googleSignIn.signIn();
+      displayname = googleAccount.value!.displayName!;
+      email = googleAccount.value!.email;
+      await socialMediaApiLoginFunction(email, displayname);
+      isSignIn.value = true;
+    } catch (e) {
+      log("error : $e");
+
+      // Get.snackbar(
+      //   "Error ",
+      //   e.toString(),
+      //   snackPosition: SnackPosition.BOTTOM,
+      //   backgroundColor: Colors.grey,
+      //   colorText: AppColors.blackColor,
+      // );
+    }
+    isLoading(false);
+  }
+
+  Future<void> socialMediaApiLoginFunction(
+      String email, String userName) async {
+    isLoading(true);
+    String url = ApiUrl.googleLoginApi;
+
+    try {
+      Map<String, dynamic> bodyData = {
+        "emailid": email,
+        "login_type": "google",
+        "name": userName,
+        "googlekey":
+            "197435896606-ps0qf6hi6oodf75a0622gtqkka01m135.apps.googleusercontent.com"
+      };
+      http.Response response = await http.post(
+        Uri.parse(url),
+        body: jsonEncode(bodyData),
+      );
+
+      log("userLoginFunction Response.body : ${response.body}");
+      LoginModel loginModel = LoginModel.fromJson(json.decode(response.body));
+      // log("userLoginFunction Response.body : ${response.body}");
+      successStatus.value = loginModel.status;
+
+      if (successStatus.value.toLowerCase() == "ok") {
+        await setUserLoginDetails(
+          userLoggedIn: true,
+          userID: loginModel.userId,
+          userName: loginModel.userName,
+          emailId: loginModel.emailId,
+          firstName: loginModel.firstName,
+          lastName: loginModel.lastName,
+          mobileNo: loginModel.mobileNo,
+        );
+        log('userId : ${loginModel.userId}');
+          Fluttertoast.showToast(
+          // backgroundColor: AppColors.orangeColor1,
+          msg: "login successfully..",
+        );
+        Get.offAll(() => IndexScreen());
+      } else {
+        Fluttertoast.showToast(
+          // backgroundColor: AppColors.orangeColor1,
+          msg: loginModel.message,
+        );
+        log("userLoginFunction error");
+      }
+    } catch (e) {
+      log('socialMediaApiLoginFunction Error :$e');
+      rethrow;
+    }
+  }
+
+  // void signOut() async {
+  //   try {
+  //     await auth.signOut();
+  //     await googleSignIn.signOut();
+  //     displayname = "";
+  //     isSignIn.value = false;
+
+  //     update();
+  //     Get.back();
+  //   } catch (e) {
+  //     log("error : $e");
+  //     Get.snackbar(
+  //       "Error ",
+  //       e.toString(),
+  //       snackPosition: SnackPosition.BOTTOM,
+  //       backgroundColor: Colors.grey,
+  //       colorText: AppColors.blackColor,
+  //     );
+  //   }
+  // }
 }

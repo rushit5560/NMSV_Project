@@ -10,7 +10,7 @@ class TextFieldModule extends StatelessWidget {
   int? maxLength;
   Widget? suffixIcon;
   bool? obscureText;
-  bool? readonly = false;
+  bool readOnly;
 
   Widget? prefixIcon;
 
@@ -24,13 +24,13 @@ class TextFieldModule extends StatelessWidget {
     this.maxLength,
     this.suffixIcon,
     this.obscureText,
-    this.readonly,
+    this.readOnly = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      readOnly: false,
+      readOnly: readOnly,
       controller: fieldController,
       validator: validate,
       obscureText: obscureText ?? false,
