@@ -25,7 +25,7 @@ class SignTextFormFieldModule extends StatelessWidget {
         children: [
           TextFieldModule(
             fieldController: loginScreenController.userNameEditingController,
-            hintText: AppMessage.userName,
+            hintText: "Username/Email",
             keyboardType: TextInputType.text,
             validate: (value) => FieldValidator().validateUserName(value),
           ),

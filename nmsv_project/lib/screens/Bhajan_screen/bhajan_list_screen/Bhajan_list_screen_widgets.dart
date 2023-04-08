@@ -75,6 +75,7 @@ class BhajanListModule extends StatelessWidget {
                           .searchBhajanDataList[index].allBhajanId);
                 },
                 child: Container(
+                  margin: EdgeInsets.only(bottom: 2.h),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: const BorderRadius.all(

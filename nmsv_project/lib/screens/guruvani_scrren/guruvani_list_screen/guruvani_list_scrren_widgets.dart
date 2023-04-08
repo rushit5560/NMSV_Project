@@ -82,6 +82,7 @@ class GuruvaniListModule extends StatelessWidget {
             );
           },
           child: Container(
+            margin: EdgeInsets.only(bottom: 2.h),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: const BorderRadius.all(

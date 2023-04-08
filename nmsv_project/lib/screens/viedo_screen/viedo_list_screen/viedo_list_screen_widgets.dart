@@ -74,8 +74,7 @@ class VideoAllListModule extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  // padding: const EdgeInsets.all(8),
-                  // margin: const EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: 2.h),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: const BorderRadius.all(
