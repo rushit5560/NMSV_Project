@@ -76,13 +76,16 @@ class BhajanPlayerListModule extends StatelessWidget {
                   log("mediaUrl  ${bhajanPlayerScreenController.serchBhajanplayerList[index].mediaUrl}");
                   Get.to(
                     () => BhajanAudioScreen(),
-                    arguments: [
+                    arguments:
+                     [
+                      // bhajanPlayerScreenController
+                      //     .serchBhajanplayerList[index].bhajanName
+                      //     .toString()
+                      //     .replaceAll(".mp3", ""),
                       bhajanPlayerScreenController
-                          .serchBhajanplayerList[index].bhajanName
-                          .toString()
-                          .replaceAll(".mp3", ""),
-                      bhajanPlayerScreenController
-                          .serchBhajanplayerList[index].mediaUrl,
+                          .serchBhajanplayerList,
+
+                          index,
                     ],
                     // arguments: bhajanPlayerScreenController
                     //     .serchBhajanplayerList[index].mediaUrl

@@ -26,7 +26,10 @@ class _AudioModuleState extends State<AudioModule> {
             size: 200,
           ),
           SizedBox(height: 2.h),
-          Text(bhajanAudioScreenController.bhajanTitle.replaceAll(".mp3", "")),
+          Text(bhajanAudioScreenController
+              .bhajanList[bhajanAudioScreenController.index].bhajanFile
+              .replaceAll(".mp3", "")),
+          // Text(bhajanAudioScreenController.bhajanTitle.replaceAll(".mp3", "")),
           SliderTheme(
             data: const SliderThemeData(
               trackHeight: 1,

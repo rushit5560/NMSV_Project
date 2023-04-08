@@ -43,7 +43,7 @@ class AppMessage {
   static String register = "Register";
 
   static String diksha = "Diksha";
-  static String yantra = "yantra";
+  static String yantra = "Yantra";
   static String books = "Books";
   static String shadhana = "Shadhana";
   static String mantra = "Mantra";

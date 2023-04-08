@@ -3,12 +3,13 @@ import 'dart:developer';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/model/bhajan_screen_model/bhajan_player_list_model.dart';
 // import 'package:nmsv_project/constants/app_images.dart';
 // import 'package:nmsv_project/controller/bhajan_player_screen_controller.dart';
 
 class BhajanAudioScreenController extends GetxController {
-  String bhajanTitle = Get.arguments[0];
-  String bhajanAudio = Get.arguments[1];
+  List<Bhajan> bhajanList = Get.arguments[0];
+  int index = Get.arguments[1];
 
   // final bhajanPlayerScreenController = Get.find<BhajanPlayerScreenController>();
 
@@ -23,11 +24,12 @@ class BhajanAudioScreenController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
+    log('Init function index : $index');
     isLoading(true);
-    await audioPlayer.play(bhajanAudio);
+    await audioPlayer.play(bhajanList[index].mediaUrl);
 
     setup();
-    log("bhajanPlayerScreenController mediaUrl play: $bhajanAudio");
+    log("bhajanPlayerScreenController mediaUrl play: ${bhajanList[index].mediaUrl}");
     // loadUI();
   }
 
@@ -36,24 +38,39 @@ class BhajanAudioScreenController extends GetxController {
     audioPlayer.onAudioPositionChanged.listen((index) {
       currentPosition.value = index;
     });
-    audioPlayer.onDurationChanged.listen((index) {
+    audioPlayer.onDurationChanged.listen((index) async {
       musicLength.value = index;
       isPlaying(true);
       isLoading(false);
-       AwesomeNotifications().createNotification(content: NotificationContent(
-          id: 1,
-          channelKey: 'alerts',
-          title: 'NMSV',
-          body: bhajanTitle,
-        ));
+      notificationShowModule();
     });
-    audioPlayer.onPlayerStateChanged.listen((state) {
+    audioPlayer.onPlayerStateChanged.listen((state) async {
+      log('state : $state');
       playState.value = state;
+      if (state == PlayerState.COMPLETED) {
+        await changeSongWhenOldSongComplete();
+      }
     });
   }
 
+  notificationShowModule() {
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+      id: 1,
+      channelKey: 'alerts',
+      title: 'NMSV',
+      body: bhajanList[index].bhajanName,
+    ));
+  }
+
+  changeSongWhenOldSongComplete() async {
+    index++;
+    log('Setup function index : $index');
+    await audioPlayer.play(bhajanList[index].mediaUrl);
+  }
+
   playMusic() {
-    audioPlayer.play(bhajanAudio);
+    audioPlayer.play(bhajanList[index].mediaUrl);
   }
 
   stopMusic() {

@@ -94,10 +94,10 @@ class ChoiceTopicModule extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 8,
         crossAxisCount: 3,
-        childAspectRatio: 0.9,
+        childAspectRatio: 1,
       ),
       itemCount: homeScreenController.categoryList.length,
       itemBuilder: (context, i) {
@@ -106,33 +106,44 @@ class ChoiceTopicModule extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.shade400, width: 1),
+              border: Border.all(color: Colors.grey.shade500, width: 2),
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5), //color of shadow
-                  spreadRadius: 3,
-                )
-              ],
+              // boxShadow: [
+              //   BoxShadow(
+              //     color: Colors.grey.withOpacity(0.5), //color of shadow
+              //     spreadRadius: 3,
+              //   )
+              // ],
               color: Colors.white,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  height: 55,
-                  homeScreenController.categoryList[i].image,
+                Expanded(
+                  flex: 6,
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Image.asset(
+                      height: 55,
+                      homeScreenController.categoryList[i].image,
+                    ),
+                  ),
                 ),
-                SizedBox(height: 1.5.h),
-                Text(
-                  // maxLines: 1,
-                  textAlign: TextAlign.center,
-                  homeScreenController.categoryList[i].name,
-                  style: TextStyleConfig.textStyle(
-                    fontFamily: FontFamilyText.roboto,
-                    textColor: AppColors.blackColor,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 11.sp,
+                // SizedBox(height: 1.5.h),
+                Expanded(
+                  flex: 4,
+                  child: Center(
+                    child: Text(
+                      // maxLines: 1,
+                      textAlign: TextAlign.center,
+                      homeScreenController.categoryList[i].name,
+                      style: TextStyleConfig.textStyle(
+                        fontFamily: FontFamilyText.roboto,
+                        textColor: AppColors.blackColor,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 8.sp,
+                      ),
+                    ),
                   ),
                 ),
               ],
