@@ -22,27 +22,34 @@ class GuruvaniAudioScreenController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-
-    await audioPlayer.play(guruvaniAudio);
+    isLoading(true);
+    log('isLoading : $isLoading');
+    await audioPlayer.play(
+      guruvaniAudio,
+    );
 
     setup();
     log("GuruvaniAudioScreenController mediaUrl play: $guruvaniAudio");
-    loadUI();
+    // loadUI();
   }
 
   setup() {
-    isLoading(true);
     audioPlayer.onAudioPositionChanged.listen((index) {
       currentPosition.value = index;
+      log('currentPosition : ${currentPosition.value}');
     });
     audioPlayer.onDurationChanged.listen((index) {
       musicLength.value = index;
+      log('musicLength : ${musicLength.value}');
+      isPlaying(true);
+      isLoading(false);
     });
     audioPlayer.onPlayerStateChanged.listen((state) {
       playState.value = state;
+      log('playState : ${playState.value}');
     });
-    isPlaying(true);
-    isLoading(false);
+
+    // isLoading(false);
   }
 
   playMusic() {
