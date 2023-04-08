@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +10,23 @@ import 'package:sizer/sizer.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+   AwesomeNotifications().initialize(
+    null,
+    [
+      NotificationChannel(
+          channelKey: 'alerts',
+          channelName: 'alerts',
+          channelDescription: 'Notification tests as alerts',
+          playSound: true,
+          //defaultPrivacy: NotificationPrivacy.Private,
+          //importance: NotificationImportance.High,
+          //onlyAlertOnce: true,
+          defaultColor: Colors.deepPurple,
+          ledColor: Colors.deepPurple
+      ),
+    ],
+    debug: true
+  );
   runApp(const MyApp());
 
   SystemChrome.setPreferredOrientations(

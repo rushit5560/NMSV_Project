@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:get/get.dart';
 // import 'package:nmsv_project/constants/app_images.dart';
 // import 'package:nmsv_project/controller/bhajan_player_screen_controller.dart';
@@ -27,7 +28,7 @@ class BhajanAudioScreenController extends GetxController {
 
     setup();
     log("bhajanPlayerScreenController mediaUrl play: $bhajanAudio");
-    loadUI();
+    // loadUI();
   }
 
   setup() {
@@ -39,11 +40,16 @@ class BhajanAudioScreenController extends GetxController {
       musicLength.value = index;
       isPlaying(true);
       isLoading(false);
+       AwesomeNotifications().createNotification(content: NotificationContent(
+          id: 1,
+          channelKey: 'alerts',
+          title: 'NMSV',
+          body: bhajanTitle,
+        ));
     });
     audioPlayer.onPlayerStateChanged.listen((state) {
       playState.value = state;
     });
-
   }
 
   playMusic() {

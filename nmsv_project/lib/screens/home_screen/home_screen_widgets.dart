@@ -22,24 +22,22 @@ class CarouselBannerModule extends StatelessWidget {
         CarouselSlider(
           carouselController: homeScreenController.carouselController,
           items: homeScreenController.getBannerList
-              .map(
-                (item) =>
-                    ClipRRect(borderRadius: BorderRadius.circular(10),
-                    child: CachedNetworkImage(
-                      imageUrl: item.imageUrl,
-                      fit: BoxFit.fill,
-                    ),
-
-                    )
-                //     Container(
-                //   decoration: BoxDecoration(
-                //     borderRadius: BorderRadius.circular(10),
-                //     image: DecorationImage(
-                //         image: NetworkImage(item.imageUrl), fit: BoxFit.cover),
-                //   ),
-                //   // child: Image.network(item.imageUrl)
-                // ),
-              )
+              .map((item) => ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: CachedNetworkImage(
+                          imageUrl: item.imageUrl,
+                          fit: BoxFit.fill,
+                        ),
+                      )
+                  //     Container(
+                  //   decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(10),
+                  //     image: DecorationImage(
+                  //         image: NetworkImage(item.imageUrl), fit: BoxFit.cover),
+                  //   ),
+                  //   // child: Image.network(item.imageUrl)
+                  // ),
+                  )
               .toList(),
           options: CarouselOptions(
             scrollPhysics: const BouncingScrollPhysics(),

@@ -14,6 +14,7 @@ class CustomAlertDialog {
     required Function() onCancelTap,
   }) {
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (context) {
         return AlertDialog(

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:get/get.dart';
 
 import 'package:nmsv_project/controller/guruvani_player_screen_controller.dart';
@@ -39,6 +40,12 @@ class GuruvaniAudioScreenController extends GetxController {
       musicLength.value = index;
       isPlaying(true);
       isLoading(false);
+       AwesomeNotifications().createNotification(content: NotificationContent(
+          id: 1,
+          channelKey: 'alerts',
+          title: 'NMSV',
+          body: guruvaniTitle,
+        ));
     });
     audioPlayer.onPlayerStateChanged.listen((state) {
       playState.value = state;

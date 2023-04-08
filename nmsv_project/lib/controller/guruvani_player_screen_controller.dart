@@ -11,6 +11,8 @@ import 'package:nmsv_project/model/guruvani_screen_model/guruvani_player_model.d
 class GuruvaniPlayerScreenController extends GetxController {
   String guruvaniPlayerId = Get.arguments;
   RxString successStatus = ''.obs;
+  double? progress1;
+  RxBool onProgressing = false.obs;
 
   RxBool isLoading = false.obs;
   TextEditingController searchController = TextEditingController();
@@ -49,5 +51,9 @@ class GuruvaniPlayerScreenController extends GetxController {
     getGuruvaniPlayerList();
     super.onInit();
   }
+
+
+
+  
 }
 // https://narayanmantrasadhanavigyan.org/api2/SingleMedia/?type=bhajan&ID=14

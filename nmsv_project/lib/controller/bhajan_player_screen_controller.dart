@@ -10,6 +10,7 @@ import 'package:nmsv_project/model/bhajan_screen_model/bhajan_player_list_model.
 class BhajanPlayerScreenController extends GetxController {
   String galleryPlayerId = Get.arguments;
   RxString successStatus = ''.obs;
+  RxBool onProgressing = false.obs;
 
   RxBool isLoading = false.obs;
   TextEditingController searchController = TextEditingController();
@@ -41,6 +42,9 @@ class BhajanPlayerScreenController extends GetxController {
       isLoading(false);
     }
   }
+
+
+
 
   @override
   void onInit() {

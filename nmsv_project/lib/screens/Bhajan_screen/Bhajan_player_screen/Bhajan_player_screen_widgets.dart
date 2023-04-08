@@ -1,7 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/common_widgets/custom_loader.dart';
+import 'package:nmsv_project/constants/color.dart';
 import 'package:nmsv_project/constants/font_family.dart';
 import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/utils/style.dart';
@@ -108,11 +111,141 @@ class BhajanPlayerListModule extends StatelessWidget {
                           fontSize: 13.sp, fontWeight: FontWeight.w500),
                     ),
                     trailing: GestureDetector(
-                        onTap: () {}, child: const Icon(Icons.download)),
+                      onTap: () {
+                        var dowanloadIndex = index;
+
+                        if (dowanloadIndex == index) {
+                          FileDownloader.downloadFile(
+                            url: value.mediaUrl.trim(),
+                            onProgress: (name, progress) {
+                              if (bhajanPlayerScreenController
+                                      .onProgressing.value ==
+                                  false) {
+                                log("bhajanPlayerScreenController .onProgressing.value 11 : ${bhajanPlayerScreenController.onProgressing.value}");
+                               
+
+                                CustomAlertDialog2().showAlertDialog(
+                                    context: context, text: 'Dowanloading...');
+                                bhajanPlayerScreenController
+                                    .onProgressing.value = true;
+                              }
+                        
+                            },
+                            onDownloadCompleted: (val) {
+                              if (bhajanPlayerScreenController
+                                      .onProgressing.value ==
+                                  true) {
+                                log("bhajanPlayerScreenController .onProgressing.value 22: ${bhajanPlayerScreenController.onProgressing.value}");
+
+                                Get.back();
+                                CustomAlertDialog1().showAlertDialog(
+                                  context: context,
+                                  text: 'Dowanload successfully...',
+                                  onYesTap: () {
+                                    Get.back();
+                                  },
+                                );
+                                bhajanPlayerScreenController
+                                    .onProgressing.value = false;
+                               
+                              }
+                            },
+                          );
+                        } else {
+                          log("message");
+                        }
+                        log("D 111");
+                      },
+                      child: const Icon(Icons.download),
+                    ),
                   ),
                 ),
               );
             },
           );
+  }
+}
+
+class CustomAlertDialog2 {
+  void showAlertDialog({
+    required BuildContext context,
+    required String text,
+  }) {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: AppColors.whiteColor,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                text,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 35,
+                width: 35,
+                child: CustomLoader(),
+              )
+            ],
+          ),
+          actionsAlignment: MainAxisAlignment.spaceBetween,
+          contentPadding: const EdgeInsets.symmetric(vertical: 40),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+          titleTextStyle: TextStyleConfig.textStyle(fontSize: 18),
+          // actions: [CustomLoader()],
+        );
+      },
+    );
+  }
+}
+
+class CustomAlertDialog1 {
+  void showAlertDialog({
+    required BuildContext context,
+    required String text,
+    required Function() onYesTap,
+  }) {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: AppColors.whiteColor,
+          title: Text(
+            text,
+            textAlign: TextAlign.center,
+          ),
+          actionsAlignment: MainAxisAlignment.spaceBetween,
+          contentPadding: const EdgeInsets.symmetric(vertical: 40),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+          titleTextStyle: TextStyleConfig.textStyle(fontSize: 18),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                OutlinedButton(
+                  onPressed: onYesTap,
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: AppColors.orangeColor,
+                  ),
+                  child: Text(
+                    AppMessage.ok,
+                    style: TextStyleConfig.textStyle(
+                      textColor: AppColors.whiteColor,
+                      fontSize: 17,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
   }
 }
