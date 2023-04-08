@@ -32,18 +32,22 @@ class SadhanaScreen extends StatelessWidget {
                   childAspectRatio: 1.20,
                 ),
                 itemBuilder: (context, i) {
-                  String singleItem = sadhanaScreenController.sadhanaImageList[i];
+                  String singleItem =
+                      sadhanaScreenController.sadhanaImageList[i];
                   return GestureDetector(
                     onTap: () {
-                      Get.to(()=> SadhanaImageShowScreen(image: singleItem),
+                      Get.to(
+                        () => SadhanaImageShowScreen(
+                            image: singleItem, initialPageViewIndex: i),
                       );
                     },
                     child: Container(
                       decoration: BoxDecoration(
+                        color: Colors.grey.shade300,
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
                           image: NetworkImage(singleItem),
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),

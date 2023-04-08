@@ -22,14 +22,14 @@ class MagazineHistoryScreen extends StatelessWidget {
       body: Column(
         children: [
           MagazineHistoryModule(),
-          const Divider(),
-          Text(
-            'SUBSCRIBE NOW',
-            style: TextStyleConfig.textStyle(
-              fontSize: 12.sp,
-              //fontWeight: FontWeight.bold
-            ),
-          )
+          // const Divider(),
+          // Text(
+          //   'SUBSCRIBE NOW',
+          //   style: TextStyleConfig.textStyle(
+          //     fontSize: 12.sp,
+          //     //fontWeight: FontWeight.bold
+          //   ),
+          // )
         ],
       ).commonSymmetricPadding(horizontal: 12, vertical: 15),
     );

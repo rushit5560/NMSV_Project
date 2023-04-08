@@ -16,7 +16,7 @@ final viewMagazineScreenController = Get.put(ViewMagazineScreenController());
       appBar: customAppBar(
           titleText: "Magazine Subscription",
           leadingShow: false,
-          actionShow: false),
+          actionShow: false,),
       body:Obx(()=> viewMagazineScreenController.isLoading.value
           ? const CustomLoader()
           : MagazineSubscriptionModule().commonSymmetricPadding(horizontal: 10,vertical: 10)),

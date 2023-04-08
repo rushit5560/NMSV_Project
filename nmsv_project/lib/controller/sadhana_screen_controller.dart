@@ -8,6 +8,7 @@ import 'package:nmsv_project/model/sadhana_screen_model/sadhna_list_model.dart';
 class SadhanaScreenController extends GetxController {
   RxBool isLoading = false.obs;
   String successStatus = "";
+  RxInt currentIndex = 0.obs;
 
   // List<SadhanaData> sadhanaList = [];
   List<String> sadhanaImageList = [];

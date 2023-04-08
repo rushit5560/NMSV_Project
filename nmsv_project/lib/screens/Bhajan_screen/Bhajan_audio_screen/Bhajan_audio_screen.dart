@@ -15,24 +15,31 @@ class BhajanAudioScreen extends StatelessWidget {
   final bhajanAudioScreenController = Get.put(BhajanAudioScreenController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: customAppBar(
-          titleText: AppMessage.bhajan,
-          actionShow: false,
-          // actionIcon: const Icon(Icons.west_outlined),
-          // actionOnTap: () {},
-          // leadingIcon: const Icon(Icons.navigate_before),
-          // leadingOnTap: () => Get.back(),
-          leadingShow: false),
-      body: Obx(
-        () => bhajanAudioScreenController.isLoading.value
-            ? const CustomLoader()
-            : Column(
-                children: [
-                  const AudioModule()
-                      .commonSymmetricPadding(horizontal: 10, vertical: 50),
-                ],
-              ),
+    return WillPopScope(
+      onWillPop: () async {
+         bhajanAudioScreenController.stopMusic();
+         return true;
+      },
+
+      child: Scaffold(
+        appBar: customAppBar(
+            titleText: AppMessage.bhajan,
+            actionShow: false,
+            // actionIcon: const Icon(Icons.west_outlined),
+            // actionOnTap: () {},
+            // leadingIcon: const Icon(Icons.navigate_before),
+            // leadingOnTap: () => Get.back(),
+            leadingShow: false),
+        body: Obx(
+          () => bhajanAudioScreenController.isLoading.value
+              ? const CustomLoader()
+              : Column(
+                  children: [
+                    const AudioModule()
+                        .commonSymmetricPadding(horizontal: 10, vertical: 50),
+                  ],
+                ),
+        ),
       ),
     );
   }

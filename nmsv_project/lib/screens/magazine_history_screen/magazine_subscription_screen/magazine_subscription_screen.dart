@@ -44,9 +44,12 @@ class MagazineSubscriptionScreen extends StatelessWidget {
                       children: [
                         Container(
                           decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
                             image: DecorationImage(
-                              image: NetworkImage(singleItem.imageurl),
-                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                singleItem.imageurl,
+                              ),
+                              fit: BoxFit.fill,
                             ),
                           ),
                         ),
