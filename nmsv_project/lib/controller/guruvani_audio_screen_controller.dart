@@ -5,10 +5,11 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:get/get.dart';
 
 import 'package:nmsv_project/controller/guruvani_player_screen_controller.dart';
+import 'package:nmsv_project/model/guruvani_screen_model/guruvani_player_model.dart';
 
 class GuruvaniAudioScreenController extends GetxController {
-  String guruvaniTitle = Get.arguments[0];
-  String guruvaniAudio = Get.arguments[1];
+  List<Guruvani> guruvaniList = Get.arguments[0];
+  int index = Get.arguments[1];
   final guruvaniPlayerScreenController =
       Get.find<GuruvaniPlayerScreenController>();
 
@@ -24,10 +25,10 @@ class GuruvaniAudioScreenController extends GetxController {
   void onInit() async {
     super.onInit();
     isLoading(true);
-    await audioPlayer.play(guruvaniAudio);
+    await audioPlayer.play(guruvaniList[index].mediaUrl);
 
     setup();
-    log("GuruvaniAudioScreenController mediaUrl play: $guruvaniAudio");
+    log("GuruvaniAudioScreenController mediaUrl play: ${guruvaniList[index].mediaUrl}");
     //loadUI();
   }
 
@@ -40,21 +41,32 @@ class GuruvaniAudioScreenController extends GetxController {
       musicLength.value = index;
       isPlaying(true);
       isLoading(false);
-       AwesomeNotifications().createNotification(content: NotificationContent(
-          id: 1,
-          channelKey: 'alerts',
-          title: 'NMSV',
-          body: guruvaniTitle,
-        ));
+      notificationShowModule();
+
+      //  AwesomeNotifications().createNotification(content: NotificationContent(
+      //     id: 1,
+      //     channelKey: 'alerts',
+      //     title: 'NMSV',
+      //     body: guruvaniList[index].title,
+      //   ));
     });
     audioPlayer.onPlayerStateChanged.listen((state) {
       playState.value = state;
     });
+  }
 
+  notificationShowModule() {
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+      id: 1,
+      channelKey: 'alerts',
+      title: 'NMSV',
+      body: guruvaniList[index].title,
+    ));
   }
 
   playMusic() {
-    audioPlayer.play(guruvaniAudio);
+    audioPlayer.play(guruvaniList[index].mediaUrl);
   }
 
   stopMusic() {

@@ -31,7 +31,7 @@ class ViewMagazinePdfScreenController extends GetxController {
     String downloadPath = await getDownloadDirectoryPath();
     localPdfPath = "$downloadPath/$urlPdfName";
     log('localPdfPath : $localPdfPath');
-    // downLoadFileFunction();
+    downLoadFileFunction();
     isLoading(false);
   }
 
@@ -47,6 +47,8 @@ class ViewMagazinePdfScreenController extends GetxController {
       url: viewPdf,
       onProgress: (name, progress) {
         log('Progress');
+        log('viewPdf  $viewPdf');
+
         // if (guruvaniPlayerScreenController
         //         .onProgressing.value ==
         //     false) {

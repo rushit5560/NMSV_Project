@@ -6,7 +6,7 @@ import 'package:nmsv_project/controller/guruvani_audio_screen_controller.dart';
 import 'package:sizer/sizer.dart';
 
 class GuruvaniAudioModule extends StatelessWidget {
-   GuruvaniAudioModule({Key? key}) : super(key: key);
+  GuruvaniAudioModule({Key? key}) : super(key: key);
 
   final guruvaniAudioScreenController =
       Get.find<GuruvaniAudioScreenController>();
@@ -22,7 +22,9 @@ class GuruvaniAudioModule extends StatelessWidget {
             size: 200,
           ),
           SizedBox(height: 2.h),
-          Text(guruvaniAudioScreenController.guruvaniTitle),
+          Text(guruvaniAudioScreenController
+              .guruvaniList[guruvaniAudioScreenController.index].guruvaniFile
+              .replaceAll(".mp3", "")),
           SliderTheme(
             data: const SliderThemeData(
               trackHeight: 1,

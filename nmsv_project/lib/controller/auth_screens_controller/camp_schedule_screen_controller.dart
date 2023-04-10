@@ -21,7 +21,7 @@ class CampScheduleScreenController extends GetxController{
 
       CampScheduleModel campschedulemodel =
       CampScheduleModel.fromJson(json.decode(response.body));
-      // log("response.body : ${response.body}");
+      log("response.body : ${response.body}");
 
       successStatus.value=campschedulemodel.status;
       if (successStatus.value == "ok") {

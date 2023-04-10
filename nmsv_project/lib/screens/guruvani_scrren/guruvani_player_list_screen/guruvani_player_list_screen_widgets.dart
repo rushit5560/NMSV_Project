@@ -79,12 +79,16 @@ class GuruvaniPlayerListModule extends StatelessWidget {
                 onTap: () {
                   Get.to(
                     () => GuruvaniAudioScreen(),
-                    arguments: [
+                    arguments:
+                     [
+                      // bhajanPlayerScreenController
+                      //     .serchBhajanplayerList[index].bhajanName
+                      //     .toString()
+                      //     .replaceAll(".mp3", ""),
                       guruvaniPlayerScreenController
-                          .serchGuruvaniplayerList[index].title
-                          .replaceAll(".mp3", ""),
-                      guruvaniPlayerScreenController
-                          .serchGuruvaniplayerList[index].mediaUrl
+                          .searchController,
+
+                          index,
                     ],
                     // arguments: guruvaniPlayerScreenController
                     //     .serchBhajanplayerList[index].mediaUrl

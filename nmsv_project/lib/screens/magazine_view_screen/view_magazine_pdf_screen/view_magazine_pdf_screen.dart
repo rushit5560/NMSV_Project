@@ -1,6 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
@@ -22,9 +20,9 @@ class ViewMagazinePDFScreen extends StatelessWidget {
           titleText: " View Magazine", leadingShow: false, actionShow: false),
       body: Obx(
         () => viewMagazineScreenController.isLoading.value
-            ? CustomLoader()
+            ? const CustomLoader()
             : PDFView(
-                filePath: viewMagazineScreenController.localPdfPath,
+                filePath: viewMagazineScreenController.viewPdf,
               ),
         // SfPdfViewer.file(
         //     File(viewMagazineScreenController.localPdfPath),

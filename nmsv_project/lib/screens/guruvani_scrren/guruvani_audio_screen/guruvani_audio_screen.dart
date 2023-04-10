@@ -15,23 +15,29 @@ class GuruvaniAudioScreen extends StatelessWidget {
       Get.put(GuruvaniAudioScreenController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: customAppBar(
-        titleText: AppMessage.guruvani,
-        actionShow: false,
-        actionIcon: const Icon(Icons.west_outlined),
-        actionOnTap: () {},
-        leadingShow: false,
-      ),
-      body: Obx(
-        () => guruvaniAudioScreenController.isLoading.value
-            ? const CustomLoader()
-            : Column(
-                children: [
-                   GuruvaniAudioModule()
-                      .commonSymmetricPadding(horizontal: 10, vertical: 50),
-                ],
-              ),
+    return WillPopScope(
+      onWillPop: () async {
+        guruvaniAudioScreenController.stopMusic();
+        return true;
+      },
+      child: Scaffold(
+        appBar: customAppBar(
+          titleText: AppMessage.guruvani,
+          actionShow: false,
+          actionIcon: const Icon(Icons.west_outlined),
+          actionOnTap: () {},
+          leadingShow: false,
+        ),
+        body: Obx(
+          () => guruvaniAudioScreenController.isLoading.value
+              ? const CustomLoader()
+              : Column(
+                  children: [
+                    GuruvaniAudioModule()
+                        .commonSymmetricPadding(horizontal: 10, vertical: 50),
+                  ],
+                ),
+        ),
       ),
     );
   }

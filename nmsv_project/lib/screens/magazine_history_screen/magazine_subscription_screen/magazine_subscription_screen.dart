@@ -1,6 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import '../../../common_widgets/custom_appbar.dart';
 import '../../../common_widgets/custom_loader.dart';
@@ -16,6 +16,7 @@ class MagazineSubscriptionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.whiteColor1,
       appBar: customAppBar(
           titleText: "Magazine Subscription",
           leadingShow: false,
@@ -42,15 +43,13 @@ class MagazineSubscriptionScreen extends StatelessWidget {
                     child: Stack(
                       alignment: Alignment.bottomCenter,
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade200,
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                singleItem.imageurl,
-                              ),
-                              fit: BoxFit.fill,
-                            ),
+                        ClipRRect(
+                          child: CachedNetworkImage(
+                            errorWidget: (context, url, error) {
+                              return const CustomLoader();
+                            },
+                            imageUrl: singleItem.imageurl,
+                            fit: BoxFit.fill,
                           ),
                         ),
                         Container(

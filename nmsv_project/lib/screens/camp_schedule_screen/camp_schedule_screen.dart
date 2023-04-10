@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -31,6 +33,8 @@ class CampScheduleScreen extends StatelessWidget {
                       .campSchedule[index].latitude);
                   double longitude = double.parse(campScheduleScreenController
                       .campSchedule[index].longitude);
+                  log("latitude 111  $latitude");
+                  log("longitude 222 $longitude");
 
                   return Container(
                     margin: const EdgeInsets.all(5),
