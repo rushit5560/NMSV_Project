@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:flutter_multiple_webview_plugin/flutter_multiple_webview_plugin.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/common_widgets/custom_appbar.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
-
 import '../../controller/diksha_screen_controller.dart';
 
 class DikshaScreen extends StatelessWidget {

@@ -32,20 +32,21 @@ class PhotosGridViewListModule extends StatelessWidget {
             child: Container(
               // height: 40.h,
               decoration: BoxDecoration(
-                  color: AppColors.whiteColor,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(value.imageUrl),
-                  ),
-                  boxShadow: const [
-                    BoxShadow(
-                      blurRadius: 1,
-                      offset: Offset(0, 1),
-                    )
-                  ]),
+                color: AppColors.whiteColor,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(10),
+                ),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(value.imageUrl),
+                ),
+                boxShadow: const [
+                  BoxShadow(
+                    blurRadius: 1,
+                    offset: Offset(0, 1),
+                  )
+                ],
+              ),
             ),
           );
         },

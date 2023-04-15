@@ -76,7 +76,7 @@ class SignUpTextFormFieldModule extends StatelessWidget {
           SizedBox(height: 3.h),
           CustomSubmitButtonModule(
             labelText: AppMessage.signUp.toUpperCase(),
-            buttonColor: AppColors.orangeColor,
+            buttonColor: AppColors.appColors,
             onPress: () async {
               if (registerScreenController.formKey.currentState!.validate()) {
                 await registerScreenController.userRegisterFunction();

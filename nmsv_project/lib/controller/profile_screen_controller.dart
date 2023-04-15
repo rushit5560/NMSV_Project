@@ -14,7 +14,6 @@ import 'package:nmsv_project/utils/user_preference.dart';
 import '../model/home_screen_model/category_model.dart';
 import '../screens/Bhajan_screen/bhajan_list_screen/Bhajan_list_screen.dart';
 import '../screens/guruvani_scrren/guruvani_list_screen/guruvani_list_scrren.dart';
-import '../screens/magazine_history_screen/magazine_history_screen.dart';
 import '../screens/magazine_view_screen/magazine_view_screen.dart';
 import '../screens/profile_screen/my_profile_screen/my_profile_screen.dart';
 
@@ -23,8 +22,8 @@ class ProfileScreenController extends GetxController {
   var googleSignIn = GoogleSignIn();
 
   List<MainCategory> optionList = [
-    MainCategory(
-        image: AppImages.iconMessImage, name: "Magazine Subs. History"),
+    // MainCategory(
+    //     image: AppImages.iconMessImage, name: "Magazine Subs. History"),
     MainCategory(image: AppImages.magazineImage, name: "View Magazine"),
     MainCategory(image: AppImages.iconProfileImage, name: "My Profile"),
     MainCategory(image: AppImages.iconSchedule, name: "Camp Schedule"),
@@ -39,52 +38,46 @@ class ProfileScreenController extends GetxController {
     if (i == 0) {
       log('index : $i');
       Get.to(
-        () => MagazineHistoryScreen(),
+        () => MagazineViewScreen(),
         transition: Transition.zoom,
       );
     } else if (i == 1) {
       log('index : $i');
       Get.to(
-        () => MagazineViewScreen(),
+        () => MyProfileScreen(),
         transition: Transition.zoom,
       );
     } else if (i == 2) {
       log('index : $i');
       Get.to(
-        () => MyProfileScreen(),
+        () => CampScheduleScreen(),
         transition: Transition.zoom,
       );
     } else if (i == 3) {
       log('index : $i');
       Get.to(
-        () => CampScheduleScreen(),
+        () => MeetWithGurudevScreen(),
         transition: Transition.zoom,
       );
     } else if (i == 4) {
       log('index : $i');
       Get.to(
-        () => MeetWithGurudevScreen(),
+        () => BhajanListScreen(),
         transition: Transition.zoom,
       );
     } else if (i == 5) {
       log('index : $i');
       Get.to(
-        () => BhajanListScreen(),
+        () => GuruVaniListScreen(),
         transition: Transition.zoom,
       );
     } else if (i == 6) {
       log('index : $i');
       Get.to(
-        () => GuruVaniListScreen(),
-        transition: Transition.zoom,
-      );
-    } else if (i == 7) {
-      log('index : $i');
-      Get.to(
         () => VideoListScreen(),
         transition: Transition.zoom,
       );
-    } else if (i == 8) {
+    } else if (i == 7) {
       log('index : $i');
 
       CustomAlertDialog().showAlertDialog(
@@ -106,7 +99,7 @@ class ProfileScreenController extends GetxController {
     await googleSignIn.signOut();
 
     Fluttertoast.showToast(
-      // backgroundColor: AppColors.orangeColor1,
+      // backgroundColor: AppColors.appColors,
       msg: "logout successfully..",
     );
 

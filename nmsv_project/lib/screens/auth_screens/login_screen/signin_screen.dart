@@ -43,7 +43,7 @@ class SignInScreen extends StatelessWidget {
             Text(
               AppMessage.appMesage,
               style: TextStyleConfig.textStyle(
-                textColor: AppColors.orangeColor,
+                textColor: AppColors.appColors,
                 fontWeight: FontWeight.bold,
                 fontSize: 14.sp,
               ),
@@ -116,7 +116,7 @@ class SignInScreen extends StatelessWidget {
                   child: Text(
                     " ${AppMessage.register}",
                     style: TextStyleConfig.textStyle(
-                      textColor: AppColors.orangeColor,
+                      textColor: AppColors.appColors,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

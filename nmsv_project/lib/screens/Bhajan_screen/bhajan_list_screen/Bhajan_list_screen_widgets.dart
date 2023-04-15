@@ -71,8 +71,12 @@ class BhajanListModule extends StatelessWidget {
                 onTap: () {
                   log("allBhajanId : ${bhajanListScreenController.searchBhajanDataList[index].allBhajanId}");
                   Get.to(() => BhajanPlayerScreen(),
-                      arguments: bhajanListScreenController
-                          .searchBhajanDataList[index].allBhajanId);
+                      arguments: [bhajanListScreenController
+                          .searchBhajanDataList[index].allBhajanId,
+                          
+                          bhajanListScreenController
+                          .searchBhajanDataList[index].title
+                          ]);
                 },
                 child: Container(
                   margin: EdgeInsets.only(bottom: 2.h),
@@ -92,9 +96,9 @@ class BhajanListModule extends StatelessWidget {
                     title: Text(
                       val.title,
                       style: TextStyleConfig.textStyle(
-                          fontSize: 13.sp,
-                          fontFamily: FontFamilyText.roboto,
-                          fontWeight: FontWeight.w500),
+                        fontSize: 13.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     trailing: const Icon(Icons.navigate_next_outlined),
                   ),

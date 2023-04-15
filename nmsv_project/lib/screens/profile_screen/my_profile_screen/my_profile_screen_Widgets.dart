@@ -103,7 +103,7 @@ class MyProfileTextFormFieldWidgets extends StatelessWidget {
                           .updateProfileDataFunction();
                     }
                   },
-                  buttonColor: AppColors.orangeColor,
+                  buttonColor: AppColors.appColors,
                 ),
               ),
             ],

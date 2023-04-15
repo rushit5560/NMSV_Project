@@ -13,10 +13,6 @@ class UserDetails {
   static String zipCode = "";
   static String displayName = "";
   static String googleEmail = "";
-
-
-
   static bool isUserLoggedIn = false;
-
-
+  static String pdfView = "";
 }

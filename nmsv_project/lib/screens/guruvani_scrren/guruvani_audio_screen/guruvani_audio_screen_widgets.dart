@@ -78,23 +78,26 @@ class GuruvaniAudioModule extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                child: const Icon(CupertinoIcons.backward_end_alt_fill),
+                child: const Icon(CupertinoIcons.backward_end_fill),
                 onTap: () {
-                  if (guruvaniAudioScreenController
-                              .currentPosition.value.inSeconds ==
-                          0 ||
-                      guruvaniAudioScreenController
-                              .currentPosition.value.inSeconds <
-                          10) {
-                    guruvaniAudioScreenController.seekTo(0);
-                  } else if (guruvaniAudioScreenController
-                          .currentPosition.value.inSeconds >
-                      10) {
-                    guruvaniAudioScreenController.seekTo(
-                        guruvaniAudioScreenController
-                                .currentPosition.value.inSeconds -
-                            10);
-                  }
+                  guruvaniAudioScreenController.isLoading(true);
+                  guruvaniAudioScreenController.previousAudio();
+                  guruvaniAudioScreenController.isLoading(false);
+                  // if (guruvaniAudioScreenController
+                  //             .currentPosition.value.inSeconds ==
+                  //         0 ||
+                  //     guruvaniAudioScreenController
+                  //             .currentPosition.value.inSeconds <
+                  //         10) {
+                  //   guruvaniAudioScreenController.seekTo(0);
+                  // } else if (guruvaniAudioScreenController
+                  //         .currentPosition.value.inSeconds >
+                  //     10) {
+                  //   guruvaniAudioScreenController.seekTo(
+                  //       guruvaniAudioScreenController
+                  //               .currentPosition.value.inSeconds -
+                  //           10);
+                  // }
                 },
               ),
               //const Spacer(),
@@ -119,23 +122,27 @@ class GuruvaniAudioModule extends StatelessWidget {
                 },
               ),
               InkWell(
-                child: const Icon(CupertinoIcons.forward_end_alt_fill),
+                child: const Icon(CupertinoIcons.forward_end_fill),
                 onTap: () {
-                  if (guruvaniAudioScreenController.currentPosition.value <
-                      guruvaniAudioScreenController.musicLength.value -
-                          const Duration(seconds: 10)) {
-                    guruvaniAudioScreenController.seekTo(
-                        guruvaniAudioScreenController
-                                .currentPosition.value.inSeconds +
-                            10);
-                  } else {
-                    guruvaniAudioScreenController.seekTo(
-                        guruvaniAudioScreenController
-                            .musicLength.value.inSeconds);
-                    guruvaniAudioScreenController.isPlaying.value =
-                        !guruvaniAudioScreenController.isPlaying.value;
-                    guruvaniAudioScreenController.audioPlayer.stop();
-                  }
+                  guruvaniAudioScreenController.isLoading(true);
+                  guruvaniAudioScreenController.nextAudio();
+                  guruvaniAudioScreenController.isLoading(false);
+                  // if (guruvaniAudioScreenController
+                  // if (guruvaniAudioScreenController.currentPosition.value <
+                  //     guruvaniAudioScreenController.musicLength.value -
+                  //         const Duration(seconds: 10)) {
+                  //   guruvaniAudioScreenController.seekTo(
+                  //       guruvaniAudioScreenController
+                  //               .currentPosition.value.inSeconds +
+                  //           10);
+                  // } else {
+                  //   guruvaniAudioScreenController.seekTo(
+                  //       guruvaniAudioScreenController
+                  //           .musicLength.value.inSeconds);
+                  //   guruvaniAudioScreenController.isPlaying.value =
+                  //       !guruvaniAudioScreenController.isPlaying.value;
+                  //   guruvaniAudioScreenController.audioPlayer.stop();
+                  // }
                 },
               ),
             ],

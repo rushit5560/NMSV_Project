@@ -41,7 +41,7 @@ class RegisterScreen extends StatelessWidget {
               Text(
                 AppMessage.appMesage,
                 style: TextStyleConfig.textStyle(
-                  textColor: AppColors.orangeColor,
+                  textColor: AppColors.appColors,
                   fontWeight: FontWeight.bold,
                   fontSize: 14.sp,
                 ),
@@ -65,7 +65,7 @@ class RegisterScreen extends StatelessWidget {
                     child: Text(
                       " ${AppMessage.signin}",
                       style: TextStyleConfig.textStyle(
-                        textColor: AppColors.orangeColor,
+                        textColor: AppColors.appColors,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

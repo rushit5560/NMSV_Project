@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
+import 'package:nmsv_project/constants/color.dart';
 import 'package:nmsv_project/constants/extension.dart';
 
 import '../../common_widgets/custom_appbar.dart';
@@ -36,19 +38,31 @@ class SadhanaScreen extends StatelessWidget {
                       sadhanaScreenController.sadhanaImageList[i];
                   return GestureDetector(
                     onTap: () {
+                      sadhanaScreenController.pageController = PageController(initialPage: i);
                       Get.to(
                         () => SadhanaImageShowScreen(
                             image: singleItem, initialPageViewIndex: i),
                       );
                     },
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          image: NetworkImage(singleItem),
-                          fit: BoxFit.fill,
+                      decoration: const BoxDecoration(
+                        color: AppColors.whiteColor,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
                         ),
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 1,
+                            offset: Offset(0, 1),
+                          )
+                        ],
+                      ),
+                      child: CachedNetworkImage(
+                        errorWidget: (context, url, error) {
+                          return const CustomLoader();
+                        },
+                        imageUrl: singleItem,
+                        fit: BoxFit.fill,
                       ),
                     ),
                   );

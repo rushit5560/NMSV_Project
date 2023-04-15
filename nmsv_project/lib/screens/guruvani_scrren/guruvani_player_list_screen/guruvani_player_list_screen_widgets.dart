@@ -85,9 +85,7 @@ class GuruvaniPlayerListModule extends StatelessWidget {
                       //     .serchBhajanplayerList[index].bhajanName
                       //     .toString()
                       //     .replaceAll(".mp3", ""),
-                      guruvaniPlayerScreenController
-                          .searchController,
-
+                       guruvaniPlayerScreenController.serchGuruvaniplayerList,
                           index,
                     ],
                     // arguments: guruvaniPlayerScreenController
@@ -129,7 +127,7 @@ class GuruvaniPlayerListModule extends StatelessWidget {
                                 log("guruvaniPlayerScreenController .onProgressing.value 11 : ${guruvaniPlayerScreenController.onProgressing.value}");
 
                                 CustomAlertDialog2().showAlertDialog(
-                                    context: context, text: 'Dowanloading...');
+                                    context: context, text: 'Downloading...');
                                 guruvaniPlayerScreenController
                                     .onProgressing.value = true;
                               }
@@ -233,7 +231,7 @@ class CustomAlertDialog1 {
                 OutlinedButton(
                   onPressed: onYesTap,
                   style: OutlinedButton.styleFrom(
-                    backgroundColor: AppColors.orangeColor,
+                    backgroundColor: AppColors.appColors,
                   ),
                   child: Text(
                     AppMessage.ok,

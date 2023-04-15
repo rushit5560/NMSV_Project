@@ -1,11 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/common_modules/custom_submit_button.dart';
 import 'package:nmsv_project/common_widgets/custom_appbar.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
 import 'package:nmsv_project/constants/color.dart';
 import 'package:nmsv_project/constants/extension.dart';
+import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/controller/sadhana_screen_controller.dart';
-import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:sizer/sizer.dart';
 
@@ -26,67 +29,62 @@ class SadhanaImageShowScreen extends StatelessWidget {
       body: Obx(
         () => sadhanaScreenController.isLoading.value
             ? const CustomLoader()
-            : Stack(
-                alignment: Alignment.bottomCenter,
+            : Column(
+                // alignment: Alignment.bottomCenter,
                 children: [
-                  PhotoViewGallery.builder(
-                    // scrollDirection: Axis.vertical,
-                    pageController:
-                        PageController(initialPage: initialPageViewIndex),
-                    itemCount: sadhanaScreenController.sadhanaImageList.length,
-                    builder: (context, i) {
-                      String singleItem =
-                          sadhanaScreenController.sadhanaImageList[i];
-                      return PhotoViewGalleryPageOptions(
-                        imageProvider: NetworkImage(singleItem),
-                      );
-                    },
-                    backgroundDecoration:
-                        const BoxDecoration(color: AppColors.whiteColor1),
-                    onPageChanged: (index) {
-                      sadhanaScreenController.isLoading(true);
-                      sadhanaScreenController.currentIndex.value = index;
-                      sadhanaScreenController.isLoading(false);
-                    },
+                  Expanded(
+                    child: PhotoViewGallery.builder(
+                      // scrollDirection: Axis.vertical,
+
+                      pageController: sadhanaScreenController.pageController
+                      // PageController(initialPage: initialPageViewIndex)
+                      ,
+                      itemCount:
+                          sadhanaScreenController.sadhanaImageList.length,
+                      builder: (context, i) {
+                        String singleItem =
+                            sadhanaScreenController.sadhanaImageList[i];
+                        return PhotoViewGalleryPageOptions(
+                          imageProvider: NetworkImage(singleItem),
+                        );
+                      },
+                      backgroundDecoration:
+                          const BoxDecoration(color: AppColors.whiteColor1),
+                      onPageChanged: (index) {
+                        sadhanaScreenController.isLoading(true);
+                        sadhanaScreenController.currentIndex.value = index;
+                        sadhanaScreenController.isLoading(false);
+                      },
+                    ),
                   ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   children:
-                  //       sadhanaScreenController.sadhanaImageList.map((url) {
-                  //     int index = sadhanaScreenController.sadhanaImageList
-                  //         .indexOf(url);
-                  //     return Container(
-                  //       width: sadhanaScreenController.currentIndex.value ==
-                  //               index
-                  //           ? 12
-                  //           : 7,
-                  //       height: sadhanaScreenController.currentIndex.value ==
-                  //               index
-                  //           ? 12
-                  //           : 7,
-                  //       margin: const EdgeInsets.symmetric(
-                  //           vertical: 10.0, horizontal: 2.0),
-                  //       decoration: BoxDecoration(
-                  //         shape: BoxShape.circle,
-                  //         border: Border.all(
-                  //             width: sadhanaScreenController
-                  //                         .currentIndex.value ==
-                  //                     index
-                  //                 ? 2
-                  //                 : 0,
-                  //             color: sadhanaScreenController
-                  //                         .currentIndex.value ==
-                  //                     index
-                  //                 ? AppColors.whiteColor
-                  //                 : Colors.transparent),
-                  //         color: sadhanaScreenController.currentIndex.value ==
-                  //                 index
-                  //             ? AppColors.orangeColor
-                  //             : AppColors.greyColor,
-                  //       ),
-                  //     );
-                  //   }).toList(),
-                  // ).commonOnlyPadding(right: 0.5.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      PrevioustButtonModule(
+                        labelText: AppMessage.previous,
+                        buttonColor: AppColors.appColors,
+                        onPress: () {
+                          sadhanaScreenController.sadhanaImageList;
+                          sadhanaScreenController.pageController.previousPage(
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.linear);
+                        },
+                        icon: Icons.arrow_back_ios,
+                      ),
+                      NexttButtonModule(
+                        labelText: AppMessage.next,
+                        buttonColor: AppColors.appColors,
+                        onPress: () {
+                          sadhanaScreenController.sadhanaImageList;
+                          sadhanaScreenController.pageController.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.linear,
+                          );
+                        },
+                        icon1: Icons.arrow_forward_ios,
+                      ),
+                    ],
+                  ).commonSymmetricPadding(horizontal: 10),
                 ],
               ),
       ),

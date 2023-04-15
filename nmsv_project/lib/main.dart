@@ -6,27 +6,24 @@ import 'package:get/get.dart';
 import 'package:nmsv_project/screens/splash_screen/splash_screen.dart';
 import 'package:sizer/sizer.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-   AwesomeNotifications().initialize(
-    null,
-    [
-      NotificationChannel(
-          channelKey: 'alerts',
-          channelName: 'alerts',
-          channelDescription: 'Notification tests as alerts',
-          playSound: true,
-          //defaultPrivacy: NotificationPrivacy.Private,
-          //importance: NotificationImportance.High,
-          //onlyAlertOnce: true,
-          defaultColor: Colors.deepPurple,
-          ledColor: Colors.deepPurple
-      ),
-    ],
-    debug: true
-  );
+  AwesomeNotifications().initialize(
+      null,
+      [
+        NotificationChannel(
+            channelKey: 'alerts',
+            channelName: 'alerts',
+            channelDescription: 'Notification tests as alerts',
+            playSound: true,
+            //defaultPrivacy: NotificationPrivacy.Private,
+            //importance: NotificationImportance.High,
+            //onlyAlertOnce: true,
+            defaultColor: Colors.deepPurple,
+            ledColor: Colors.deepPurple),
+      ],
+      debug: true);
   runApp(const MyApp());
 
   SystemChrome.setPreferredOrientations(

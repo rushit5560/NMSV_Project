@@ -5,7 +5,6 @@ import 'package:nmsv_project/constants/extension.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../constants/color.dart';
-import '../../constants/font_family.dart';
 import '../../controller/profile_screen_controller.dart';
 import '../../utils/style.dart';
 
@@ -58,7 +57,6 @@ class ProfileScreen extends StatelessWidget {
                         textAlign: TextAlign.center,
                         profileScreenController.optionList[i].name,
                         style: TextStyleConfig.textStyle(
-                          fontFamily: FontFamilyText.roboto,
                           textColor: AppColors.blackColor,
                           fontWeight: FontWeight.w500,
                           fontSize: 10.sp,

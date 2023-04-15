@@ -18,9 +18,13 @@ class UserPreference {
   static String zipCodeKey = "zipCodeKey";
   static String displaynameKey = "displaynameKey";
   static String googleEmailKey = "googleEmailKey";
+  
 
   static String userFNameKey = "userFNameKey";
   static String userLNameKey = "userLNameKey";
+  //
+  // static String pdfviewKey = "pdfviewKey";
+
 
   Future<void> setUserDetails({
     required String fullName,

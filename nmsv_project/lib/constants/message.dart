@@ -9,6 +9,8 @@ class AppMessage {
   static String forGotPassword = "Forgot Password?";
   static String or = "OR";
   static String ok = "Ok";
+  static String next = "Nex.";
+  static String previous = "Pre.";
 
   static String googleSign = "Sign in with Google";
 

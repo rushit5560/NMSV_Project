@@ -99,14 +99,14 @@ class RegisterScreenController extends GetxController {
             log("1111");
             await setUserRegisterDetails();
             Fluttertoast.showToast(
-              // backgroundColor: AppColors.orangeColor1,
+              // backgroundColor: AppColors.appColors,
               msg: "register successfully..",
             );
             Get.to(() => SignInScreen());
             log("222");
           } else {
             Fluttertoast.showToast(
-              // backgroundColor: AppColors.orangeColor1,
+              // backgroundColor: AppColors.appColors,
               msg: registerModel.message,
             );
           }

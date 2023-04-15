@@ -10,6 +10,7 @@ import 'package:nmsv_project/model/guruvani_screen_model/guruvani_player_model.d
 class GuruvaniAudioScreenController extends GetxController {
   List<Guruvani> guruvaniList = Get.arguments[0];
   int index = Get.arguments[1];
+
   final guruvaniPlayerScreenController =
       Get.find<GuruvaniPlayerScreenController>();
 
@@ -64,7 +65,18 @@ class GuruvaniAudioScreenController extends GetxController {
       body: guruvaniList[index].title,
     ));
   }
+ nextAudio() async {
+    index++;
+    log('Setup function index : $index');
+    await audioPlayer.play(guruvaniList[index].mediaUrl);
+  }
 
+   
+  previousAudio() async {
+    index++;
+    log('Setup function index : $index');
+    await audioPlayer.play(guruvaniList[index].mediaUrl);
+  }
   playMusic() {
     audioPlayer.play(guruvaniList[index].mediaUrl);
   }
@@ -80,5 +92,12 @@ class GuruvaniAudioScreenController extends GetxController {
   loadUI() {
     isLoading(true);
     isLoading(false);
+  }
+
+  @override
+  void dispose() {
+    log("dispose guruvani");
+    audioPlayer.dispose();
+    super.dispose();
   }
 }

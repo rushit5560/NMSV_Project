@@ -8,9 +8,11 @@ import 'package:http/http.dart' as http;
 import 'package:nmsv_project/model/bhajan_screen_model/bhajan_player_list_model.dart';
 
 class BhajanPlayerScreenController extends GetxController {
-  String galleryPlayerId = Get.arguments;
+  String bhajanId = Get.arguments;
+  String bhajanTitle = Get.arguments;
+
   RxString successStatus = ''.obs;
-  RxBool onProgressing = false.obs;
+  RxBool  onProgressing = false.obs;
 
   RxBool isLoading = false.obs;
   TextEditingController searchController = TextEditingController();
@@ -20,9 +22,9 @@ class BhajanPlayerScreenController extends GetxController {
   Future<void> getGalleryPlayerList() async {
     isLoading(true);
 
-    String url = "${ApiUrl.galleryPlayerApi}/?type=bhajan&ID=$galleryPlayerId";
+    String url = "${ApiUrl.galleryPlayerApi}/?type=bhajan&ID=$bhajanId";
     log("getGalleryPlayerList url: $url");
-    log("getGalleryPlayerList galleryPlayerId: $galleryPlayerId");
+    log("getGalleryPlayerList galleryPlayerId: $bhajanId");
 
     try {
       http.Response response = await http.get(Uri.parse(url));

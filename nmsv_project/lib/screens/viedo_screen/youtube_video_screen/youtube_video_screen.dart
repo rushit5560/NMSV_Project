@@ -13,7 +13,7 @@ class YouTubeVideoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-        titleText: "Youtube Video",
+        titleText: "${youTubeVideoScreenController.videoTitle} Video",
         leadingShow: false,
         actionShow: false,
       ),
@@ -23,7 +23,7 @@ class YouTubeVideoScreen extends StatelessWidget {
             : SingleChildScrollView(
                 child: Column(
                   children: [
-                    ViewYouTubeVideoModule()
+                    const ViewYouTubeVideoModule()
                         .commonSymmetricPadding(vertical: 10, horizontal: 10),
                   ],
                 ),

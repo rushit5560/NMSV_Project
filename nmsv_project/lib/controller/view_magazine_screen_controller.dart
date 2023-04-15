@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+// import 'package:file_picker/file_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 
@@ -17,7 +18,6 @@ class ViewMagazineScreenController extends GetxController {
   String sadhana = "";
   String ayurveda = "";
   String pdfurl = "";
-
   Future<void> getViewMagazinePdfListFunction() async {
     isLoading(true);
     String url = ApiUrl.magazinePdfDetailsApi;
@@ -39,6 +39,7 @@ class ViewMagazineScreenController extends GetxController {
         sadhana = magazinePdf.data.sadhana;
         ayurveda = magazinePdf.data.ayurveda;
         pdfurl = magazinePdf.data.pdfurl;
+        log("pdfurl $pdfurl");
       } else {
         log('getViewMagazinePdfListFunction Else');
       }
@@ -48,6 +49,13 @@ class ViewMagazineScreenController extends GetxController {
     }
     isLoading(false);
   }
+  // getPdfFromFile() async {
+  //   FilePickerResult? result = await FilePicker.platform.pickFiles();
+  //   log('result : $result');
+  //   if (result != null) {
+  //     File file = File(result.files.single.path!);
+  //   }
+  // }
 
   @override
   void onInit() {

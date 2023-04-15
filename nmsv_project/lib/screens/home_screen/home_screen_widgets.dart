@@ -73,7 +73,7 @@ class CarouselBannerModule extends StatelessWidget {
                         ? AppColors.whiteColor
                         : Colors.transparent),
                 color: homeScreenController.currentIndex.value == index
-                    ? AppColors.orangeColor
+                    ? AppColors.appColors
                     : AppColors.greyColor,
               ),
             );
@@ -138,7 +138,6 @@ class ChoiceTopicModule extends StatelessWidget {
                       textAlign: TextAlign.center,
                       homeScreenController.categoryList[i].name,
                       style: TextStyleConfig.textStyle(
-                        fontFamily: FontFamilyText.roboto,
                         textColor: AppColors.blackColor,
                         fontWeight: FontWeight.w500,
                         fontSize: 8.sp,

@@ -76,16 +76,14 @@ class BhajanPlayerListModule extends StatelessWidget {
                   log("mediaUrl  ${bhajanPlayerScreenController.serchBhajanplayerList[index].mediaUrl}");
                   Get.to(
                     () => BhajanAudioScreen(),
-                    arguments:
-                     [
+                    arguments: [
                       // bhajanPlayerScreenController
                       //     .serchBhajanplayerList[index].bhajanName
                       //     .toString()
                       //     .replaceAll(".mp3", ""),
-                      bhajanPlayerScreenController
-                          .serchBhajanplayerList,
+                      bhajanPlayerScreenController.serchBhajanplayerList,
 
-                          index,
+                      index,
                     ],
                     // arguments: bhajanPlayerScreenController
                     //     .serchBhajanplayerList[index].mediaUrl
@@ -125,14 +123,13 @@ class BhajanPlayerListModule extends StatelessWidget {
                                       .onProgressing.value ==
                                   false) {
                                 log("bhajanPlayerScreenController .onProgressing.value 11 : ${bhajanPlayerScreenController.onProgressing.value}");
-                               
 
                                 CustomAlertDialog2().showAlertDialog(
-                                    context: context, text: 'Dowanloading...');
+                                    context: context,
+                                    text: 'Downloading... $progress');
                                 bhajanPlayerScreenController
                                     .onProgressing.value = true;
                               }
-                        
                             },
                             onDownloadCompleted: (val) {
                               if (bhajanPlayerScreenController
@@ -150,7 +147,6 @@ class BhajanPlayerListModule extends StatelessWidget {
                                 );
                                 bhajanPlayerScreenController
                                     .onProgressing.value = false;
-                               
                               }
                             },
                           );
@@ -234,7 +230,7 @@ class CustomAlertDialog1 {
                 OutlinedButton(
                   onPressed: onYesTap,
                   style: OutlinedButton.styleFrom(
-                    backgroundColor: AppColors.orangeColor,
+                    backgroundColor: AppColors.appColors,
                   ),
                   child: Text(
                     AppMessage.ok,

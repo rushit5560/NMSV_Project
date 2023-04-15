@@ -215,7 +215,7 @@ class HomeDrawerModule extends StatelessWidget {
         title: Text(
           text,
           style: TextStyleConfig.textStyle(
-            fontSize: 14.sp,
+            fontSize: 16.sp,
             textColor: AppColors.blackColor,
             fontWeight: FontWeight.w300,
           ),

@@ -77,11 +77,12 @@ class GalleryListModule extends StatelessWidget {
                   galleryScreenController.searchGalleryDataList[index];
               return InkWell(
                 onTap: () {
-                  Get.to(
-                    () => GalleryShibirPhotosScreen(),
-                    arguments: galleryScreenController
+                  Get.to(() => GalleryShibirPhotosScreen(), arguments: [
+                    galleryScreenController
                         .searchGalleryDataList[index].shivirGalleryId,
-                  );
+                    galleryScreenController
+                        .searchGalleryDataList[index].shivirGalleryTitle,
+                  ]);
                 },
                 child: Container(
                   decoration: BoxDecoration(

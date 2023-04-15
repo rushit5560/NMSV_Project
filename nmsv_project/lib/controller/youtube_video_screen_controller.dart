@@ -7,10 +7,12 @@ import '../constants/api_url.dart';
 import '../model/video_screen_model/video_screen_model.dart';
 
 class YouTubeVideoScreenController extends GetxController {
-  String videoUrl = Get.arguments ?? "";
+  String videoUrl = Get.arguments[0] ?? "";
+  String videoTitle = Get.arguments[1];
+
   RxBool isLoading = false.obs;
   RxString successStatus = ''.obs;
-  YoutubePlayerController? controller;
+  YoutubePlayerController ytController = YoutubePlayerController(initialVideoId: "");
   //List<VideoList> videoList = [];
   // Future<void> youtubeVideoFunction() async {
   //   isLoading(true);
@@ -36,16 +38,14 @@ class YouTubeVideoScreenController extends GetxController {
   //   }
   // }
 
-
   Future<void> initMethod() async {
     final videoId = YoutubePlayer.convertUrlToId(videoUrl);
-    controller = YoutubePlayerController(initialVideoId: videoId!,
-      flags: const YoutubePlayerFlags(
-        autoPlay: false,
-      )
-    );
+    ytController = YoutubePlayerController(
+        initialVideoId: videoId!,
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+        ));
   }
-
 
   @override
   void onInit() {

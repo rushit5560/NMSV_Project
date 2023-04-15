@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/common_widgets/custom_appbar.dart';
@@ -35,29 +36,46 @@ class MagazineViewScreen extends StatelessWidget {
                       magazineViewScreenController.magazineList[i];
                   return InkWell(
                     onTap: () {
-                      Get.to(
-                            () => ViewMagazineScreen(),
-                        arguments: singleItem.magazinepdfId
-                      );
+                      Get.to(() => ViewMagazineScreen(),
+                          arguments: singleItem.magazinepdfId);
                     },
                     child: Stack(
                       alignment: Alignment.bottomCenter,
                       children: [
                         Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(singleItem.imageurl),
-                              fit: BoxFit.cover,
-                            ),
+                          width: Get.width,
+                          decoration: const BoxDecoration(
+                            color: AppColors.whiteColor,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 1,
+                                offset: Offset(0, 1),
+                              )
+                            ],
+                          ),
+                          child: CachedNetworkImage(
+                            errorWidget: (context, url, error) {
+                              return const CustomLoader();
+                            },
+                            imageUrl: singleItem.imageurl,
+                            fit: BoxFit.fill,
                           ),
                         ),
+                        // Container(
+                        //   decoration: BoxDecoration(
+                        //     image: DecorationImage(
+                        //       image: NetworkImage(singleItem.imageurl),
+                        //       fit: BoxFit.cover,
+                        //     ),
+                        //   ),
+                        // ),
                         Container(
                           width: Get.width,
                           decoration: const BoxDecoration(
                             color: AppColors.blackColor,
                           ),
                           child: Text(
-                              singleItem.magazinepdfTitle,
+                            singleItem.magazinepdfTitle,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: AppColors.whiteColor,

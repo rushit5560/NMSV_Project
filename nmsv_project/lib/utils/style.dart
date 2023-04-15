@@ -6,14 +6,11 @@ class TextStyleConfig {
     Color textColor = AppColors.blackColor,
     FontWeight fontWeight = FontWeight.normal,
     double fontSize = 15.0,
-    String fontFamily = "SFProDisplayRegular",
   }) {
     return TextStyle(
       color: textColor,
       fontSize: fontSize,
       fontWeight: fontWeight,
-      fontFamily: fontFamily,
-      
     );
   }
 

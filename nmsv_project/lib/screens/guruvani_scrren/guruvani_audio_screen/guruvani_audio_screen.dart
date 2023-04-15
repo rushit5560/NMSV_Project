@@ -4,6 +4,7 @@ import 'package:nmsv_project/common_widgets/custom_loader.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/controller/guruvani_audio_screen_controller.dart';
 import 'package:nmsv_project/screens/guruvani_scrren/guruvani_audio_screen/guruvani_audio_screen_widgets.dart';
+import 'package:sizer/sizer.dart';
 import '../../../common_widgets/custom_appbar.dart';
 import '../../../constants/message.dart';
 
@@ -18,6 +19,7 @@ class GuruvaniAudioScreen extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async {
         guruvaniAudioScreenController.stopMusic();
+        guruvaniAudioScreenController.audioPlayer.dispose();
         return true;
       },
       child: Scaffold(
@@ -30,7 +32,19 @@ class GuruvaniAudioScreen extends StatelessWidget {
         ),
         body: Obx(
           () => guruvaniAudioScreenController.isLoading.value
-              ? const CustomLoader()
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const CustomLoader(),
+                    SizedBox(height: 2.h),
+                    Text(
+                      "Please wait...",
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                      ),
+                    ),
+                  ],
+                )
               : Column(
                   children: [
                     GuruvaniAudioModule()

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/common_modules/custom_alert_dialog.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
+import 'package:nmsv_project/constants/app_images.dart';
 import '../../constants/color.dart';
 import '../../controller/index_screen_controller.dart';
 
@@ -39,7 +40,7 @@ class IndexScreen extends StatelessWidget {
         bottomNavigationBar: Obx(
           () => BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            selectedItemColor: AppColors.orangeColor,
+            selectedItemColor: AppColors.appColors,
             unselectedItemColor: AppColors.greyColor,
             showSelectedLabels: true,
             showUnselectedLabels: true,
@@ -48,21 +49,25 @@ class IndexScreen extends StatelessWidget {
               indexScreenController.changeIndex(index);
             },
             currentIndex: indexScreenController.selectedIndex.value,
-            items: const [
+            items:  [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: Image.asset(AppImages.homeImage,height: 25,color: Colors.grey,),
+
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.map_sharp),
+                icon: Image.asset(AppImages.iconContact,height: 25,color: Colors.grey,),
+
                 label: 'Contact Us',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.music_note_outlined),
+                icon: Image.asset(AppImages.bhajanImage,height: 25,color: Colors.grey,),
+
                 label: 'Bhajan',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
+                icon: Image.asset(AppImages.iconProfileImage,height: 25,color: Colors.grey,),
+
                 label: 'Profile',
               ),
             ],

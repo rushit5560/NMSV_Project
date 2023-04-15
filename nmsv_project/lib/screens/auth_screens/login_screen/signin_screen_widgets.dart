@@ -64,7 +64,7 @@ class SignTextFormFieldModule extends StatelessWidget {
                 child: Text(
                   AppMessage.forGotPassword,
                   style: TextStyleConfig.textStyle(
-                    textColor: AppColors.orangeColor,
+                    textColor: AppColors.appColors,
                   ),
                 ),
               ),
@@ -73,7 +73,7 @@ class SignTextFormFieldModule extends StatelessWidget {
           SizedBox(height: 2.h),
           CustomSubmitButtonModule(
             labelText: AppMessage.signin1,
-            buttonColor: AppColors.orangeColor,
+            buttonColor: AppColors.appColors,
             onPress: () async {
               if (loginScreenController.formKey.currentState!.validate()) {
                 await loginScreenController.userLoginFunction();

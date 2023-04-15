@@ -42,30 +42,8 @@ class _AudioModuleState extends State<AudioModule> {
               inactiveColor: Colors.grey,
               value: bhajanAudioScreenController.currentPosition.value.inSeconds
                   .toDouble(),
-              // semanticFormatterCallback: (value) {
-              //   bhajanAudioScreenController.currentPosition.value ==
-              //       bhajanAudioScreenController.musicLength.value
-              //       ? log("33333")
-              //       : log("44444");
-              //
-              //   return "";
-              // },
-
-              // onChangeEnd: (value) {
-              //   bhajanAudioScreenController.currentPosition.value ==
-              //       bhajanAudioScreenController.musicLength.value
-              //       ? log("33333")
-              //       : log("44444");
-              // },
               onChanged: (value) {
                 bhajanAudioScreenController.seekTo(value.toInt());
-                // bhajanAudioScreenController.isLoading(true);
-
-                // bhajanAudioScreenController.currentPosition.value ==
-                //         bhajanAudioScreenController.musicLength.value
-                //     ? log("11111")
-                //     : log("222222");
-                // bhajanAudioScreenController.isLoading(false);
               },
             ),
           ),
@@ -82,23 +60,26 @@ class _AudioModuleState extends State<AudioModule> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                child: const Icon(CupertinoIcons.backward_end_alt_fill),
+                child: const Icon(CupertinoIcons.backward_end_fill),
                 onTap: () {
-                  if (bhajanAudioScreenController
-                              .currentPosition.value.inSeconds ==
-                          0 ||
-                      bhajanAudioScreenController
-                              .currentPosition.value.inSeconds <
-                          10) {
-                    bhajanAudioScreenController.seekTo(0);
-                  } else if (bhajanAudioScreenController
-                          .currentPosition.value.inSeconds >
-                      10) {
-                    bhajanAudioScreenController.seekTo(
-                        bhajanAudioScreenController
-                                .currentPosition.value.inSeconds -
-                            10);
-                  }
+                  bhajanAudioScreenController.isLoading(true);
+                  bhajanAudioScreenController.previousAudio();
+                  bhajanAudioScreenController.isLoading(false);
+                  // if (bhajanAudioScreenController
+                  //             .currentPosition.value.inSeconds ==
+                  //         0 ||
+                  //     bhajanAudioScreenController
+                  //             .currentPosition.value.inSeconds <
+                  //         10) {
+                  //   bhajanAudioScreenController.seekTo(0);
+                  // } else if (bhajanAudioScreenController
+                  //         .currentPosition.value.inSeconds >
+                  //     10) {
+                  //   bhajanAudioScreenController.seekTo(
+                  //       bhajanAudioScreenController
+                  //               .currentPosition.value.inSeconds -
+                  //           10);
+                  // }
                 },
               ),
               //const Spacer(),
@@ -123,23 +104,27 @@ class _AudioModuleState extends State<AudioModule> {
                 },
               ),
               InkWell(
-                child: const Icon(CupertinoIcons.forward_end_alt_fill),
+                child: const Icon(CupertinoIcons.forward_end_fill),
                 onTap: () {
-                  if (bhajanAudioScreenController.currentPosition.value <
-                      bhajanAudioScreenController.musicLength.value -
-                          const Duration(seconds: 10)) {
-                    bhajanAudioScreenController.seekTo(
-                        bhajanAudioScreenController
-                                .currentPosition.value.inSeconds +
-                            10);
-                  } else {
-                    bhajanAudioScreenController.seekTo(
-                        bhajanAudioScreenController
-                            .musicLength.value.inSeconds);
-                    bhajanAudioScreenController.isPlaying.value =
-                        !bhajanAudioScreenController.isPlaying.value;
-                    bhajanAudioScreenController.audioPlayer.stop();
-                  }
+                  bhajanAudioScreenController.isLoading(true);
+                  bhajanAudioScreenController.nextAudio();
+                  bhajanAudioScreenController.isLoading(false);
+
+                  // if (bhajanAudioScreenController.currentPosition.value <
+                  //     bhajanAudioScreenController.musicLength.value -
+                  //         const Duration(seconds: 10)) {
+                  //   bhajanAudioScreenController.seekTo(
+                  //       bhajanAudioScreenController
+                  //               .currentPosition.value.inSeconds +
+                  //           10);
+                  // } else {
+                  //   bhajanAudioScreenController.seekTo(
+                  //       bhajanAudioScreenController
+                  //           .musicLength.value.inSeconds);
+                  //   bhajanAudioScreenController.isPlaying.value =
+                  //       !bhajanAudioScreenController.isPlaying.value;
+                  //   bhajanAudioScreenController.audioPlayer.stop();
+                  // }
                 },
               ),
             ],

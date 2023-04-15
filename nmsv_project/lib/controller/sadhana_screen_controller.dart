@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:nmsv_project/constants/api_url.dart';
@@ -11,6 +12,7 @@ class SadhanaScreenController extends GetxController {
   RxInt currentIndex = 0.obs;
 
   // List<SadhanaData> sadhanaList = [];
+  PageController pageController = PageController(initialPage: 0);
   List<String> sadhanaImageList = [];
 
   Future<void> getSadhanaFunction() async {
@@ -26,17 +28,21 @@ class SadhanaScreenController extends GetxController {
 
       response.stream.transform(utf8.decoder).listen((value) {
         // log('SadhanaFunction value : $value');
-        SadhanaListModel sadhanaListModel = SadhanaListModel.fromJson(json.decode(value));
+        SadhanaListModel sadhanaListModel =
+            SadhanaListModel.fromJson(json.decode(value));
         successStatus = sadhanaListModel.status;
 
-        if(successStatus.toLowerCase() == "ok") {
+        if (successStatus.toLowerCase() == "ok") {
           // sadhanaList.clear();
           sadhanaImageList.clear();
-          if(sadhanaListModel.data.isNotEmpty) {
-            for(int i=0; i < sadhanaListModel.data.length; i++) {
-              if(sadhanaListModel.data[i].images.isNotEmpty) {
-                for(int j =0; j < sadhanaListModel.data[i].images.length; j++) {
-                  sadhanaImageList.add(sadhanaListModel.data[i].images[j].imageUrl);
+          if (sadhanaListModel.data.isNotEmpty) {
+            for (int i = 0; i < sadhanaListModel.data.length; i++) {
+              if (sadhanaListModel.data[i].images.isNotEmpty) {
+                for (int j = 0;
+                    j < sadhanaListModel.data[i].images.length;
+                    j++) {
+                  sadhanaImageList
+                      .add(sadhanaListModel.data[i].images[j].imageUrl);
                 }
               }
             }
@@ -46,10 +52,8 @@ class SadhanaScreenController extends GetxController {
         } else {
           log('getSadhanaFunction Else');
         }
-
       });
-
-    } catch(e) {
+    } catch (e) {
       log('getSadhanaFunction Error :$e');
       rethrow;
     }

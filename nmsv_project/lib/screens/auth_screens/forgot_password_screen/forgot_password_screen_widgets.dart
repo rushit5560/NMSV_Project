@@ -32,7 +32,7 @@ class ForgotTextFormFieldModule extends StatelessWidget {
           SizedBox(height: 3.h),
           CustomSubmitButtonModule(
             labelText: AppMessage.getpassword,
-            buttonColor: AppColors.orangeColor,
+            buttonColor: AppColors.appColors,
             onPress: () async {
               if (forgotPasswordScreenContoller.formKey.currentState!
                   .validate()) {

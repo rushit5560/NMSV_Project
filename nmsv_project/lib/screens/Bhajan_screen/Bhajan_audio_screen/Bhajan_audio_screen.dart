@@ -4,23 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
 import 'package:nmsv_project/constants/extension.dart';
+import 'package:sizer/sizer.dart';
 import '../../../common_widgets/custom_appbar.dart';
 import '../../../constants/message.dart';
 import '../../../controller/bhajan_audio_screen_controller.dart';
 import 'Bhajan_audio_screen_widgets.dart';
 
 class BhajanAudioScreen extends StatelessWidget {
-  BhajanAudioScreen({Key? key,})
-      : super(key: key);
+  BhajanAudioScreen({
+    Key? key,
+  }) : super(key: key);
   final bhajanAudioScreenController = Get.put(BhajanAudioScreenController());
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-         bhajanAudioScreenController.stopMusic();
-         return true;
+        bhajanAudioScreenController.stopMusic();
+        bhajanAudioScreenController.audioPlayer.dispose();
+        return true;
       },
-
       child: Scaffold(
         appBar: customAppBar(
             titleText: AppMessage.bhajan,
@@ -32,7 +34,19 @@ class BhajanAudioScreen extends StatelessWidget {
             leadingShow: false),
         body: Obx(
           () => bhajanAudioScreenController.isLoading.value
-              ? const CustomLoader()
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const CustomLoader(),
+                    SizedBox(height: 2.h),
+                    Text(
+                      "Please wait...",
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                      ),
+                    ),
+                  ],
+                )
               : Column(
                   children: [
                     const AudioModule()

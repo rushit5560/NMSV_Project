@@ -35,7 +35,7 @@ class CustomAlertDialog {
                 OutlinedButton(
                   onPressed: onYesTap,
                   style: OutlinedButton.styleFrom(
-                    backgroundColor: AppColors.orangeColor,
+                    backgroundColor: AppColors.appColors,
                   ),
                   child: Text(
                     AppMessage.yes,
@@ -48,7 +48,7 @@ class CustomAlertDialog {
                 OutlinedButton(
                   onPressed: onCancelTap,
                   style: OutlinedButton.styleFrom(
-                    backgroundColor: AppColors.orangeColor,
+                    backgroundColor: AppColors.appColors,
                   ),
                   child: Text(
                     AppMessage.no,
@@ -100,7 +100,7 @@ class CustomMobileBackPressAlertDialog extends StatelessWidget {
                 exit(0);
               },
               style: OutlinedButton.styleFrom(
-                  backgroundColor: AppColors.orangeColor),
+                  backgroundColor: AppColors.appColors),
               child: Text(
                 AppMessage.yes,
                 style: TextStyleConfig.textStyle(
@@ -114,7 +114,7 @@ class CustomMobileBackPressAlertDialog extends StatelessWidget {
                 Get.back();
               },
               style: OutlinedButton.styleFrom(
-                  backgroundColor: AppColors.orangeColor),
+                  backgroundColor: AppColors.appColors),
               child: Text(
                 AppMessage.no,
                 style: TextStyleConfig.textStyle(

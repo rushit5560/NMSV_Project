@@ -115,13 +115,13 @@ class SignInScreenController extends GetxController {
         );
         log('userId : ${loginModel.userId}');
         Fluttertoast.showToast(
-          // backgroundColor: AppColors.orangeColor1,
+          // backgroundColor: AppColors.appColors,
           msg: "login successfully..",
         );
         Get.offAll(() => ProfileScreen());
       } else {
         Fluttertoast.showToast(
-          // backgroundColor: AppColors.orangeColor1,
+          // backgroundColor: AppColors.appColors,
           msg: loginModel.message,
         );
         log("userLoginFunction error");
@@ -191,13 +191,13 @@ class SignInScreenController extends GetxController {
         );
         log('userId : ${loginModel.userId}');
         Fluttertoast.showToast(
-          // backgroundColor: AppColors.orangeColor1,
+          // backgroundColor: AppColors.appColors,
           msg: "login successfully..",
         );
         Get.offAll(() => ProfileScreen());
       } else {
         Fluttertoast.showToast(
-          // backgroundColor: AppColors.orangeColor1,
+          // backgroundColor: AppColors.appColors,
           msg: loginModel.message,
         );
         log("userLoginFunction error");

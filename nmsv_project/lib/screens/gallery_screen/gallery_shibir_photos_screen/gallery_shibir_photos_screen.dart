@@ -17,7 +17,7 @@ class GalleryShibirPhotosScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.whiteColor1,
       appBar: customAppBar(
-        titleText: AppMessage.shibirPhotos,
+        titleText: shibirPhotosScreenController.galleryTitle,
         actionShow: false,
         // actionIcon: const Icon(Icons.west_outlined),
         actionOnTap: () {},

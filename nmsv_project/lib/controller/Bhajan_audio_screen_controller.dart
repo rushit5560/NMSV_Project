@@ -68,6 +68,19 @@ class BhajanAudioScreenController extends GetxController {
     log('Setup function index : $index');
     await audioPlayer.play(bhajanList[index].mediaUrl);
   }
+  
+  nextAudio() async {
+    index++;
+    log('Setup function index : $index');
+    await audioPlayer.play(bhajanList[index].mediaUrl);
+  }
+
+   
+  previousAudio() async {
+    index++;
+    log('Setup function index : $index');
+    await audioPlayer.play(bhajanList[index].mediaUrl);
+  }
 
   playMusic() {
     audioPlayer.play(bhajanList[index].mediaUrl);
@@ -85,4 +98,17 @@ class BhajanAudioScreenController extends GetxController {
     isLoading(true);
     isLoading(false);
   }
+
+  @override
+  void dispose() {
+    log("dispose bhajan");
+
+    audioPlayer.dispose();
+    super.dispose();
+  }
+
+
+
+
+
 }

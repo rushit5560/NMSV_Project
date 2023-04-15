@@ -41,7 +41,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               Text(
                 AppMessage.appMesage,
                 style: TextStyleConfig.textStyle(
-                  textColor: AppColors.orangeColor,
+                  textColor: AppColors.appColors,
                   fontWeight: FontWeight.bold,
                   fontSize: 14.sp,
                 ),
