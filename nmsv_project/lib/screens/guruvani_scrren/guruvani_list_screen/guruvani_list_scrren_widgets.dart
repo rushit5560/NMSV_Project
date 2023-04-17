@@ -77,8 +77,12 @@ class GuruvaniListModule extends StatelessWidget {
             log("allGuruvaniId : ${guruvaniListScreenController.searchGuruvaniList[index].allGuruvaniId}");
             Get.to(
               () => GuruvaniPlayerScreen(),
-              arguments: guruvaniListScreenController
+              arguments:[ guruvaniListScreenController
                   .searchGuruvaniList[index].allGuruvaniId,
+                  
+                  guruvaniListScreenController
+                  .searchGuruvaniList[index].title
+                  ],
             );
           },
           child: Container(

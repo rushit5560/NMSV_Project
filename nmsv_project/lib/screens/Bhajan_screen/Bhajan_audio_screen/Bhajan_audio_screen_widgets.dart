@@ -1,9 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/common_modules/custom_submit_button.dart';
+import 'package:nmsv_project/constants/color.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:sizer/sizer.dart';
 import '../../../controller/bhajan_audio_screen_controller.dart';
+import '../Bhajan_player_screen/Bhajan_player_screen_widgets.dart';
 
 class AudioModule extends StatefulWidget {
   const AudioModule({Key? key}) : super(key: key);
@@ -21,6 +27,12 @@ class _AudioModuleState extends State<AudioModule> {
       () => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   children: [
+             
+          //   ],
+          // ).commonOnlyPadding(right: 15),
           const Icon(
             Icons.music_note_outlined,
             size: 200,

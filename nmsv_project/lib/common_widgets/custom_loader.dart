@@ -6,7 +6,7 @@ class CustomLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Center(
+    return Center(
       child: CircularProgressIndicator(color: AppColors.appColors),
     );
   }

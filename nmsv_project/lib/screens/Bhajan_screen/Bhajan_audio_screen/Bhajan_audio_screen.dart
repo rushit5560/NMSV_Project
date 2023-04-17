@@ -1,9 +1,12 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
+import 'package:nmsv_project/constants/color.dart';
 import 'package:nmsv_project/constants/extension.dart';
+import 'package:nmsv_project/screens/Bhajan_screen/Bhajan_player_screen/Bhajan_player_screen_widgets.dart';
 import 'package:sizer/sizer.dart';
 import '../../../common_widgets/custom_appbar.dart';
 import '../../../constants/message.dart';
@@ -24,29 +27,81 @@ class BhajanAudioScreen extends StatelessWidget {
         return true;
       },
       child: Scaffold(
-        appBar: customAppBar(
-            titleText: AppMessage.bhajan,
-            actionShow: false,
-            // actionIcon: const Icon(Icons.west_outlined),
-            // actionOnTap: () {},
-            // leadingIcon: const Icon(Icons.navigate_before),
-            // leadingOnTap: () => Get.back(),
-            leadingShow: false),
+        appBar: AppBar(
+          backgroundColor: AppColors.appColors,
+          title: Obx(
+            () => bhajanAudioScreenController.isLoading.value
+                ? const Text("Bhajan")
+                : Obx(
+                    () => Text(bhajanAudioScreenController.bhajanName.value
+                        .replaceAll(".mp3", "")),
+                  ),
+          ),
+          actions: [
+            GestureDetector(
+              onTap: () {
+                var dowanloadIndex = bhajanAudioScreenController.index;
+
+                if (dowanloadIndex == bhajanAudioScreenController.index) {
+                  FileDownloader.downloadFile(
+                    url: bhajanAudioScreenController
+                        .bhajanList[bhajanAudioScreenController.index].mediaUrl,
+                    onProgress: (name, progress) {
+                      log("bhajanAudioScreenController .bhajanList[bhajanAudioScreenController.index].mediaUrl ${bhajanAudioScreenController.bhajanList[bhajanAudioScreenController.index].mediaUrl}");
+                      if (bhajanAudioScreenController.onProgressing.value ==
+                          false) {
+                        log("bhajanAudioScreenController .onProgressing.value 11 : ${bhajanAudioScreenController.onProgressing.value}");
+
+                        CustomAlertDialog2().showAlertDialog(
+                            context: context, text: 'Downloading... ');
+                        bhajanAudioScreenController.onProgressing.value = true;
+                      }
+                    },
+                    onDownloadCompleted: (val) {
+                      if (bhajanAudioScreenController.onProgressing.value ==
+                          true) {
+                        log("bhajanAudioScreenController .onProgressing.value 22: ${bhajanAudioScreenController.onProgressing.value}");
+                        Get.back();
+                        CustomAlertDialog1().showAlertDialog(
+                          context: context,
+                          text: 'Dowanload successfully...',
+                          onYesTap: () {
+                            Get.back();
+                          },
+                        );
+                        bhajanAudioScreenController.onProgressing.value = false;
+                      }
+                    },
+                  );
+                } else {
+                  log("message");
+                }
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    color: AppColors.appColors, shape: BoxShape.circle),
+                child: const Icon(
+                  Icons.download,
+                  color: AppColors.whiteColor1,
+                ).commonAllSidePadding(10),
+              ),
+            ),
+          ],
+        ),
+        // customAppBar(
+        //     titleText: bhajanAudioScreenController
+        //         .bhajanList[bhajanAudioScreenController.index].bhajanName
+        //         .replaceAll(".mp3", "")
+        //         .toUpperCase(),
+        //     actionShow: false,
+        //     // actionIcon: const Icon(Icons.west_outlined),
+        //     // actionOnTap: () {},
+        //     // leadingIcon: const Icon(Icons.navigate_before),
+        //     // leadingOnTap: () => Get.back(),
+        //     leadingShow: false),
         body: Obx(
           () => bhajanAudioScreenController.isLoading.value
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const CustomLoader(),
-                    SizedBox(height: 2.h),
-                    Text(
-                      "Please wait...",
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                      ),
-                    ),
-                  ],
-                )
+              ? const CustomLoader()
               : Column(
                   children: [
                     const AudioModule()

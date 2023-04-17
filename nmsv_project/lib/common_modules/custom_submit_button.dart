@@ -111,7 +111,7 @@ class NexttButtonModule extends StatelessWidget {
   String labelText;
   Color buttonColor;
   Color textColor;
-  IconData? icon;
+  // IconData? icon;
   IconData? icon1;
 
   double? labelSize;
@@ -121,7 +121,7 @@ class NexttButtonModule extends StatelessWidget {
     required this.labelText,
     this.buttonColor = AppColors.blackColor,
     this.textColor = AppColors.whiteColor,
-    this.icon,
+    // this.icon,
     this.icon1,
     this.labelSize,
   }) : super(key: key);

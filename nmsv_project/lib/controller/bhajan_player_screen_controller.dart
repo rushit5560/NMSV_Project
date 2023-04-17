@@ -8,11 +8,11 @@ import 'package:http/http.dart' as http;
 import 'package:nmsv_project/model/bhajan_screen_model/bhajan_player_list_model.dart';
 
 class BhajanPlayerScreenController extends GetxController {
-  String bhajanId = Get.arguments;
-  String bhajanTitle = Get.arguments;
+  String bhajanId = Get.arguments[0];
+  String bhajanTitle = Get.arguments[1];
 
   RxString successStatus = ''.obs;
-  RxBool  onProgressing = false.obs;
+  RxBool onProgressing = false.obs;
 
   RxBool isLoading = false.obs;
   TextEditingController searchController = TextEditingController();
@@ -44,9 +44,6 @@ class BhajanPlayerScreenController extends GetxController {
       isLoading(false);
     }
   }
-
-
-
 
   @override
   void onInit() {

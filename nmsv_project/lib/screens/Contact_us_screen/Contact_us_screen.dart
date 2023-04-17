@@ -70,7 +70,7 @@ class ContactUsScreen extends StatelessWidget {
                       // 37.4220041, -122.0862462,
                       latitude,
                       longitude,
-                      'Google Headquarters are here',
+                      contactUsScreenController.contactUsList[index].text1,
                     ),
                   ),
                 ],

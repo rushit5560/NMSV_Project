@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/common_widgets/custom_appbar.dart';
@@ -11,12 +10,13 @@ import 'package:sizer/sizer.dart';
 
 class GuruvaniPlayerScreen extends StatelessWidget {
   GuruvaniPlayerScreen({Key? key}) : super(key: key);
-  final guruvaniPlayerScreenController = Get.put(GuruvaniPlayerScreenController());
+  final guruvaniPlayerScreenController =
+      Get.put(GuruvaniPlayerScreenController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-          titleText: AppMessage.guruvani,
+          titleText: guruvaniPlayerScreenController.guruvaniPlayerTitle,
           actionShow: false,
           actionIcon: const Icon(Icons.west_outlined),
           actionOnTap: () {},

@@ -12,10 +12,11 @@ PreferredSizeWidget customAppBar({
 }) {
   return AppBar(
     centerTitle: true,
+    toolbarHeight: 50,
     backgroundColor: AppColors.appColors,
     leading: leadingShow
         ? IconButton(
-            onPressed: leadingOnTap ?? (){},
+            onPressed: leadingOnTap ?? () {},
             icon: leadingIcon!,
           )
         : null,
@@ -27,7 +28,7 @@ PreferredSizeWidget customAppBar({
     actions: [
       actionShow
           ? IconButton(
-              onPressed: actionOnTap ?? (){},
+              onPressed: actionOnTap ?? () {},
               icon: actionIcon!,
             )
           : Container(),

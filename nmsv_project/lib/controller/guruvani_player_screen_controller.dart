@@ -9,7 +9,9 @@ import 'package:nmsv_project/model/bhajan_screen_model/bhajan_player_list_model.
 import 'package:nmsv_project/model/guruvani_screen_model/guruvani_player_model.dart';
 
 class GuruvaniPlayerScreenController extends GetxController {
-  String guruvaniPlayerId = Get.arguments;
+  String guruvaniPlayerId = Get.arguments[0];
+  String guruvaniPlayerTitle= Get.arguments[1];
+
   RxString successStatus = ''.obs;
   double? progress1;
   RxBool onProgressing = false.obs;

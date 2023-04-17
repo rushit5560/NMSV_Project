@@ -1,9 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/constants/color.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/controller/guruvani_audio_screen_controller.dart';
 import 'package:sizer/sizer.dart';
+
+import '../guruvani_player_list_screen/guruvani_player_list_screen_widgets.dart';
 
 class GuruvaniAudioModule extends StatelessWidget {
   GuruvaniAudioModule({Key? key}) : super(key: key);
@@ -17,6 +23,12 @@ class GuruvaniAudioModule extends StatelessWidget {
       () => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   children: [
+              
+          //   ],
+          // ).commonOnlyPadding(right: 15),
           const Icon(
             Icons.music_note_outlined,
             size: 200,

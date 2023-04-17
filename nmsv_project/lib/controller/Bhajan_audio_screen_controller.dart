@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/model/bhajan_screen_model/bhajan_player_list_model.dart';
 // import 'package:nmsv_project/constants/app_images.dart';
@@ -10,8 +12,10 @@ import 'package:nmsv_project/model/bhajan_screen_model/bhajan_player_list_model.
 class BhajanAudioScreenController extends GetxController {
   List<Bhajan> bhajanList = Get.arguments[0];
   int index = Get.arguments[1];
+  RxBool onProgressing = false.obs;
 
   // final bhajanPlayerScreenController = Get.find<BhajanPlayerScreenController>();
+  RxString bhajanName = "".obs;
 
   RxBool isPlaying = false.obs;
   RxBool isLoading = false.obs;
@@ -26,6 +30,7 @@ class BhajanAudioScreenController extends GetxController {
     super.onInit();
     log('Init function index : $index');
     isLoading(true);
+    bhajanName.value = bhajanList[index].bhajanName.toString();
     await audioPlayer.play(bhajanList[index].mediaUrl);
 
     setup();
@@ -44,13 +49,15 @@ class BhajanAudioScreenController extends GetxController {
       isLoading(false);
       notificationShowModule();
     });
-    audioPlayer.onPlayerStateChanged.listen((state) async {
-      log('state : $state');
-      playState.value = state;
-      if (state == PlayerState.COMPLETED) {
-        await changeSongWhenOldSongComplete();
-      }
-    });
+    audioPlayer.onPlayerStateChanged.listen(
+      (state) async {
+        log('state : $state');
+        playState.value = state;
+        if (state == PlayerState.COMPLETED) {
+          await changeSongWhenOldSongComplete();
+        }
+      },
+    );
   }
 
   notificationShowModule() {
@@ -64,22 +71,39 @@ class BhajanAudioScreenController extends GetxController {
   }
 
   changeSongWhenOldSongComplete() async {
-    index++;
-    log('Setup function index : $index');
-    await audioPlayer.play(bhajanList[index].mediaUrl);
-  }
-  
-  nextAudio() async {
-    index++;
-    log('Setup function index : $index');
-    await audioPlayer.play(bhajanList[index].mediaUrl);
+    if (index == bhajanList.length - 1) {
+      log('No Operation Perform');
+    } else {
+      index++;
+      log('Setup function index : $index');
+      await audioPlayer.play(bhajanList[index].mediaUrl);
+    }
   }
 
-   
+  nextAudio() async {
+    if (index == bhajanList.length - 1) {
+      log('No Operation Perform');
+      Fluttertoast.showToast(msg: "You are on last song!");
+    } else {
+      index++;
+      log('Setup function index : $index');
+      await audioPlayer.play(bhajanList[index].mediaUrl);
+      changeShowFileName(); /// Change Playing Audio Name
+      loadUI();
+    }
+  }
+
   previousAudio() async {
-    index++;
-    log('Setup function index : $index');
-    await audioPlayer.play(bhajanList[index].mediaUrl);
+    if (index != 0) {
+      index--;
+      log('Setup function index : $index');
+      await audioPlayer.play(bhajanList[index].mediaUrl);
+      changeShowFileName(); /// Change Playing Audio Name
+      loadUI();
+    } else {
+      log('No Operation Perform');
+      Fluttertoast.showToast(msg: "You are on first song!");
+    }
   }
 
   playMusic() {
@@ -99,6 +123,11 @@ class BhajanAudioScreenController extends GetxController {
     isLoading(false);
   }
 
+  /// Change Playing File Name When change the song
+  changeShowFileName() {
+    bhajanName.value = bhajanList[index].bhajanName.toString();
+  }
+
   @override
   void dispose() {
     log("dispose bhajan");
@@ -106,9 +135,4 @@ class BhajanAudioScreenController extends GetxController {
     audioPlayer.dispose();
     super.dispose();
   }
-
-
-
-
-
 }

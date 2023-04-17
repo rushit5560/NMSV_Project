@@ -82,7 +82,6 @@ class BhajanPlayerListModule extends StatelessWidget {
                       //     .toString()
                       //     .replaceAll(".mp3", ""),
                       bhajanPlayerScreenController.serchBhajanplayerList,
-
                       index,
                     ],
                     // arguments: bhajanPlayerScreenController
@@ -136,7 +135,6 @@ class BhajanPlayerListModule extends StatelessWidget {
                                       .onProgressing.value ==
                                   true) {
                                 log("bhajanPlayerScreenController .onProgressing.value 22: ${bhajanPlayerScreenController.onProgressing.value}");
-
                                 Get.back();
                                 CustomAlertDialog1().showAlertDialog(
                                   context: context,
@@ -159,6 +157,7 @@ class BhajanPlayerListModule extends StatelessWidget {
                     ),
                   ),
                 ),
+                
               );
             },
           );
