@@ -128,90 +128,29 @@ class _MagazineSubscriptionModuleState
                 minimumSize: const Size.fromHeight(40), // NEW
               ),
               onPressed: () async {
-                log("open");
-                createFileOfPdfUrl().then((f) {
-                  setState(() {
-                    remotePDFpath = f.path;
-                  });
-                });
-
-                if (remotePDFpath.isNotEmpty) {
-                  log("111");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PDFScreen(path: remotePDFpath),
-                    ),
-                  );
-                  log("222");
-                } else {
-                  viewMagazineScreenController.isAlertShow(true);
-                  showDialog(
-                    barrierDismissible: false,
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        backgroundColor: AppColors.whiteColor,
-
-                        content: StatefulBuilder(
-                          builder: (context, setState) {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text(
-                                  'Downloading...',
-                                  textAlign: TextAlign.center,
-                                ),
-                                SizedBox(
-                                  height: 35,
-                                  width: 35,
-                                  child: CustomLoader(),
-                                )
-                              ],
-                            ).commonSymmetricPadding(horizontal: 20);
-                          },
-                        ),
-
-                        actionsAlignment: MainAxisAlignment.spaceBetween,
-                        contentPadding:
-                            const EdgeInsets.symmetric(vertical: 40),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18)),
-                        titleTextStyle: TextStyleConfig.textStyle(fontSize: 18),
-                        // actions: [CustomLoader()],
-                      );
-                    },
-                  );
-
-                  setState(() {});
-                  log("esle else");
-                }
                 // log("viewMagazineScreenController.pdfurl ${viewMagazineScreenController.pdfurl}");
                 // await viewMagazinePdfScreenController.getPath();
-                // late String path;
+                late String path;
 
-                // late String urlPdfName;
-                // late String localPdfPath;
+                late String urlPdfName;
+                late String localPdfPath;
 
-                // path = await ExternalPath.getExternalStoragePublicDirectory(
-                //     ExternalPath.DIRECTORY_DOWNLOADS);
+                path = await ExternalPath.getExternalStoragePublicDirectory(
+                    ExternalPath.DIRECTORY_DOWNLOADS);
 
-                // final pdfPartList =
-                //     viewMagazineScreenController.pdfurl.split('/');
-                // urlPdfName = pdfPartList.last;
-                // localPdfPath = '$path/$urlPdfName';
-                // log("localPdfPath  $localPdfPath");
-                // if (remotePDFpath.isEmpty) {
-                //   log("1111");
-                //   Get.to(
-                //     () => PDFScreen(path: remotePDFpath),
-                //     // arguments: [viewMagazineScreenController.pdfurl],
-                //   );
-                //   log("2222");
-                // } else {
-                //   log("******");
-                // }
-                log("Close");
+                final pdfPartList =
+                    viewMagazineScreenController.pdfurl.split('/');
+                urlPdfName = pdfPartList.last;
+                localPdfPath = '$path/$urlPdfName';
+                log("localPdfPath  $localPdfPath");
+                Get.to(
+                  () => ViewMagazinePDFScreen(),
+                  arguments: [
+                    localPdfPath,
+                    viewMagazineScreenController.pdfurl
+                  ],
+                );
+                log("viewMagazineScreenController.localPdfPath $localPdfPath");
               },
               child: const Text('View Magazine')),
         ),
