@@ -13,6 +13,8 @@ class GuruvaniAudioScreenController extends GetxController {
   int index = Get.arguments[1];
   RxBool onProgressing = false.obs;
   RxString guruvaniName = "".obs;
+  RxInt progress = 0.obs;
+
   final guruvaniPlayerScreenController =
       Get.find<GuruvaniPlayerScreenController>();
 

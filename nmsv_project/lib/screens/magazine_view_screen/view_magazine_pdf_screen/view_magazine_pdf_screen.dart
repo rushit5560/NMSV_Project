@@ -1,199 +1,123 @@
-// import 'dart:io';
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:nmsv_project/common_widgets/custom_appbar.dart';
-// import 'package:nmsv_project/controller/view_magazin_pdf_screen_controller.dart';
-// import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-
-// class ViewMagazinePDFScreen extends StatefulWidget {
-//   final String pdfUrl;
-//   const ViewMagazinePDFScreen({Key? key,required this.pdfUrl}) : super(key: key);
-
-//   @override
-//   State<ViewMagazinePDFScreen> createState() => _ViewMagazinePDFScreenState();
-// }
-
-// class _ViewMagazinePDFScreenState extends State<ViewMagazinePDFScreen> {
-//   final viewMagazineScreenController =
-//       Get.put(ViewMagazinePdfScreenController());
-
-//       @override
-//   void initState() {
-//     super.initState();
-//     viewMagazineScreenController.downloadPdf(widget.pdfUrl);
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return WillPopScope(
-//         onWillPop: () async {
-//           return true;
-//         },
-//         child: Scaffold(
-//         appBar: customAppBar(
-//             titleText: " View Magazine", leadingShow: false, actionShow: false),
-//             body: Obx(
-
-//           () => viewMagazineScreenController.isLoading.value
-//               ? const Center(child: CircularProgressIndicator())
-//               : viewMagazineScreenController.fileExist
-//                   ? SfPdfViewer.file(
-//                       File(viewMagazineScreenController.localPdfPath.value),
-//                       password: "omtec#nmsv",
-//                     )
-//                   : Container(),
-//         ),
-//       ),
-//         // body: Obx(() {
-//         //   if (viewMagazineScreenController.isLoading.value) {
-//         //     return const Center(child: CircularProgressIndicator());
-//         //   } else if (viewMagazineScreenController.fileExist.value) {
-//         //     final localPdfPath =
-//         //         viewMagazineScreenController.localPdfPath.value;
-//         //     final pdfFile = File(localPdfPath);
-//         //     if (pdfFile.existsSync()) {
-//         //       return SfPdfViewer.file(
-//         //         pdfFile,
-//         //         password: "omtec#nmsv",
-//         //       );
-//         //     } else if(){}
-//         //      else {
-//         //       return const Center(
-//         //         child: Text("Error: File not found"),
-//         //       );
-//         //     }
-//         //   } else {
-//         //     return const Center(
-//         //       child: Text("Downloading PDF..."),
-//         //     );
-//         //   }
-//         // }),
-//     );
-//   }
-// }
-//         // child: Scaffold(
-//         //   appBar: customAppBar(
-//         //       titleText: " View Magazine",
-//         //       leadingShow: false,
-//         //       actionShow: false),
-//         //   body: 
-//         //   //     Container(
-//         //   //   child: viewMagazineScreenController.dowanload.value == true
-//         //   //       ? SfPdfViewer.file(
-//         //   //           File(
-//         //   //             viewMagazineScreenController.localPdfPath,
-//         //   //           ),
-//         //   //           password: "omtec#nmsv",
-//         //   //         )
-//         //   //       : SfPdfViewer.network(
-//         //   //           viewMagazineScreenController.viewPdf,
-//         //   //           password: "omtec#nmsv",
-//         //   //         ),
-//         //   // ),
-//         // )
-//         // );
-//   // }
-// // }
-
+import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:nmsv_project/common_widgets/custom_appbar.dart';
-import 'package:nmsv_project/common_widgets/custom_loader.dart';
-import 'package:nmsv_project/controller/view_magazin_pdf_screen_controller.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class ViewMagazinePDFScreen extends StatefulWidget {
-  const ViewMagazinePDFScreen({Key? key}) : super(key: key);
+import '../../../constants/color.dart';
+// import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+// import 'package:pdf_viewer_plugin/pdf_viewer_plugin.dart';
 
-  @override
-  State<ViewMagazinePDFScreen> createState() =>
-      _ViewMagazinePDFScreenState();
+class PDFScreen extends StatefulWidget {
+  final String? path;
+
+  const PDFScreen({Key? key, this.path}) : super(key: key);
+
+  _PDFScreenState createState() => _PDFScreenState();
 }
 
-class _ViewMagazinePDFScreenState extends State<ViewMagazinePDFScreen> {
-  final viewMagazineScreenController =
-      Get.put(ViewMagazinePdfScreenController());
-      final pdfController = PdfViewerController();
+class _PDFScreenState extends State<PDFScreen> with WidgetsBindingObserver {
+  final Completer<PDFViewController> _controller =
+      Completer<PDFViewController>();
+  int? pages = 1;
+  int? currentPage = 1;
+  int? totalPage = 0;
+
+  bool isReady = false;
+  String errorMessage = '';
+  @override
+  void initState() {
+    log("path ${widget.path}");
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        return true;
-      },
-      child: Scaffold(
-        appBar: customAppBar(
-            titleText: " View Magazine", leadingShow: false, actionShow: false),
-        
-        body: Obx(() {
-          if (viewMagazineScreenController.isLoading.isTrue) {
-            return const Center(child: 
-            CircularProgressIndicator());
-          } else if (viewMagazineScreenController.fileExist) {
-            final localPdfPath =
-                viewMagazineScreenController.localPdfPath.value;
-            final pdfFile = File(localPdfPath);
-            if (pdfFile.existsSync()) {
-              log("view");
-              return SfPdfViewer.file(
-                pdfFile,
-                password: "omtec#nmsv",
-              );
-            } else {
-              return const Center(
-                child: Text("Error: File not found"),
-              );
-            }
-          } else {
-            return const Center(
-              // child: Text("Downloading PDF..."),
-              child: CustomLoader(),
+    log("path ${widget.path}");
+    return Scaffold(
+      appBar: customAppBar(
+        titleText: "Magazine Subscription",
+        leadingShow: false,
+        actionShow: false,
+      ),
+      body: Stack(
+        children: <Widget>[
+          PDFView(
+            filePath: widget.path,
+            enableSwipe: true,
+            swipeHorizontal: true,
+            password: "omtec#nmsv",
+            autoSpacing: false,
+            pageFling: true,
+            pageSnap: true,
+            defaultPage: currentPage!,
+            fitPolicy: FitPolicy.BOTH,
+            preventLinkNavigation:
+                false, // if set to true the link is handled in flutter
+            onRender: (pages) {
+              setState(() {
+                pages = pages;
+                isReady = true;
+              });
+            },
+            onError: (error) {
+              setState(() {
+                errorMessage = error.toString();
+              });
+              log(error.toString());
+            },
+            onPageError: (page, error) {
+              setState(() {
+                errorMessage = '$page: ${error.toString()}';
+              });
+              log('$page: ${error.toString()}');
+            },
+            onViewCreated: (PDFViewController pdfViewController) {
+              _controller.complete(pdfViewController);
+            },
+            onLinkHandler: (String? uri) {
+              log('goto uri: $uri');
+            },
+            onPageChanged: (int? page, int? total) {
+              log('page change: $page/$total');
+              totalPage = total;
+              log("totalPage $totalPage");
+
+              setState(() {
+                currentPage = page;
+              });
+            },
+          ),
+          errorMessage.isEmpty
+              ? !isReady
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : Container()
+              : Center(
+                  child: Text(errorMessage),
+                )
+        ],
+      ),
+      floatingActionButton: FutureBuilder<PDFViewController>(
+        future: _controller.future,
+        builder: (context, AsyncSnapshot<PDFViewController> snapshot) {
+          if (snapshot.hasData) {
+            return FloatingActionButton.extended(
+              backgroundColor:
+                  AppColors.appColors, // label: Text("Go to ${pages! ~/ 2}"),
+              label: Text("${currentPage.toString()}/$totalPage"),
+              onPressed: () async {
+                await snapshot.data!.setPage(pages! ~/ 2);
+              },
             );
           }
-        }),
+
+          return Container();
+        },
       ),
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:nmsv_project/controller/view_magazin_pdf_screen_controller.dart';
-
-// class MyHomePage extends StatelessWidget {
-//   final PdfController pdfController = Get.put(PdfController());
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text("PDF Demo")),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             ElevatedButton(
-//               child: Text("Download PDF"),
-//               onPressed: () {
-//                 pdfController.downloadPdf();
-//               },
-//             ),
-//             SizedBox(height: 20),
-//             Obx(() {
-//               if (pdfController.isDownloading.value) {
-//                 return CircularProgressIndicator();
-//               } else {
-//                 return ElevatedButton(
-//                   child: Text("View PDF"),
-//                   onPressed: () {
-//                     pdfController.viewPdf();
-//                   },
-//                 );
-//               }
-//               },
-//               ),
-//               ],
-//               )));}
-// }

@@ -7,6 +7,7 @@ import 'package:nmsv_project/common_widgets/custom_loader.dart';
 import 'package:nmsv_project/constants/color.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/screens/Bhajan_screen/Bhajan_player_screen/Bhajan_player_screen_widgets.dart';
+import 'package:nmsv_project/utils/style.dart';
 import 'package:sizer/sizer.dart';
 import '../../../common_widgets/custom_appbar.dart';
 import '../../../constants/message.dart';
@@ -47,13 +48,56 @@ class BhajanAudioScreen extends StatelessWidget {
                     url: bhajanAudioScreenController
                         .bhajanList[bhajanAudioScreenController.index].mediaUrl,
                     onProgress: (name, progress) {
+                      bhajanAudioScreenController.progress1.value =
+                          progress.toInt();
                       log("bhajanAudioScreenController .bhajanList[bhajanAudioScreenController.index].mediaUrl ${bhajanAudioScreenController.bhajanList[bhajanAudioScreenController.index].mediaUrl}");
                       if (bhajanAudioScreenController.onProgressing.value ==
                           false) {
                         log("bhajanAudioScreenController .onProgressing.value 11 : ${bhajanAudioScreenController.onProgressing.value}");
 
-                        CustomAlertDialog2().showAlertDialog(
-                            context: context, text: 'Downloading... ');
+                        showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (context) {
+                            log("progress $progress");
+                            return AlertDialog(
+                              backgroundColor: AppColors.whiteColor,
+
+                              content: StatefulBuilder(
+                                builder: (context, setState) {
+                                  return Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Downloading...',
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      Obx(
+                                        () => Text(
+                                            "${bhajanAudioScreenController.progress1.value} %"),
+                                      ),
+                                      const SizedBox(
+                                        height: 35,
+                                        width: 35,
+                                        child: CustomLoader(),
+                                      )
+                                    ],
+                                  ).commonSymmetricPadding(horizontal: 20);
+                                },
+                              ),
+
+                              actionsAlignment: MainAxisAlignment.spaceBetween,
+                              contentPadding:
+                                  const EdgeInsets.symmetric(vertical: 40),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18)),
+                              titleTextStyle:
+                                  TextStyleConfig.textStyle(fontSize: 18),
+                              // actions: [CustomLoader()],
+                            );
+                          },
+                        );
                         bhajanAudioScreenController.onProgressing.value = true;
                       }
                     },

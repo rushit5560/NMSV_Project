@@ -1,6 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 // import 'package:file_picker/file_picker.dart';
+import 'package:external_path/external_path.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 
@@ -9,6 +13,9 @@ import '../model/magazine_view_screen_model/view_magazine_screen_model.dart';
 
 class ViewMagazineScreenController extends GetxController {
   String magazinePdfId = Get.arguments;
+  // String pdfFile = Get.arguments[1];
+  RxBool isAlertShow = false.obs;
+
   RxBool isLoading = false.obs;
   RxString successStatus = "".obs;
   RxString viewMagazinePdf = ''.obs;

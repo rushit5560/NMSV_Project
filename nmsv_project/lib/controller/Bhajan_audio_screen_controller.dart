@@ -13,6 +13,7 @@ class BhajanAudioScreenController extends GetxController {
   List<Bhajan> bhajanList = Get.arguments[0];
   int index = Get.arguments[1];
   RxBool onProgressing = false.obs;
+  RxInt progress1 = 0.obs;
 
   // final bhajanPlayerScreenController = Get.find<BhajanPlayerScreenController>();
   RxString bhajanName = "".obs;
@@ -88,7 +89,9 @@ class BhajanAudioScreenController extends GetxController {
       index++;
       log('Setup function index : $index');
       await audioPlayer.play(bhajanList[index].mediaUrl);
-      changeShowFileName(); /// Change Playing Audio Name
+      changeShowFileName();
+
+      /// Change Playing Audio Name
       loadUI();
     }
   }
@@ -98,7 +101,9 @@ class BhajanAudioScreenController extends GetxController {
       index--;
       log('Setup function index : $index');
       await audioPlayer.play(bhajanList[index].mediaUrl);
-      changeShowFileName(); /// Change Playing Audio Name
+      changeShowFileName();
+
+      /// Change Playing Audio Name
       loadUI();
     } else {
       log('No Operation Perform');

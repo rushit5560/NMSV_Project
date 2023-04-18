@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 import 'package:get/get.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
 import 'package:nmsv_project/constants/color.dart';
+import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/constants/font_family.dart';
 import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/utils/style.dart';
@@ -12,6 +12,7 @@ import 'package:sizer/sizer.dart';
 import '../../../common_modules/auth_screen_text_field.dart';
 import '../../../controller/bhajan_player_screen_controller.dart';
 import '../Bhajan_audio_screen/Bhajan_audio_screen.dart';
+import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 
 class TextFormFiledModule extends StatelessWidget {
   TextFormFiledModule({Key? key}) : super(key: key);
@@ -118,14 +119,60 @@ class BhajanPlayerListModule extends StatelessWidget {
                           FileDownloader.downloadFile(
                             url: value.mediaUrl.trim(),
                             onProgress: (name, progress) {
+                              bhajanPlayerScreenController.progress.value =
+                                  progress.toInt();
                               if (bhajanPlayerScreenController
                                       .onProgressing.value ==
                                   false) {
                                 log("bhajanPlayerScreenController .onProgressing.value 11 : ${bhajanPlayerScreenController.onProgressing.value}");
 
-                                CustomAlertDialog2().showAlertDialog(
-                                    context: context,
-                                    text: 'Downloading... $progress');
+                                showDialog(
+                                  barrierDismissible: false,
+                                  context: context,
+                                  builder: (context) {
+                                    log("progress $progress");
+                                    return AlertDialog(
+                                      backgroundColor: AppColors.whiteColor,
+
+                                      content: StatefulBuilder(
+                                        builder: (context, setState) {
+                                          return Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              const Text(
+                                                'Downloading...',
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              Obx(
+                                                () => Text(
+                                                    "${bhajanPlayerScreenController.progress.value} %"),
+                                              ),
+                                              const SizedBox(
+                                                height: 35,
+                                                width: 35,
+                                                child: CustomLoader(),
+                                              )
+                                            ],
+                                          ).commonSymmetricPadding(
+                                              horizontal: 20);
+                                        },
+                                      ),
+
+                                      actionsAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              vertical: 40),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18)),
+                                      titleTextStyle: TextStyleConfig.textStyle(
+                                          fontSize: 18),
+                                      // actions: [CustomLoader()],
+                                    );
+                                  },
+                                );
                                 bhajanPlayerScreenController
                                     .onProgressing.value = true;
                               }
@@ -157,7 +204,6 @@ class BhajanPlayerListModule extends StatelessWidget {
                     ),
                   ),
                 ),
-                
               );
             },
           );

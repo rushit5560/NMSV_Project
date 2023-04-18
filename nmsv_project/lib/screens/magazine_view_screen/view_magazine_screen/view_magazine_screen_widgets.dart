@@ -1,11 +1,16 @@
+import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:external_path/external_path.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
+import 'package:nmsv_project/common_widgets/custom_loader.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/controller/view_magazin_pdf_screen_controller.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../constants/color.dart';
@@ -13,9 +18,48 @@ import '../../../controller/view_magazine_screen_controller.dart';
 import '../../../utils/style.dart';
 import '../view_magazine_pdf_screen/view_magazine_pdf_screen.dart';
 
-class MagazineSubscriptionModule extends StatelessWidget {
-  MagazineSubscriptionModule({Key? key}) : super(key: key);
+class MagazineSubscriptionModule extends StatefulWidget {
+  const MagazineSubscriptionModule({Key? key}) : super(key: key);
+
+  @override
+  State<MagazineSubscriptionModule> createState() =>
+      _MagazineSubscriptionModuleState();
+}
+
+class _MagazineSubscriptionModuleState
+    extends State<MagazineSubscriptionModule> {
   final viewMagazineScreenController = Get.find<ViewMagazineScreenController>();
+
+  String remotePDFpath = "";
+
+  Future<File> createFileOfPdfUrl() async {
+    Completer<File> completer = Completer();
+    log("Start download file from internet!");
+    try {
+      final url = viewMagazineScreenController.pdfurl;
+      final filename = url.substring(url.lastIndexOf("/") + 1);
+      log("filename  $filename");
+      var request = await HttpClient().getUrl(Uri.parse(url));
+      var response = await request.close();
+      var bytes = await consolidateHttpClientResponseBytes(response);
+      var dir = await getApplicationDocumentsDirectory();
+
+      if (viewMagazineScreenController.isAlertShow.value == true) {
+        Get.back();
+      }
+      log("Download files");
+      log("${dir.path}/$filename");
+      File file = File("${dir.path}/$filename");
+
+      await file.writeAsBytes(bytes, flush: true);
+      completer.complete(file);
+      log("Download complite");
+    } catch (e) {
+      throw Exception('Error parsing asset file!');
+    }
+
+    return completer.future;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,29 +128,90 @@ class MagazineSubscriptionModule extends StatelessWidget {
                 minimumSize: const Size.fromHeight(40), // NEW
               ),
               onPressed: () async {
+                log("open");
+                createFileOfPdfUrl().then((f) {
+                  setState(() {
+                    remotePDFpath = f.path;
+                  });
+                });
+
+                if (remotePDFpath.isNotEmpty) {
+                  log("111");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PDFScreen(path: remotePDFpath),
+                    ),
+                  );
+                  log("222");
+                } else {
+                  viewMagazineScreenController.isAlertShow(true);
+                  showDialog(
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        backgroundColor: AppColors.whiteColor,
+
+                        content: StatefulBuilder(
+                          builder: (context, setState) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text(
+                                  'Downloading...',
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(
+                                  height: 35,
+                                  width: 35,
+                                  child: CustomLoader(),
+                                )
+                              ],
+                            ).commonSymmetricPadding(horizontal: 20);
+                          },
+                        ),
+
+                        actionsAlignment: MainAxisAlignment.spaceBetween,
+                        contentPadding:
+                            const EdgeInsets.symmetric(vertical: 40),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18)),
+                        titleTextStyle: TextStyleConfig.textStyle(fontSize: 18),
+                        // actions: [CustomLoader()],
+                      );
+                    },
+                  );
+
+                  setState(() {});
+                  log("esle else");
+                }
                 // log("viewMagazineScreenController.pdfurl ${viewMagazineScreenController.pdfurl}");
                 // await viewMagazinePdfScreenController.getPath();
-                late String path;
+                // late String path;
 
-                late String urlPdfName;
-                late String localPdfPath;
+                // late String urlPdfName;
+                // late String localPdfPath;
 
-                path = await ExternalPath.getExternalStoragePublicDirectory(
-                    ExternalPath.DIRECTORY_DOWNLOADS);
+                // path = await ExternalPath.getExternalStoragePublicDirectory(
+                //     ExternalPath.DIRECTORY_DOWNLOADS);
 
-                final pdfPartList =
-                    viewMagazineScreenController.pdfurl.split('/');
-                urlPdfName = pdfPartList.last;
-                localPdfPath = '$path/$urlPdfName';
-                log("localPdfPath  $localPdfPath");
-                Get.to(
-                  () => ViewMagazinePDFScreen(),
-                  arguments: [
-                    localPdfPath,
-                    viewMagazineScreenController.pdfurl
-                  ],
-                );
-                log("viewMagazineScreenController.localPdfPath $localPdfPath");
+                // final pdfPartList =
+                //     viewMagazineScreenController.pdfurl.split('/');
+                // urlPdfName = pdfPartList.last;
+                // localPdfPath = '$path/$urlPdfName';
+                // log("localPdfPath  $localPdfPath");
+                // if (remotePDFpath.isEmpty) {
+                //   log("1111");
+                //   Get.to(
+                //     () => PDFScreen(path: remotePDFpath),
+                //     // arguments: [viewMagazineScreenController.pdfurl],
+                //   );
+                //   log("2222");
+                // } else {
+                //   log("******");
+                // }
+                log("Close");
               },
               child: const Text('View Magazine')),
         ),

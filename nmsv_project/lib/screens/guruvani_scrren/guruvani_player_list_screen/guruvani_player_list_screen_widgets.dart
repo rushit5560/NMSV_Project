@@ -7,6 +7,7 @@ import 'package:nmsv_project/common_modules/auth_screen_text_field.dart';
 import 'package:nmsv_project/common_modules/custom_alert_dialog.dart';
 import 'package:nmsv_project/common_widgets/custom_loader.dart';
 import 'package:nmsv_project/constants/color.dart';
+import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/constants/message.dart';
 import 'package:nmsv_project/controller/guruvani_player_screen_controller.dart';
 import 'package:nmsv_project/screens/guruvani_scrren/guruvani_audio_screen/guruvani_audio_screen.dart';
@@ -79,14 +80,13 @@ class GuruvaniPlayerListModule extends StatelessWidget {
                 onTap: () {
                   Get.to(
                     () => GuruvaniAudioScreen(),
-                    arguments:
-                     [
+                    arguments: [
                       // bhajanPlayerScreenController
                       //     .serchBhajanplayerList[index].bhajanName
                       //     .toString()
                       //     .replaceAll(".mp3", ""),
-                       guruvaniPlayerScreenController.serchGuruvaniplayerList,
-                          index,
+                      guruvaniPlayerScreenController.serchGuruvaniplayerList,
+                      index,
                     ],
                     // arguments: guruvaniPlayerScreenController
                     //     .serchBhajanplayerList[index].mediaUrl
@@ -121,13 +121,61 @@ class GuruvaniPlayerListModule extends StatelessWidget {
                           FileDownloader.downloadFile(
                             url: value.mediaUrl.trim(),
                             onProgress: (name, progress) {
+                              guruvaniPlayerScreenController.progress.value =
+                                  progress.toInt();
                               if (guruvaniPlayerScreenController
                                       .onProgressing.value ==
                                   false) {
                                 log("guruvaniPlayerScreenController .onProgressing.value 11 : ${guruvaniPlayerScreenController.onProgressing.value}");
+                                showDialog(
+                                  barrierDismissible: false,
+                                  context: context,
+                                  builder: (context) {
+                                    log("progress $progress");
+                                    return AlertDialog(
+                                      backgroundColor: AppColors.whiteColor,
 
-                                CustomAlertDialog2().showAlertDialog(
-                                    context: context, text: 'Downloading...');
+                                      content: StatefulBuilder(
+                                        builder: (context, setState) {
+                                          return Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              const Text(
+                                                'Downloading...',
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              Obx(
+                                                () => Text(
+                                                    "${guruvaniPlayerScreenController.progress.value} %"),
+                                              ),
+                                              const SizedBox(
+                                                height: 35,
+                                                width: 35,
+                                                child: CustomLoader(),
+                                              )
+                                            ],
+                                          ).commonSymmetricPadding(
+                                              horizontal: 20);
+                                        },
+                                      ),
+
+                                      actionsAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              vertical: 40),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18)),
+                                      titleTextStyle: TextStyleConfig.textStyle(
+                                          fontSize: 18),
+                                      // actions: [CustomLoader()],
+                                    );
+                                  },
+                                );
+                                // CustomAlertDialog2().showAlertDialog(
+                                //     context: context, text: 'Downloading...');
                                 guruvaniPlayerScreenController
                                     .onProgressing.value = true;
                               }

@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-ViewPdfMagazineModel viewPdfMagazineModelFromJson(String str) => ViewPdfMagazineModel.fromJson(json.decode(str));
+ViewPdfMagazineModel viewPdfMagazineModelFromJson(String str) =>
+    ViewPdfMagazineModel.fromJson(json.decode(str));
 
-String viewPdfMagazineModelToJson(ViewPdfMagazineModel data) => json.encode(data.toJson());
+String viewPdfMagazineModelToJson(ViewPdfMagazineModel data) =>
+    json.encode(data.toJson());
 
 class ViewPdfMagazineModel {
   ViewPdfMagazineModel({
@@ -17,18 +19,19 @@ class ViewPdfMagazineModel {
   final String status;
   final ViewPdfMagazine data;
 
-  factory ViewPdfMagazineModel.fromJson(Map<String, dynamic> json) => ViewPdfMagazineModel(
-    status: json["status"]??"",
-    data: ViewPdfMagazine.fromJson(json["data"]??""),
-  );
+  factory ViewPdfMagazineModel.fromJson(Map<String, dynamic> json) =>
+      ViewPdfMagazineModel(
+        status: json["status"] ?? "",
+        data: ViewPdfMagazine.fromJson(json["data"] ?? ""),
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    //"data": data.toJson(),
-  };
+        "status": status,
+        //"data": data.toJson(),
+      };
 }
 
-class ViewPdfMagazine{
+class ViewPdfMagazine {
   ViewPdfMagazine({
     required this.magazinepdfTitle,
     required this.month,
@@ -89,36 +92,37 @@ class ViewPdfMagazine{
   final String pdfurl;
   final String imageurl;
 
-  factory ViewPdfMagazine.fromJson(Map<String, dynamic> json) => ViewPdfMagazine(
-    magazinepdfTitle: json["MagazinepdfTitle"]??"",
-    month: json["Month"]??"",
-    year: json["Year"]??"",
-    pdfFile: json["PdfFile"]??"",
-    imagename: json["Imagename"]??"",
-    archiveId: json["ArchiveId"]??"",
-    archiveTitle: json["ArchiveTitle"]??"",
-    homeTitleDate: json["HomeTitleDate"]??"",
-    sadGurudevTitle: json["SadGurudevTitle"]??"",
-    sadGurudev: json["SadGurudev"]??"",
-    regularFeature: json["RegularFeature"]??"",
-    sadhana: json["Sadhana"]??"",
-    ayurvedaTitle: json["AyurvedaTitle"]??"",
-    ayurveda: json["Ayurveda"]??"",
-    yogTitle: json["YogTitle"]??"",
-    yog: json["Yog"]??"",
-    stotraTitle: json["StotraTitle"]??"",
-    stotra: json["Stotra"]??"",
-    special: json["Special"]??"",
-    extra: json["Extra"]??"",
-    image: json["Image"]??"",
-    tempCode: json["TempCode"]??"",
-    isActive: json["IsActive"]??"",
-    createdOn: DateTime.parse(json["CreatedOn"]??""),
-    modifiedOn: json["ModifiedOn"]??"",
-    createdBy: json["CreatedBy"]??"",
-    pdfurl: json["pdfurl"]??"",
-    imageurl: json["imageurl"]??"",
-  );
+  factory ViewPdfMagazine.fromJson(Map<String, dynamic> json) =>
+      ViewPdfMagazine(
+        magazinepdfTitle: json["MagazinepdfTitle"] ?? "",
+        month: json["Month"] ?? "",
+        year: json["Year"] ?? "",
+        pdfFile: json["PdfFile"] ?? "",
+        imagename: json["Imagename"] ?? "",
+        archiveId: json["ArchiveId"] ?? "",
+        archiveTitle: json["ArchiveTitle"] ?? "",
+        homeTitleDate: json["HomeTitleDate"] ?? "",
+        sadGurudevTitle: json["SadGurudevTitle"] ?? "",
+        sadGurudev: json["SadGurudev"] ?? "",
+        regularFeature: json["RegularFeature"] ?? "",
+        sadhana: json["Sadhana"] ?? "",
+        ayurvedaTitle: json["AyurvedaTitle"] ?? "",
+        ayurveda: json["Ayurveda"] ?? "",
+        yogTitle: json["YogTitle"] ?? "",
+        yog: json["Yog"] ?? "",
+        stotraTitle: json["StotraTitle"] ?? "",
+        stotra: json["Stotra"] ?? "",
+        special: json["Special"] ?? "",
+        extra: json["Extra"] ?? "",
+        image: json["Image"] ?? "",
+        tempCode: json["TempCode"] ?? "",
+        isActive: json["IsActive"] ?? "",
+        createdOn: DateTime.parse(json["CreatedOn"] ?? ""),
+        modifiedOn: json["ModifiedOn"] ?? "",
+        createdBy: json["CreatedBy"] ?? "",
+        pdfurl: json["pdfurl"] ?? "",
+        imageurl: json["imageurl"] ?? "",
+      );
 
   // Map<String, dynamic> toJson() => {
   //   "MagazinepdfTitle": magazinepdfTitle,

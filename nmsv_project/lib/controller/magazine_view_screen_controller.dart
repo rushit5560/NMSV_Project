@@ -7,7 +7,7 @@ import 'package:nmsv_project/utils/user_preference.dart';
 
 import '../model/magazine_view_screen_model/magazine_list_model.dart';
 
-class MagazineViewScreenController extends GetxController {
+class   MagazineViewScreenController extends GetxController {
   RxBool isLoading = false.obs;
   RxString successStatus = "".obs;
 

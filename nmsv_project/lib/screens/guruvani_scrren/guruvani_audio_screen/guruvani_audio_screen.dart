@@ -8,6 +8,7 @@ import 'package:nmsv_project/constants/extension.dart';
 import 'package:nmsv_project/controller/guruvani_audio_screen_controller.dart';
 import 'package:nmsv_project/screens/guruvani_scrren/guruvani_audio_screen/guruvani_audio_screen_widgets.dart';
 import 'package:nmsv_project/screens/guruvani_scrren/guruvani_player_list_screen/guruvani_player_list_screen_widgets.dart';
+import 'package:nmsv_project/utils/style.dart';
 
 class GuruvaniAudioScreen extends StatelessWidget {
   GuruvaniAudioScreen({
@@ -47,12 +48,54 @@ class GuruvaniAudioScreen extends StatelessWidget {
                         .guruvaniList[guruvaniAudioScreenController.index]
                         .mediaUrl,
                     onProgress: (name, progress) {
+                      guruvaniAudioScreenController.progress.value =
+                          progress.toInt();
                       if (guruvaniAudioScreenController.onProgressing.value ==
                           false) {
                         log("guruvaniAudioScreenController .onProgressing.value 11 : ${guruvaniAudioScreenController.onProgressing.value}");
+                        showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (context) {
+                            log("progress $progress");
+                            return AlertDialog(
+                              backgroundColor: AppColors.whiteColor,
 
-                        CustomAlertDialog2().showAlertDialog(
-                            context: context, text: 'Downloading... ');
+                              content: StatefulBuilder(
+                                builder: (context, setState) {
+                                  return Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Downloading...',
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      Obx(
+                                        () => Text(
+                                            "${guruvaniAudioScreenController.progress.value} %"),
+                                      ),
+                                      const SizedBox(
+                                        height: 35,
+                                        width: 35,
+                                        child: CustomLoader(),
+                                      )
+                                    ],
+                                  ).commonSymmetricPadding(horizontal: 20);
+                                },
+                              ),
+
+                              actionsAlignment: MainAxisAlignment.spaceBetween,
+                              contentPadding:
+                                  const EdgeInsets.symmetric(vertical: 40),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18)),
+                              titleTextStyle:
+                                  TextStyleConfig.textStyle(fontSize: 18),
+                              // actions: [CustomLoader()],
+                            );
+                          },
+                        );
                         guruvaniAudioScreenController.onProgressing.value =
                             true;
                       }

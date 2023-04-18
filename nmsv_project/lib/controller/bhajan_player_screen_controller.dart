@@ -13,6 +13,7 @@ class BhajanPlayerScreenController extends GetxController {
 
   RxString successStatus = ''.obs;
   RxBool onProgressing = false.obs;
+  RxInt progress = 0.obs;
 
   RxBool isLoading = false.obs;
   TextEditingController searchController = TextEditingController();
