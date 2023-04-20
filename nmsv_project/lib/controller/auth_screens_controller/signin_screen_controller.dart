@@ -8,6 +8,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:nmsv_project/constants/api_url.dart';
 import 'package:nmsv_project/model/auth_screen_model/login_model.dart';
+import 'package:nmsv_project/screens/index_screen/index_screen.dart';
 import 'package:nmsv_project/screens/profile_screen/profile_screen.dart';
 import 'package:nmsv_project/utils/user_preference.dart';
 
@@ -118,7 +119,7 @@ class SignInScreenController extends GetxController {
           // backgroundColor: AppColors.appColors,
           msg: "login successfully..",
         );
-        Get.offAll(() => ProfileScreen());
+        Get.offAll(() => IndexScreen());
       } else {
         Fluttertoast.showToast(
           // backgroundColor: AppColors.appColors,
@@ -194,7 +195,7 @@ class SignInScreenController extends GetxController {
           // backgroundColor: AppColors.appColors,
           msg: "login successfully..",
         );
-        Get.offAll(() => ProfileScreen());
+        Get.offAll(() => IndexScreen());
       } else {
         Fluttertoast.showToast(
           // backgroundColor: AppColors.appColors,

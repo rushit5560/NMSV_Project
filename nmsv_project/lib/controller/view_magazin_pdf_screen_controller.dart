@@ -50,7 +50,8 @@ class ViewMagazinePdfScreenController extends GetxController {
           viewPdf.value,
           localPdfPath.value,
           onReceiveProgress: (count, total) {
-            counter.value = int.parse(total.toString());
+            counter.value = int.parse(count.toString());
+            log("counter.value ${counter.value}");
             isLoading(true);
             download.value = true;
             log("Count $count");
