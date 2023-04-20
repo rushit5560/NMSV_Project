@@ -46,7 +46,7 @@ dependencies:
   # flutter_webview_plugin_ios_android: ^0.3.12
   flutter_multiple_webview_plugin: ^1.0.9
   # webview_flutter: 
-  # flutter_webview_plugin: ^0.4.0
+  flutter_webview_plugin: ^0.4.0
 #  webviewx_plus: ^0.3.3
 #  webview_dart: ^1.0.1
 #  native_webview: ^1.4.0
