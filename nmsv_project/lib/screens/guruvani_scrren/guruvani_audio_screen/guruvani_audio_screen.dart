@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 import 'package:get/get.dart';
@@ -20,9 +21,14 @@ class GuruvaniAudioScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        guruvaniAudioScreenController.stopMusic();
-        guruvaniAudioScreenController.audioPlayer.dispose();
-        return true;
+        if (guruvaniAudioScreenController.isLoading.value == false) {
+          guruvaniAudioScreenController.stopMusic();
+          guruvaniAudioScreenController.audioPlayer.dispose();
+          // Get.back();
+          return true;
+        }
+
+        return false;
       },
       child: Scaffold(
         appBar: AppBar(
@@ -36,6 +42,18 @@ class GuruvaniAudioScreen extends StatelessWidget {
                           .replaceAll(".mp3", ""),
                     ),
                   ),
+          ),
+          leading: IconButton(
+            onPressed: () {
+              guruvaniAudioScreenController.stopMusic();
+              guruvaniAudioScreenController.audioPlayer.dispose();
+              Get.back();
+            },
+            icon: Icon(
+              Platform.isAndroid
+                  ? Icons.arrow_back_outlined
+                  : Icons.arrow_back_ios,
+            ),
           ),
           actions: [
             GestureDetector(

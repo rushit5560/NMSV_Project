@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_file_downloader/flutter_file_downloader.dart';
@@ -23,9 +24,14 @@ class BhajanAudioScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        bhajanAudioScreenController.stopMusic();
-        bhajanAudioScreenController.audioPlayer.dispose();
-        return true;
+        if (bhajanAudioScreenController.isLoading.value == false) {
+          bhajanAudioScreenController.stopMusic();
+          bhajanAudioScreenController.audioPlayer.dispose();
+          // Get.back();
+          return true;
+        }
+
+        return false;
       },
       child: Scaffold(
         appBar: AppBar(
@@ -37,6 +43,18 @@ class BhajanAudioScreen extends StatelessWidget {
                     () => Text(bhajanAudioScreenController.bhajanName.value
                         .replaceAll(".mp3", "")),
                   ),
+          ),
+          leading: IconButton(
+            onPressed: () {
+              bhajanAudioScreenController.stopMusic();
+              bhajanAudioScreenController.audioPlayer.dispose();
+              Get.back();
+            },
+            icon: Icon(
+              Platform.isAndroid
+                  ? Icons.arrow_back_outlined
+                  : Icons.arrow_back_ios,
+            ),
           ),
           actions: [
             GestureDetector(
