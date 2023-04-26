@@ -120,7 +120,8 @@ class _MagazineSubscriptionModuleState
           style: TextStyleConfig.textStyle(
               fontSize: 12.sp, fontWeight: FontWeight.bold),
         ),
-        Text(viewMagazineScreenController.ayurveda),
+        Html(data:viewMagazineScreenController.ayurveda),
+
         Center(
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(

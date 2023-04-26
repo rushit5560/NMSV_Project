@@ -12,7 +12,7 @@ class ViewMagazinePdfScreenController extends GetxController {
   final localPdfPath = ''.obs;
   final viewPdf = ''.obs;
 
-  RxInt counter = 0.obs;
+  RxString counter = "".obs;
 
   @override
   void onInit() async {
@@ -50,7 +50,20 @@ class ViewMagazinePdfScreenController extends GetxController {
           viewPdf.value,
           localPdfPath.value,
           onReceiveProgress: (count, total) {
-            counter.value = int.parse(count.toString());
+            // log("total: $total");
+
+            var temp = 100 * count;
+            log("temp $temp");
+            //
+            var totalVal = temp / total;
+            log("totalVal $totalVal");
+            //
+            var countValue = totalVal.toStringAsFixed(0);
+            log("countValue $countValue");
+            //
+            // counter.value = int.parse(countValue.toString());
+            counter.value = countValue.toString();
+
             log("counter.value ${counter.value}");
             isLoading(true);
             download.value = true;

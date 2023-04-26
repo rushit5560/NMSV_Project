@@ -189,7 +189,7 @@ class _ViewMagazinePDFScreenState extends State<ViewMagazinePDFScreen> {
 
                     CustomLoader(),
                     SizedBox(height: 3.h),
-                    Obx(()=> Text("${viewMagazineScreenController.counter.value} %")),
+                    Obx(()=> Text("Downloading ${viewMagazineScreenController.counter.value} %")),
                   ],
                 ),
               );
