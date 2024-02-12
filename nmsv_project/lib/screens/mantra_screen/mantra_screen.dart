@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_multiple_webview_plugin/flutter_multiple_webview_plugin.dart';
 import 'package:get/get.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import '../../common_widgets/custom_appbar.dart';
 import '../../common_widgets/custom_loader.dart';
 import '../../controller/mantra_screen_controller.dart';
@@ -17,9 +17,9 @@ class MantraScreen extends StatelessWidget {
       body: Obx(
         () => mantraScreenController.isLoading.value
             ? const CustomLoader()
-            : const WebviewScaffold(
-                url: 'https://narayanmantrasadhanavigyan.org/timings/30',
-              ),
+            :const WebView(
+          initialUrl: 'https://narayanmantrasadhanavigyan.org/timings/30',
+        ),
       ),
     );
   }

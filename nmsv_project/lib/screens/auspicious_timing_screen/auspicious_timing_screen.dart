@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_multiple_webview_plugin/flutter_multiple_webview_plugin.dart';
-// import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:get/get.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../common_widgets/custom_appbar.dart';
 import '../../common_widgets/custom_loader.dart';
@@ -22,9 +21,9 @@ class AuspiciousTimingScreen extends StatelessWidget {
       body: Obx(
         () => auspiciousTimingScreenController.isLoading.value
             ? const CustomLoader()
-            : const WebviewScaffold(
-                url: 'https://narayanmantrasadhanavigyan.org/timings/31',
-              ),
+            :const WebView(
+          initialUrl: 'https://narayanmantrasadhanavigyan.org/timings/31',
+        ),
       ),
     );
   }
