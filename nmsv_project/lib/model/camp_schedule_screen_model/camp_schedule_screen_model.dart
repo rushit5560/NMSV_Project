@@ -15,11 +15,11 @@ class CampScheduleModel {
   });
 
   final String status;
-  final List<CampSchedule> data;
+  final List<CampSchedule>? data;
 
   factory CampScheduleModel.fromJson(Map<String, dynamic> json) => CampScheduleModel(
     status: json["status"]??"",
-    data: List<CampSchedule>.from(json["data"].map((x) => CampSchedule.fromJson(x))??{}),
+    data:json["data"] ==null?null: List<CampSchedule>.from(json["data"].map((x) => CampSchedule.fromJson(x))??{}),
   );
 
   Map<String, dynamic> toJson() => {

@@ -25,7 +25,7 @@ class CampScheduleScreenController extends GetxController{
 
       successStatus.value=campschedulemodel.status;
       if (successStatus.value == "ok") {
-        campSchedule.addAll(campschedulemodel.data);
+        campSchedule.addAll(campschedulemodel.data!);
       } else {
         log('getCampScheduleFunction Else');
       }

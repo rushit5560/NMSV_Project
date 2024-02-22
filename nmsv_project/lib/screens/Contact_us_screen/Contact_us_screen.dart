@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:nmsv_project/common_modules/custom_submit_button.dart';
+
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:sizer/sizer.dart';
@@ -14,6 +15,7 @@ import '../../utils/style.dart';
 class ContactUsScreen extends StatelessWidget {
   ContactUsScreen({Key? key}) : super(key: key);
   final contactUsScreenController = Get.put(ContactUsScreenController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,15 +34,12 @@ class ContactUsScreen extends StatelessWidget {
         shrinkWrap: true,
         itemCount: contactUsScreenController.contactUsList.length,
         itemBuilder: (context, index) {
-          var latitude =
-              contactUsScreenController.contactUsList[index].latitude;
-          var longitude =
-              contactUsScreenController.contactUsList[index].longitude;
+          var latitude = contactUsScreenController.contactUsList[index].latitude;
+          var longitude = contactUsScreenController.contactUsList[index].longitude;
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(contactUsScreenController.contactUsList[index].text1)
-                  .commonSymmetricPadding(horizontal: 15, vertical: 15),
+              Text(contactUsScreenController.contactUsList[index].text1).commonSymmetricPadding(horizontal: 15, vertical: 15),
               SizedBox(height: 1.5.h),
               Text(
                 contactUsScreenController.contactUsList[index].text2,
@@ -51,14 +50,22 @@ class ContactUsScreen extends StatelessWidget {
                 ),
               ).commonSymmetricPadding(horizontal: 15),
               SizedBox(height: 1.h),
-              Text(contactUsScreenController.contactUsList[index].text3)
-                  .commonSymmetricPadding(horizontal: 15),
+              Text(contactUsScreenController.contactUsList[index].text3).commonSymmetricPadding(horizontal: 15),
               SizedBox(height: 1.h),
-              Text(contactUsScreenController.contactUsList[index].text4)
-                  .commonSymmetricPadding(horizontal: 15),
+              InkWell(
+                onTap: () {
+                  contactUsScreenController.makePhoneCall(contactUsScreenController.contactUsList[index].text4.split(":").last);
+                },
+                child: Text(contactUsScreenController.contactUsList[index].text4).commonSymmetricPadding(horizontal: 15),
+              ),
               SizedBox(height: 1.h),
-              Text(contactUsScreenController.contactUsList[index].text5)
-                  .commonSymmetricPadding(horizontal: 15),
+              InkWell(
+                onTap: () {
+
+                  contactUsScreenController.openWhatsapp(context: context,number: contactUsScreenController.contactUsList[index].text5.split(":").last,);
+                },
+                child: Text(contactUsScreenController.contactUsList[index].text5).commonSymmetricPadding(horizontal: 15),
+              ),
 
               Row(
                 children: [
