@@ -7,6 +7,7 @@ import 'package:nmsv_project/common_modules/custom_submit_button.dart';
 import 'package:nmsv_project/constants/extension.dart';
 import 'package:sizer/sizer.dart';
 import '../../common_widgets/custom_appbar.dart';
+import '../../constants/app_images.dart';
 import '../../constants/color.dart';
 import '../../constants/message.dart';
 import '../../controller/contact_us_screen_controller.dart';
@@ -52,20 +53,66 @@ class ContactUsScreen extends StatelessWidget {
               SizedBox(height: 1.h),
               Text(contactUsScreenController.contactUsList[index].text3).commonSymmetricPadding(horizontal: 15),
               SizedBox(height: 1.h),
-              InkWell(
-                onTap: () {
-                  contactUsScreenController.makePhoneCall(contactUsScreenController.contactUsList[index].text4.split(":").last);
-                },
-                child: Text(contactUsScreenController.contactUsList[index].text4).commonSymmetricPadding(horizontal: 15),
-              ),
+              Row(
+                children: [
+                  const Icon(Icons.call, color: Colors.black),
+                  SizedBox(width: 1.w),
+                  InkWell(
+                    onTap: () {
+                      contactUsScreenController.makePhoneCall(contactUsScreenController.contactUsList[index].text4.split(":").last);
+                    },
+                    child: Text(contactUsScreenController.contactUsList[index].text4),
+                  ),
+                ],
+              ).commonSymmetricPadding(horizontal: 15),
               SizedBox(height: 1.h),
-              InkWell(
-                onTap: () {
 
-                  contactUsScreenController.openWhatsapp(context: context,number: contactUsScreenController.contactUsList[index].text5.split(":").last,);
-                },
-                child: Text(contactUsScreenController.contactUsList[index].text5).commonSymmetricPadding(horizontal: 15),
-              ),
+              if (contactUsScreenController.contactUsList[index].text041 != null &&
+                  contactUsScreenController.contactUsList[index].text041!.isNotEmpty)
+                Row(
+                  children: [
+                    const Icon(Icons.call, color: Colors.black),
+                    SizedBox(width: 1.w),
+                    InkWell(
+                      onTap: () {
+                        if (contactUsScreenController.contactUsList[index].text041 != null &&
+                            contactUsScreenController.contactUsList[index].text041!.isNotEmpty) {
+                          contactUsScreenController.makePhoneCall(contactUsScreenController.contactUsList[index].text041!.split(":").last.trim());
+                        }
+                      },
+                      child: Text(contactUsScreenController.contactUsList[index].text041 ?? ""),
+                    ),
+                  ],
+                ).commonSymmetricPadding(horizontal: 15),
+              if (contactUsScreenController.contactUsList[index].text041 != null &&
+                  contactUsScreenController.contactUsList[index].text041!.isNotEmpty)
+                SizedBox(height: 1.h),
+
+              if (contactUsScreenController.contactUsList[index].text5.split(":").first.trim() == "Chat with us")
+                Row(
+                  children: [
+                    Image.asset(
+                      AppImages.wpImage,
+                      height: 20,
+                      width: 20,
+                    ),
+                    SizedBox(width: 1.w),
+                    InkWell(
+                      onTap: () {
+                        // print("-------------------${contactUsScreenController.contactUsList[index].text5.split(":").last.trim()}");
+
+                        contactUsScreenController.openWhatsapp(
+                          context: context,
+                          number: contactUsScreenController.contactUsList[index].text5.split(":").last.trim(),
+                        );
+                      },
+                      child: Text(contactUsScreenController.contactUsList[index].text5),
+                    ),
+                  ],
+                ).commonSymmetricPadding(horizontal: 15),
+
+              if (contactUsScreenController.contactUsList[index].text5.split(":").first.trim() != "Chat with us")
+                Text(contactUsScreenController.contactUsList[index].text5).commonSymmetricPadding(horizontal: 15),
 
               Row(
                 children: [

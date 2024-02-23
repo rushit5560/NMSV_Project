@@ -42,6 +42,7 @@ class AppImages {
   static const gurudevImage = "$rootPath/arvindjigurudev.png";
   static const galleryImage = "$rootPath/gallery.png";
   static const homeImage = "$rootPath/home.png";
+  static const wpImage = "$rootPath/whatsapp.png";
 
 }
 

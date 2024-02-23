@@ -13,7 +13,7 @@ class ContactUsScreenController extends GetxController {
       text1: 'jodhpur Gurudham at Jodhpur, India',
       text2: 'Narayan Mantra Sadhana Vigyan',
       text3: 'Address : Dr.Shrimali marg, High Court Colony, jodhpur 342001 Rajasthan, india',
-      text4: 'Call US : +91 08069636963',
+      text4: '+91 8069636963',
       text5: 'Chat with us : +91 8447747911',
       latitude: 26.2725,
       longitude: 73.0263,
@@ -22,8 +22,9 @@ class ContactUsScreenController extends GetxController {
       text1: 'Siddhashram (Gurukul) at New Delhi, india',
       text2: 'Narayan Mantra Sadhana Vigyan',
       text3: 'Address : Siddhashram, 8, Sandesh Vihar, Near M.M. Pubic School, Pitampura, New Dehli 110034, India',
-      text4: 'Call US : +91 08069636963',
-      text5: 'Chat with us : +91 8447747911',
+      text4: '(011)-79675768',
+      text041: '(011)-79675769',
+      text5: 'Fax : (011)-27352248',
       latitude: 28.6928,
       longitude: 77.142,
     ),
@@ -47,11 +48,9 @@ class ContactUsScreenController extends GetxController {
   //   }
   // }
 
-  void openWhatsapp(
-      {required BuildContext context,
-      required String number}) async {
+  void openWhatsapp({required BuildContext context, required String number}) async {
     var whatsapp = number; //+92xx enter like this
-    var whatsappURlAndroid = "whatsapp://send?phone=$whatsapp" /*&text=$text*/;
+    var whatsappURlAndroid = "whatsapp://send?phone=${whatsapp}" /*&text=$text*/;
     var whatsappURLIos = "https://wa.me/$whatsapp" /*?text=${Uri.tryParse(text)}*/;
     if (Platform.isIOS) {
       // for iOS phone only
