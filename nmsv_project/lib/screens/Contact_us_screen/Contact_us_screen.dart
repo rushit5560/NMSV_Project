@@ -88,7 +88,7 @@ class ContactUsScreen extends StatelessWidget {
                   contactUsScreenController.contactUsList[index].text041!.isNotEmpty)
                 SizedBox(height: 1.h),
 
-              if (contactUsScreenController.contactUsList[index].text5.split(":").first.trim() == "Chat with us")
+              if (contactUsScreenController.contactUsList[index].text5.split(":").first.trim() != "Fax")
                 Row(
                   children: [
                     Image.asset(
@@ -111,7 +111,7 @@ class ContactUsScreen extends StatelessWidget {
                   ],
                 ).commonSymmetricPadding(horizontal: 15),
 
-              if (contactUsScreenController.contactUsList[index].text5.split(":").first.trim() != "Chat with us")
+              if (contactUsScreenController.contactUsList[index].text5.split(":").first.trim() == "Fax")
                 Text(contactUsScreenController.contactUsList[index].text5).commonSymmetricPadding(horizontal: 15),
 
               Row(

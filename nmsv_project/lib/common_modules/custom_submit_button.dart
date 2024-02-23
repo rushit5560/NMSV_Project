@@ -95,7 +95,7 @@ class PrevioustButtonModule extends StatelessWidget {
                 labelText,
                 style: TextStyleConfig.textStyle(
                   textColor: textColor,
-                  fontSize: labelSize ?? 16.sp,
+                  fontSize: labelSize ?? 10.sp,
                 ),
               ).commonSymmetricPadding(vertical: 10),
             ],
